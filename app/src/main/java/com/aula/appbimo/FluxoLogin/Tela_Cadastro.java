@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
@@ -38,7 +39,6 @@ public class Tela_Cadastro extends AppCompatActivity {
     private Retrofit retrofit;
 
     AppCompatButton btn_voltar, btn_cadastrar;
-    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance(); FirebaseUser userLogin = firebaseAuth.getCurrentUser();
 
     TextInputEditText txtNome, txtEmail, txtSenha, txtCpf, txtDataNasc;
 
@@ -89,27 +89,38 @@ public class Tela_Cadastro extends AppCompatActivity {
 
     private void salvarUsuario() {
         //salvar no firebase
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.createUserWithEmailAndPassword(txtEmail.getText().toString(), txtSenha.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    FirebaseUser userLogin = firebaseAuth.getCurrentUser();
+                    Toast.makeText(Tela_Cadastro.this, userLogin.getUid().toString(), Toast.LENGTH_SHORT).show();
+                    adicionarUsuarioBanco(userLogin);
+                    finish();
                     //Atualizar o profile
-                    UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
-                            .setDisplayName(txtNome.getText().toString())
-                            .setPhotoUri(Uri.parse("https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2022/05/03-e1653929996954.jpg?w=1024")).build();
-                    userLogin.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                adicionarUsuarioBanco();
-                                finish();
-                            }
-                        }
-                    });
+//                    UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
+//                            .setDisplayName(txtNome.getText().toString())
+//                            .setPhotoUri(Uri.parse("https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2022/05/03-e1653929996954.jpg?w=1024")).build();
+//                    userLogin.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//                            if (task.isSuccessful()) {
+//                                adicionarUsuarioBanco();
+//                                finish();
+//                            }
+//                        }
+//                    });
                 }
                 else{
-                    Toast.makeText(Tela_Cadastro.this, "Deu RED " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.e("Email", task.getException().getMessage());
+                    if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                        // Caso o erro seja de e-mail já existente
+                        Toast.makeText(Tela_Cadastro.this, "E-mail já está em uso!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Outros tipos de erro
+                        Toast.makeText(Tela_Cadastro.this, "Erro ao cadastrar: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
         });
@@ -169,8 +180,8 @@ public class Tela_Cadastro extends AppCompatActivity {
         }
     }
 
-    public void adicionarUsuarioBanco(){
-        String API = "https://bimo-web-repo.onrender.com//apibimo/usuarios/";
+    public void adicionarUsuarioBanco(FirebaseUser user){
+        String API = "https://bimo-web-repo.onrender.com/apibimo/usuarios/";
         //Configurar Acesso API
 
         retrofit = new Retrofit.Builder()
@@ -180,13 +191,25 @@ public class Tela_Cadastro extends AppCompatActivity {
 
         //Criar a chamada
         UsuarioInterface usuarioInterface = retrofit.create(UsuarioInterface.class);
-        Usuario usuario = new Usuario(1, txtNome.getText().toString(), txtCpf.getText().toString(), null,txtCpf.getText().toString(), txtEmail.getText().toString(), null, null , txtDataNasc.getText().toString(), null, userLogin.getUid().toString(), null, false);
+        Usuario usuario = new Usuario(
+                txtNome.getText().toString(),// Campo que está sendo enviado como null
+                txtCpf.getText().toString(),
+                txtEmail.getText().toString(),
+                txtDataNasc.getText().toString(),
+                user.getUid().toString(),
+                1
+        );
+        Toast.makeText(this, usuario.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, txtNome.getText().toString(), Toast.LENGTH_SHORT).show();
         Call<String> call = usuarioInterface.inserirUsuario(usuario);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(Tela_Cadastro.this, "Inserido com sucesso", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Log.e("Penis", response.errorBody().toString());
                 }
             }
             @Override

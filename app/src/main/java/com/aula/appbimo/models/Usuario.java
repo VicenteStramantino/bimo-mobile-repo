@@ -2,13 +2,10 @@ package com.aula.appbimo.models;
 
 public class Usuario {
 
-    private int sid;
 
     private String cnome;
 
     private String csobrenome;
-
-    private String csenha;
 
     private String ccpf;
 
@@ -35,29 +32,31 @@ public class Usuario {
     private String cespecialidadeprofissional;
 
 
-    private boolean transaction_made;
+
+    private int idplano;
 
 
-    public Usuario(int sid, String cnome, String csobrenome, String csenha, String ccpf, String cemail, String ccnpj, String ctelefone, String ddatanascimento, String clinklinkedin, String cidhash, String cespecialidadeprofissional, boolean transaction_made) {
-        this.sid = sid;
+    public Usuario(String cnome, String csobrenome, String ccpf, String cemail, String ccnpj, String ctelefone, String ddatanascimento, String clinklinkedin, String cidhash, String cespecialidadeprofissional, int plano) {
         this.cnome = cnome;
         this.csobrenome = csobrenome;
-        this.csenha = csenha;
         this.ccpf = ccpf;
         this.cemail = cemail;
         this.ccnpj = ccnpj;
         this.ctelefone = ctelefone;
         this.ddatanascimento = ddatanascimento;
+        this.clinklinkedin = clinklinkedin;
         this.cidhash = cidhash;
         this.cespecialidadeprofissional = cespecialidadeprofissional;
+        this.idplano = plano;
     }
 
-    public int getSid() {
-        return sid;
-    }
-
-    public void setSid(int sid) {
-        this.sid = sid;
+    public Usuario(String cnome, String ccpf, String cemail, String ddatanascimento, String cidhash, int idplano) {
+        this.cnome = cnome;
+        this.ccpf = ccpf;
+        this.cemail = cemail;
+        this.ddatanascimento = ddatanascimento;
+        this.cidhash = cidhash;
+        this.idplano = idplano;
     }
 
     public String getCnome() {
@@ -68,6 +67,14 @@ public class Usuario {
         this.cnome = cnome;
     }
 
+    public int getIdplano() {
+        return idplano;
+    }
+
+    public void setIdplano(int idplano) {
+        this.idplano = idplano;
+    }
+
     public String getCsobrenome() {
         return csobrenome;
     }
@@ -76,13 +83,6 @@ public class Usuario {
         this.csobrenome = csobrenome;
     }
 
-    public String getCsenha() {
-        return csenha;
-    }
-
-    public void setCsenha(String csenha) {
-        this.csenha = csenha;
-    }
 
     public String getCcpf() {
         return ccpf;
@@ -148,21 +148,12 @@ public class Usuario {
         this.cespecialidadeprofissional = cespecialidadeprofissional;
     }
 
-    public boolean isTransaction_made() {
-        return transaction_made;
-    }
-
-    public void setTransaction_made(boolean transaction_made) {
-        this.transaction_made = transaction_made;
-    }
 
     @Override
     public String toString() {
         return "{" +
-                "sid=" + sid +
-                ", cnome='" + cnome + '\'' +
+                "cnome='" + cnome + '\'' +
                 ", csobrenome='" + csobrenome + '\'' +
-                ", csenha='" + csenha + '\'' +
                 ", ccpf='" + ccpf + '\'' +
                 ", cemail='" + cemail + '\'' +
                 ", ccnpj='" + ccnpj + '\'' +
@@ -171,7 +162,7 @@ public class Usuario {
                 ", clinklinkedin='" + clinklinkedin + '\'' +
                 ", cidhash='" + cidhash + '\'' +
                 ", cespecialidadeprofissional='" + cespecialidadeprofissional + '\'' +
-                ", transaction_made=" + transaction_made +
+                ", idplano=" + idplano +
                 '}';
     }
 }
