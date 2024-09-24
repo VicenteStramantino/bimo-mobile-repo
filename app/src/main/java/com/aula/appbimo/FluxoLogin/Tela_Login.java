@@ -67,7 +67,7 @@ public class Tela_Login extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             //Abrir a tela principal
-                            Intent intent = new Intent(Tela_Login.this, Tela_LoginCadastro.class);
+                            Intent intent = new Intent(Tela_Login.this, Tela_Inicial.class);
                             startActivity(intent);
                         }
                         else {
