@@ -2,29 +2,56 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FluxoLogin.Tela_Login">
+    tools:context=".FluxoLogin.Tela_CadastroPerfil">
 
-    <ImageView
-        android:id="@+id/logo_app"
-        android:layout_width="135dp"
-        android:layout_height="220dp"
-        android:layout_marginTop="40dp"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/foto_usuario"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/union" />
+        app:layout_constraintVertical_chainStyle="packed"
+        app:shapeAppearanceOverlay="@style/fotoRedonda"
+        app:srcCompat="@drawable/usuario_padrao" />
+
+    <ImageButton
+        android:id="@+id/bt_galeria"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="116dp"
+        android:backgroundTint="@android:color/transparent"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toStartOf="@+id/bt_camera"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/foto_usuario"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <ImageButton
+        android:id="@+id/bt_camera"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="116dp"
+        android:backgroundTint="@android:color/transparent"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_galeria"
+        app:layout_constraintTop_toTopOf="@+id/foto_usuario"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Email"
+        android:id="@+id/NomeDeUsuário"
         style="@style/TextInputLayoutStyle"
         android:layout_width="352dp"
         android:layout_height="60dp"
-        android:layout_marginTop="80dp"
-        android:hint="E-mail"
+        android:layout_marginTop="50dp"
+        android:hint="Nome de Usuário"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
@@ -34,64 +61,80 @@
         app:hintTextColor="#2CA0EC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_app">
+        app:layout_constraintTop_toBottomOf="@+id/foto_usuario">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputEmail"
+            android:id="@+id/InputNomeDeUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:inputType="textEmailAddress"
+            android:inputType="text"
             android:lines="1"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Senha"
+        android:id="@+id/NomeCompleto"
         style="@style/TextInputLayoutStyle"
         android:layout_width="352dp"
         android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:hint="Senha"
-        app:boxCornerRadiusBottomEnd="20dp"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        app:boxStrokeColor="#2CA0EC"
-        app:helperTextTextColor="#2CA0EC"
-        app:hintTextColor="#2CA0EC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Email">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputSenha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionDone"
-            android:inputType="textEmailAddress"
-            android:lines="1"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/EsqueciMinhaSenha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="Esqueci minha senha"
-        android:textColor="#000000"
-        android:textSize="14sp"
+        android:hint="Nome Completo"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxStrokeColor="#2CA0EC"
+        app:helperTextTextColor="#2CA0EC"
+        app:hintTextColor="#2CA0EC"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Senha" />
+        app:layout_constraintTop_toBottomOf="@+id/NomeDeUsuário">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputNomeCompleto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Telefone"
+        style="@style/TextInputLayoutStyle"
+        android:layout_width="352dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="25dp"
+        android:hint="Telefone"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxStrokeColor="#2CA0EC"
+        app:helperTextTextColor="#2CA0EC"
+        app:hintTextColor="#2CA0EC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NomeCompleto">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputTelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType="phone"
+            android:maxLength="15"
+            android:lines="1"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_entrar"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/botoes_principais"
         android:text="Entrar"
@@ -99,7 +142,7 @@
         android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo_app">
+        app:layout_constraintTop_toBottomOf="@id/Telefone">
     </androidx.appcompat.widget.AppCompatButton>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -107,14 +150,14 @@
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/botoes_principais"
         android:text="Voltar"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_app">
+        app:layout_constraintTop_toBottomOf="@+id/Telefone">
     </androidx.appcompat.widget.AppCompatButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

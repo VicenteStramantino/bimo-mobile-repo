@@ -50,8 +50,7 @@ public class Usuario {
         this.idplano = plano;
     }
 
-    public Usuario(String cnome, String ccpf, String cemail, String ddatanascimento, String cidhash, int idplano) {
-        this.cnome = cnome;
+    public Usuario(String ccpf, String cemail, String ddatanascimento, String cidhash, int idplano) {
         this.ccpf = ccpf;
         this.cemail = cemail;
         this.ddatanascimento = ddatanascimento;

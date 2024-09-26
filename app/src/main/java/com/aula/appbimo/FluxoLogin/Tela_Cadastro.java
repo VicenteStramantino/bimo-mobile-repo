@@ -3,6 +3,8 @@ package com.aula.appbimo.FluxoLogin;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -40,7 +42,8 @@ public class Tela_Cadastro extends AppCompatActivity {
 
     AppCompatButton btn_voltar, btn_cadastrar;
 
-    TextInputEditText txtNome, txtEmail, txtSenha, txtCpf, txtDataNasc;
+    TextInputEditText txtEmail, txtSenha, txtCpf, txtDataNasc;
+    private boolean isUpdating = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,92 @@ public class Tela_Cadastro extends AppCompatActivity {
         setContentView(R.layout.activity_tela_cadastro);
 
         btn_voltar = findViewById(R.id.btn_voltar);
-        btn_cadastrar = findViewById(R.id.btn_cadastrar);
+        btn_cadastrar = findViewById(R.id.btn_Continuar);
+        txtEmail = findViewById(R.id.InputEmail);
+        txtSenha = findViewById(R.id.InputSenha);
+        txtCpf = findViewById(R.id.InputCpf);
+        txtDataNasc = findViewById(R.id.InputDataDeNascimento);
+
+        //formatar data
+        txtDataNasc.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Nada aqui
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Nada aqui
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (isUpdating) {
+                    return;
+                }
+
+                isUpdating = true;
+
+                String str = s.toString().replaceAll("[^\\d]", ""); // Remove caracteres não numéricos
+
+                if (str.length() > 2) {
+                    str = str.substring(0, 2) + "/" + str.substring(2);
+                }
+                if (str.length() > 5) {
+                    str = str.substring(0, 5) + "/" + str.substring(5);
+                }
+                if (str.length() > 10) {
+                    str = str.substring(0, 10);
+                }
+
+                s.replace(0, s.length(), str);  // Atualiza o campo de texto com a data formatada
+                txtDataNasc.setText(str);
+                txtDataNasc.setSelection(txtDataNasc.getText().length());
+                isUpdating = false;
+            }
+        });
+
+        //formatar CPF
+        txtCpf.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Nada aqui
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Nada aqui
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (isUpdating) {
+                    return;
+                }
+
+                isUpdating = true;
+
+                String str = s.toString().replaceAll("[^\\d]", ""); // Remove caracteres não numéricos
+
+                if (str.length() > 3) {
+                    str = str.substring(0, 3) + "." + str.substring(3);
+                }
+                if (str.length() > 7) {
+                    str = str.substring(0, 7) + "." + str.substring(7);
+                }
+                if (str.length() > 11) {
+                    str = str.substring(0, 11) + "-" + str.substring(11);
+                }
+                if (str.length() > 14) {
+                    str = str.substring(0, 14); // Limita o tamanho do CPF
+                }
+
+                s.replace(0, s.length(), str); // Atualiza o campo de texto com o CPF formatado
+                txtCpf.setText(str);
+                txtCpf.setSelection(txtCpf.getText().length());
+                isUpdating = false;
+            }
+        });
 
         btn_voltar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,12 +150,7 @@ public class Tela_Cadastro extends AppCompatActivity {
         btn_cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                txtNome = findViewById(R.id.InputNomeDeUsuario);
-                txtEmail = findViewById(R.id.InputEmail);
-                txtSenha = findViewById(R.id.InputSenha);
-                txtCpf = findViewById(R.id.InputCpf);
-                txtDataNasc = findViewById(R.id.InputDataDeNascimento);
-                if (txtNome.getText().toString().isEmpty() || txtEmail.getText().toString().isEmpty() || txtSenha.getText().toString().isEmpty() || txtCpf.getText().toString().isEmpty() || txtDataNasc.getText().toString().isEmpty()) {
+                if (txtEmail.getText().toString().isEmpty() || txtSenha.getText().toString().isEmpty() || txtCpf.getText().toString().isEmpty() || txtDataNasc.getText().toString().isEmpty()) {
                     Toast.makeText(Tela_Cadastro.this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();
                 }
                 else{
@@ -97,20 +180,8 @@ public class Tela_Cadastro extends AppCompatActivity {
                     FirebaseUser userLogin = firebaseAuth.getCurrentUser();
                     Toast.makeText(Tela_Cadastro.this, userLogin.getUid().toString(), Toast.LENGTH_SHORT).show();
                     adicionarUsuarioBanco(userLogin);
-                    finish();
-                    //Atualizar o profile
-//                    UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
-//                            .setDisplayName(txtNome.getText().toString())
-//                            .setPhotoUri(Uri.parse("https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2022/05/03-e1653929996954.jpg?w=1024")).build();
-//                    userLogin.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Void> task) {
-//                            if (task.isSuccessful()) {
-//                                adicionarUsuarioBanco();
-//                                finish();
-//                            }
-//                        }
-//                    });
+                    Intent intent = new Intent(Tela_Cadastro.this, Tela_CadastroPerfil.class);
+                    startActivity(intent);
                 }
                 else{
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {
@@ -192,31 +263,12 @@ public class Tela_Cadastro extends AppCompatActivity {
         //Criar a chamada
         UsuarioInterface usuarioInterface = retrofit.create(UsuarioInterface.class);
         Usuario usuario = new Usuario(
-                txtNome.getText().toString(),// Campo que está sendo enviado como null
                 txtCpf.getText().toString(),
                 txtEmail.getText().toString(),
                 txtDataNasc.getText().toString(),
                 user.getUid().toString(),
                 1
         );
-        Toast.makeText(this, usuario.toString(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, txtNome.getText().toString(), Toast.LENGTH_SHORT).show();
         Call<String> call = usuarioInterface.inserirUsuario(usuario);
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(Tela_Cadastro.this, "Inserido com sucesso", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Log.e("Penis", response.errorBody().toString());
-                }
-            }
-            @Override
-            public void onFailure(Call<String> call, Throwable throwable) {
-                Toast.makeText(Tela_Cadastro.this, "Erro ao inserir " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
         }
     }
