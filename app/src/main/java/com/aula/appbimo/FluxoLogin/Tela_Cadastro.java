@@ -38,7 +38,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Tela_Cadastro extends AppCompatActivity {
 
-    private Retrofit retrofit;
 
     AppCompatButton btn_voltar, btn_cadastrar;
 
@@ -152,11 +151,10 @@ public class Tela_Cadastro extends AppCompatActivity {
             public void onClick(View view) {
                 if (txtEmail.getText().toString().isEmpty() || txtSenha.getText().toString().isEmpty() || txtCpf.getText().toString().isEmpty() || txtDataNasc.getText().toString().isEmpty()) {
                     Toast.makeText(Tela_Cadastro.this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();
-                }
-                else{
+                } else {
                     if (dataValidator(txtDataNasc.getText().toString())) {
                         if (CPFValidator(txtCpf.getText().toString())) {
-                            salvarUsuario();
+                            trocarTela();
                         } else {
                             Toast.makeText(Tela_Cadastro.this, "Insira um CPF valido", Toast.LENGTH_SHORT).show();
                         }
@@ -170,31 +168,15 @@ public class Tela_Cadastro extends AppCompatActivity {
     }
 
 
-    private void salvarUsuario() {
-        //salvar no firebase
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuth.createUserWithEmailAndPassword(txtEmail.getText().toString(), txtSenha.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    FirebaseUser userLogin = firebaseAuth.getCurrentUser();
-                    Toast.makeText(Tela_Cadastro.this, userLogin.getUid().toString(), Toast.LENGTH_SHORT).show();
-                    adicionarUsuarioBanco(userLogin);
-                    Intent intent = new Intent(Tela_Cadastro.this, Tela_CadastroPerfil.class);
-                    startActivity(intent);
-                }
-                else{
-                    if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                        // Caso o erro seja de e-mail já existente
-                        Toast.makeText(Tela_Cadastro.this, "E-mail já está em uso!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // Outros tipos de erro
-                        Toast.makeText(Tela_Cadastro.this, "Erro ao cadastrar: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-            }
-        });
+    private void trocarTela() {
+        Bundle bundle = new Bundle();
+        bundle.putString("CPF", txtCpf.getText().toString());
+        bundle.putString("Email", txtEmail.getText().toString());
+        bundle.putString("DtNascimento", txtDataNasc.getText().toString());
+        bundle.putString("Senha", txtSenha.getText().toString());
+        Intent intent = new Intent(Tela_Cadastro.this, Tela_CadastroPerfil.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
 
@@ -250,25 +232,4 @@ public class Tela_Cadastro extends AppCompatActivity {
             return false;
         }
     }
-
-    public void adicionarUsuarioBanco(FirebaseUser user){
-        String API = "https://bimo-web-repo.onrender.com/apibimo/usuarios/";
-        //Configurar Acesso API
-
-        retrofit = new Retrofit.Builder()
-                .baseUrl(API)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        //Criar a chamada
-        UsuarioInterface usuarioInterface = retrofit.create(UsuarioInterface.class);
-        Usuario usuario = new Usuario(
-                txtCpf.getText().toString(),
-                txtEmail.getText().toString(),
-                txtDataNasc.getText().toString(),
-                user.getUid().toString(),
-                1
-        );
-        Call<String> call = usuarioInterface.inserirUsuario(usuario);
-        }
-    }
+}

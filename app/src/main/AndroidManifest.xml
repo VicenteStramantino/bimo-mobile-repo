@@ -22,7 +22,7 @@
             android:name=".FluxoLogin.Tela_EsqueciMinhaSenha"
             android:exported="false" />
         <activity
-            android:name=".FluxoLogin.Tela_Inicial"
+            android:name=".FluxoLogin.Tela_Login"
             android:exported="false" />
         <activity
             android:name=".FluxoLogin.Tela_Cadastro"
@@ -31,7 +31,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".FluxoLogin.Tela_Login"
+            android:name=".FluxoLogin.Tela_Inicial"
             android:exported="false" />
         <activity
             android:name=".FluxoLogin.Tela_LoginCadastro"

@@ -41,7 +41,7 @@ public class Tela_LoginCadastro extends AppCompatActivity {
         btn_cadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Tela_LoginCadastro.this, Tela_CadastroPerfil.class);
+                Intent intent = new Intent(Tela_LoginCadastro.this, Tela_Cadastro.class);
                 startActivity(intent);
             }
         });
