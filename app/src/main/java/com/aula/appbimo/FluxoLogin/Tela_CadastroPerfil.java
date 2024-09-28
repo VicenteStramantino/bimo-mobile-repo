@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -36,6 +37,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Tela_CadastroPerfil extends AppCompatActivity {
 
     private TextInputEditText txtTelefone;
+    private TextInputEditText txtNome;
+
+    private TextInputEditText txtNomeCompleto;
     ShapeableImageView imgUsuario;
     ImageButton bt_galeria, bt_camera;
     Button btn_voltar, btn_entrar;
@@ -48,14 +52,22 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_cadastro_perfil);
 
-        txtTelefone = findViewById(R.id.InputTelefone);
         bt_galeria = findViewById(R.id.bt_galeria);
         bt_camera = findViewById(R.id.bt_camera);
         btn_voltar = findViewById(R.id.btn_voltar);
         btn_entrar = findViewById(R.id.btn_entrar);
         imgUsuario = findViewById(R.id.foto_usuario);
+        txtTelefone = findViewById(R.id.InputTelefone);
+        txtNome = findViewById(R.id.InputNomeDeUsuario);
+        txtNomeCompleto = findViewById(R.id.InputNomeCompleto);
 
 
+        btn_voltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         btn_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,21 +75,19 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
                 Intent intent = getIntent();
                 Bundle bundle = intent.getExtras();
                 salvarUsuario(bundle);
-                Intent i = new Intent(Tela_CadastroPerfil.this, Tela_Login.class);
-                startActivity(i);
             }
         });
 
-        //formatar telefone
+
         txtTelefone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // Nada aqui
+
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // Nada aqui
+
             }
 
             @Override
@@ -88,25 +98,24 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
 
                 isUpdating = true;
 
-                // Remove caracteres não numéricos
+
                 String str = s.toString().replaceAll("[^\\d]", "");
 
-                // Adiciona parênteses após o DDD
+
                 if (str.length() > 2) {
                     str = "(" + str.substring(0, 2) + ") " + str.substring(2);
                 }
 
-                // Adiciona hífen após o quinto dígito, mas verifica o tamanho primeiro
                 if (str.length() > 10) {
                     str = str.substring(0, 10) + "-" + str.substring(10);
                 }
 
-                // Limita o tamanho do telefone a 14 caracteres
+
                 if (str.length() > 15) {
                     str = str.substring(0, 15);
                 }
 
-                // Atualiza o campo de texto com o telefone formatado
+
                 s.replace(0, s.length(), str);
                 txtTelefone.setSelection(str.length());
 
@@ -114,16 +123,16 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
             }
         });
 
-        // abrir galeria
+
         bt_galeria.setOnClickListener(v2 -> {
-            // acessar a galeria
+
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             resultLauncherGaleria.launch(intent);
         });
 
-        // abrir camera
+
         bt_camera.setOnClickListener(v3 -> {
-            // abrir camera
+
             Intent intent = new Intent(Tela_CadastroPerfil.this, FotoActivity.class);
             resultLauncherCamera.launch(intent);
         });
@@ -188,10 +197,10 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
                     adicionarUsuarioBanco(userLogin, bundle);
                 } else {
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                        // Caso o erro seja de e-mail já existente
                         Toast.makeText(Tela_CadastroPerfil.this, "E-mail já está em uso!", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(Tela_CadastroPerfil.this, Tela_Cadastro.class);
+                        startActivity(i);
                     } else {
-                        // Outros tipos de erro
                         Toast.makeText(Tela_CadastroPerfil.this, "Erro ao cadastrar: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
@@ -200,29 +209,60 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
         });
     }
 
-
     public void adicionarUsuarioBanco(FirebaseUser user, Bundle bundle){
-        //Pegando bundle da intent
+        // Pegando dados do bundle
         String cpf = bundle.getString("CPF");
         String dtNascimento = bundle.getString("DtNascimento");
         String email = bundle.getString("Email");
         String API = "https://bimo-web-repo.onrender.com/apibimo/usuarios/";
-        //Configurar Acesso API
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(API)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        //Criar a chamada
         UsuarioInterface usuarioInterface = retrofit.create(UsuarioInterface.class);
+
+        String cpfFormatado = cpf.replaceAll("[^\\d]", "");
+
+
+        String nomeCompleto = txtNomeCompleto.getText().toString().trim();
+        String[] partesNome = nomeCompleto.split("\\s+");
+
+        String primeiroNome = partesNome[0];
+        String ultimoSobrenome = partesNome.length > 1 ? partesNome[partesNome.length - 1] : "";
+        Log.e("CPF", cpf);
+        Log.e("Email", email);
+        Log.e("DtNasc", dtNascimento);
+        Log.e("PrimeiroNome", primeiroNome);
+        Log.e("UltimoSobrenome", ultimoSobrenome);
+        Log.e("Telefone", txtTelefone.getText().toString());
         Usuario usuario = new Usuario(
-                cpf,
+                primeiroNome,
+                ultimoSobrenome,
+                txtTelefone.getText().toString(),
+                cpfFormatado,
                 email,
                 dtNascimento,
                 user.getUid().toString(),
                 1
         );
+
         Call<String> call = usuarioInterface.inserirUsuario(usuario);
+
+        call.enqueue(new retrofit2.Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, retrofit2.Response<String> response) {
+                Intent i = new Intent(Tela_CadastroPerfil.this, Tela_Inicial.class);
+                startActivity(i);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.e("ErroNoBanco: ", t.getMessage());
+            }
+        });
     }
+
 }
 

@@ -50,7 +50,10 @@ public class Usuario {
         this.idplano = plano;
     }
 
-    public Usuario(String ccpf, String cemail, String ddatanascimento, String cidhash, int idplano) {
+    public Usuario(String cnome, String csobrenome, String ctelefone, String ccpf, String cemail, String ddatanascimento, String cidhash, int idplano) {
+        this.cnome = cnome;
+        this.csobrenome = csobrenome;
+        this.ctelefone = ctelefone;
         this.ccpf = ccpf;
         this.cemail = cemail;
         this.ddatanascimento = ddatanascimento;
@@ -155,12 +158,12 @@ public class Usuario {
                 ", csobrenome='" + csobrenome + '\'' +
                 ", ccpf='" + ccpf + '\'' +
                 ", cemail='" + cemail + '\'' +
-                ", ccnpj='" + ccnpj + '\'' +
+                ", ccnpj='" + null + '\'' +
                 ", ctelefone='" + ctelefone + '\'' +
                 ", ddatanascimento=" + ddatanascimento +
-                ", clinklinkedin='" + clinklinkedin + '\'' +
+                ", clinklinkedin='" + null + '\'' +
                 ", cidhash='" + cidhash + '\'' +
-                ", cespecialidadeprofissional='" + cespecialidadeprofissional + '\'' +
+                ", cespecialidadeprofissional='" + null + '\'' +
                 ", idplano=" + idplano +
                 '}';
     }

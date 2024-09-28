@@ -57,7 +57,7 @@ public class Tela_Cadastro extends AppCompatActivity {
         txtCpf = findViewById(R.id.InputCpf);
         txtDataNasc = findViewById(R.id.InputDataDeNascimento);
 
-        //formatar data
+
         txtDataNasc.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -193,21 +193,17 @@ public class Tela_Cadastro extends AppCompatActivity {
     }
 
     public static boolean CPFValidator(String cpf) {
-        // Remove qualquer caractere que não seja número
         cpf = cpf.replaceAll("[^\\d]", "");
 
-        // Verifica se o CPF tem 11 dígitos
         if (cpf.length() != 11) {
             return false;
         }
 
-        // Verifica se todos os dígitos são iguais (ex: 111.111.111-11)
         if (cpf.matches("(\\d)\\1{10}")) {
             return false;
         }
 
         try {
-            // Calcula o primeiro dígito verificador
             int sum = 0;
             for (int i = 0; i < 9; i++) {
                 sum += Character.getNumericValue(cpf.charAt(i)) * (10 - i);
@@ -215,20 +211,16 @@ public class Tela_Cadastro extends AppCompatActivity {
             int firstDigit = 11 - (sum % 11);
             firstDigit = (firstDigit >= 10) ? 0 : firstDigit;
 
-            // Calcula o segundo dígito verificador
             sum = 0;
             for (int i = 0; i < 10; i++) {
                 sum += Character.getNumericValue(cpf.charAt(i)) * (11 - i);
             }
             int secondDigit = 11 - (sum % 11);
             secondDigit = (secondDigit >= 10) ? 0 : secondDigit;
-
-            // Verifica se os dígitos calculados são iguais aos dígitos verificadores do CPF
             return firstDigit == Character.getNumericValue(cpf.charAt(9)) &&
                     secondDigit == Character.getNumericValue(cpf.charAt(10));
 
         } catch (NumberFormatException e) {
-            // Se o CPF tiver algum caractere inválido, retorna falso
             return false;
         }
     }
