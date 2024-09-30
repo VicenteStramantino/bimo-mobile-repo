@@ -51,14 +51,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6c92fef-c753-4d18-b795-d4344e089b26" name="Changes" comment="Subindo algumas classes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/Tela_Cadastro.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/Tela_Cadastro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/Tela_CadastroPerfil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/Tela_CadastroPerfil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/models/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/models/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f6c92fef-c753-4d18-b795-d4344e089b26" name="Changes" comment="Subindo aplicativo com icone e com fluxo de cadastro de usuário padrao pronto" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -207,12 +200,21 @@
       <option name="project" value="LOCAL" />
       <updated>1727444810844</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Subindo aplicativo com icone e com fluxo de cadastro de usuário padrao pronto">
+      <option name="closed" value="true" />
+      <created>1727502849046</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1727502849047</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Hehe" />
     <MESSAGE value="Subindo algumas classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Subindo algumas classes" />
+    <MESSAGE value="Subindo aplicativo com icone e com fluxo de cadastro de usuário padrao pronto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Subindo aplicativo com icone e com fluxo de cadastro de usuário padrao pronto" />
   </component>
 </project>
