@@ -154,7 +154,12 @@ public class Tela_Cadastro extends AppCompatActivity {
                 } else {
                     if (dataValidator(txtDataNasc.getText().toString())) {
                         if (CPFValidator(txtCpf.getText().toString())) {
-                            trocarTela();
+                            if (txtSenha.getText().toString().length() >= 6) {
+                                trocarTela();
+                            }
+                            else {
+                                Toast.makeText(Tela_Cadastro.this, "Insira uma senha com pelo menos 6 digitos.", Toast.LENGTH_SHORT).show();
+                            }
                         } else {
                             Toast.makeText(Tela_Cadastro.this, "Insira um CPF valido", Toast.LENGTH_SHORT).show();
                         }
