@@ -4,10 +4,13 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -30,6 +33,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.File;
+
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -46,6 +51,7 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
     Uri uri;
     private boolean isUpdating = false;
     private Retrofit retrofit;
+    private Uri photoUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,16 +131,22 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
 
 
         bt_galeria.setOnClickListener(v2 -> {
-
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             resultLauncherGaleria.launch(intent);
         });
 
+        bt_camera.setOnClickListener(v -> {
+            File imageFile = new File(this.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "profile_picture_${UUID.randomUUID()}.jpg");
+            photoUri = FileProvider.getUriForFile(
+                    this,
+                    getApplicationContext().getPackageName() + ".fileprovider",  // Corrigindo o authority
+                    imageFile);
+            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
 
-        bt_camera.setOnClickListener(v3 -> {
-
-            Intent intent = new Intent(Tela_CadastroPerfil.this, FotoActivity.class);
-            resultLauncherCamera.launch(intent);
+            if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+                resultLauncherCamera.launch(cameraIntent);
+            }
         });
 
 
@@ -142,20 +154,21 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
     private ActivityResultLauncher<Intent> resultLauncherGaleria = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
-                Uri imageUri = result.getData().getData();
-                if (imageUri != null) {
-                    // imagem selecionada
+                // Verifica se o Intent e os dados não são nulos
+                if (result != null && result.getData() != null && result.getData().getData() != null) {
+                    Uri imageUri = result.getData().getData();
                     uri = imageUri;
                     // Exibe a imagem selecionada
                     Glide.with(this).load(imageUri)
                             .centerCrop()
                             .into(imgUsuario);
                 } else {
-                    // imagem padrão
+                    // Caso não haja imagem selecionada, exibe uma imagem padrão
                     uri = Uri.parse("https://i.pinimg.com/736x/e8/a1/52/e8a15286aec46a1ac01c9c4091c3d793.jpg");
-                    Glide.with(this).load("https://i.pinimg.com/736x/e8/a1/52/e8a15286aec46a1ac01c9c4091c3d793.jpg")
+                    Glide.with(this).load(uri)
                             .centerCrop()
                             .into(imgUsuario);
+                    Toast.makeText(this, "Nenhuma imagem foi selecionada. Usando imagem padrão.", Toast.LENGTH_SHORT).show();
                 }
             }
     );
@@ -163,24 +176,17 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
     private ActivityResultLauncher<Intent> resultLauncherCamera = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
-                Uri imageUri = result.getData().getData();
-                if (imageUri != null) {
-                    // imagem selecionada
-                    uri = imageUri;
-                    // Exibe a imagem selecionada
-                    Glide.with(this).load(imageUri)
-                            .centerCrop()
-                            .into(imgUsuario);
-                } else {
-                    // imagem padrão
-                    uri = Uri.parse("https://i.pinimg.com/736x/e8/a1/52/e8a15286aec46a1ac01c9c4091c3d793.jpg");
-                    Glide.with(this).load("https://i.pinimg.com/736x/e8/a1/52/e8a15286aec46a1ac01c9c4091c3d793.jpg")
-                            .centerCrop()
-                            .into(imgUsuario);
+                if (result.getResultCode() == RESULT_OK) {
+                    Glide.with(this).load(photoUri).centerCrop().into(imgUsuario);
                 }
             }
     );
 
+    private Uri getImageUri(Bitmap bitmap) {
+        // Salve o bitmap em um arquivo e retorne a URI
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "Title", null);
+        return Uri.parse(path);
+    }
 
     private void salvarUsuario(Bundle bundle) {
         String cpf = bundle.getString("CPF");

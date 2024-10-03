@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppBiMO</string>
+    <string name="app_name">BiMO</string>
     <string name="take_photo">Tirar foto</string>
     <string name="salvar">Salvar Foto</string>
     <string name="bt_camera">bt_camera</string>
