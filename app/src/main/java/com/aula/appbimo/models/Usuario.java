@@ -35,6 +35,9 @@ public class Usuario {
 
     private int idplano;
 
+    private String cimgfirebase;
+
+    private String cusername;
 
     public Usuario(String cnome, String csobrenome, String ccpf, String cemail, String ccnpj, String ctelefone, String ddatanascimento, String clinklinkedin, String cidhash, String cespecialidadeprofissional, int plano) {
         this.cnome = cnome;
@@ -50,7 +53,7 @@ public class Usuario {
         this.idplano = plano;
     }
 
-    public Usuario(String cnome, String csobrenome, String ctelefone, String ccpf, String cemail, String ddatanascimento, String cidhash, int idplano) {
+    public Usuario(String cnome, String csobrenome, String ctelefone, String ccpf, String cemail, String ddatanascimento, String cidhash, int idplano, String cimgfirebase, String cusername) {
         this.cnome = cnome;
         this.csobrenome = csobrenome;
         this.ctelefone = ctelefone;
@@ -59,6 +62,8 @@ public class Usuario {
         this.ddatanascimento = ddatanascimento;
         this.cidhash = cidhash;
         this.idplano = idplano;
+        this.cimgfirebase = cimgfirebase;
+        this.cusername = cusername;
     }
 
     public String getCnome() {
@@ -150,6 +155,21 @@ public class Usuario {
         this.cespecialidadeprofissional = cespecialidadeprofissional;
     }
 
+    public String getCimgfirebase() {
+        return cimgfirebase;
+    }
+
+    public void setCimgfirebase(String cimgfirebase) {
+        this.cimgfirebase = cimgfirebase;
+    }
+
+    public String getCusername() {
+        return cusername;
+    }
+
+    public void setCusername(String cusername) {
+        this.cusername = cusername;
+    }
 
     @Override
     public String toString() {
@@ -165,6 +185,8 @@ public class Usuario {
                 ", cidhash='" + cidhash + '\'' +
                 ", cespecialidadeprofissional='" + null + '\'' +
                 ", idplano=" + idplano +
+                ", cimgfirebase=" + cimgfirebase +
+                ", cusername=" + cusername +
                 '}';
     }
 }

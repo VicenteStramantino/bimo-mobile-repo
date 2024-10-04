@@ -16,6 +16,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
 public class DatabaseFoto {
+    String uriLink;
     public void uploadFoto(Context c, ImageView foto, Map<String, String> docData) {
 
         // conversão
@@ -24,8 +25,8 @@ public class DatabaseFoto {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 70, baos);
         byte[] databyte = baos.toByteArray();
 
-        // abrir banco de dados
-        FirebaseStorage storage = FirebaseStorage.getInstance();
+        // abrir banco de dadosq
+            FirebaseStorage storage = FirebaseStorage.getInstance();
         storage.getReference("galeria").child("galeria_" + System.currentTimeMillis() + ".jpg")
                 .putBytes(databyte)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -39,6 +40,7 @@ public class DatabaseFoto {
                                     public void onSuccess(Uri uri) {
                                         Toast.makeText(c, "Foto salva com sucesso!", Toast.LENGTH_SHORT).show();
                                         docData.put("url", uri.toString());
+                                        uriLink = uri.toString();
                                     }
                                 });
                     }
@@ -46,6 +48,9 @@ public class DatabaseFoto {
                 .addOnFailureListener(e -> {
                     Toast.makeText(c, "Algo deu errado!", Toast.LENGTH_SHORT).show();
                 });
+    }
 
+    public String getUriLink() {
+        return uriLink;
     }
 }
