@@ -49,10 +49,10 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".FluxoLogin.Tela_Inicial"
+            android:name=".FluxoLogin.Tela_LoginCadastro"
             android:exported="false" />
         <activity
-            android:name=".FluxoLogin.Tela_LoginCadastro"
+            android:name=".FluxoLogin.Tela_Inicial"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

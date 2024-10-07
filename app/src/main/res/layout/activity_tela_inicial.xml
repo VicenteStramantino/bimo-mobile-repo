@@ -9,8 +9,8 @@
 
     <LinearLayout
         android:id="@+id/Header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="412dp"
+        android:layout_height="106dp"
         android:background="@drawable/template_header"
         android:orientation="vertical"
         android:paddingHorizontal="12dp"
@@ -22,7 +22,8 @@
             android:id="@+id/Logo"
             android:layout_width="32dp"
             android:layout_height="49dp"
-            android:layout_marginVertical="10dp"
+            android:layout_marginVertical="40dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="6dp"
             android:scaleType="fitXY"
             android:src="@drawable/union" />
@@ -33,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:text="Olá, !"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -43,12 +44,12 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_width="326dp"
+        android:layout_height="65dp"
         android:layout_marginTop="84dp"
-        android:background="#D9D9D9"
+        android:background="@drawable/template_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Header"
         app:titleTextColor="@android:color/white">
@@ -61,5 +62,74 @@
             android:queryHint="Pesquise" />
 
     </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="326dp"
+        android:layout_height="184dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/announcement"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <Button
+        android:id="@+id/btn_cursos"
+        android:layout_width="194dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Cursos"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_produtos"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <Button
+        android:id="@+id/btn_produtos"
+        android:layout_width="194dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Produtos"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btn_cursos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <View
+        android:id="@+id/view_produtos"
+        android:layout_width="82dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="2dp"
+        android:background="#76FF03"
+        app:layout_constraintEnd_toEndOf="@+id/btn_produtos"
+        app:layout_constraintStart_toStartOf="@+id/btn_produtos"
+        app:layout_constraintTop_toBottomOf="@+id/btn_produtos" />
+
+    <View
+        android:id="@+id/view_cursos"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_cursos"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_cursos"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cursos" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="391dp"
+        android:layout_height="292dp"
+        android:layout_marginTop="91dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
