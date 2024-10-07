@@ -175,7 +175,6 @@ public class FotoActivity extends AppCompatActivity {
                         // imagem gravada
                         foto.setImageURI(outputFileResults.getSavedUri());
                         foto.setVisibility(View.VISIBLE);
-                        database.uploadFoto(getBaseContext(), foto, docData);
                     }
 
                     @Override

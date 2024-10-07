@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.UploadTask;
 
@@ -17,7 +18,7 @@ import java.util.Map;
 
 public class DatabaseFoto {
     String uriLink;
-    public void uploadFoto(Context c, ImageView foto, Map<String, String> docData) {
+    public void uploadFoto(Context c, ShapeableImageView foto, Map<String, String> docData) {
 
         // conversão
         Bitmap bitmap = ((BitmapDrawable) foto.getDrawable()).getBitmap();
