@@ -35,11 +35,11 @@ public class Usuario {
 
     private int idplano;
 
-    private String cimgfirebase;
+    private String imgfirebase;
 
-    private String cusername;
+    private String username;
 
-    public Usuario(String cnome, String csobrenome, String ccpf, String cemail, String ccnpj, String ctelefone, String ddatanascimento, String clinklinkedin, String cidhash, String cespecialidadeprofissional, int plano) {
+    public Usuario(String cnome, String csobrenome, String ccpf, String cemail, String ccnpj, String ctelefone, String ddatanascimento, String clinklinkedin, String cidhash, String cespecialidadeprofissional, int plano, String imgfirebase, String username) {
         this.cnome = cnome;
         this.csobrenome = csobrenome;
         this.ccpf = ccpf;
@@ -51,20 +51,22 @@ public class Usuario {
         this.cidhash = cidhash;
         this.cespecialidadeprofissional = cespecialidadeprofissional;
         this.idplano = plano;
+        this.username = username;
+        this.imgfirebase = imgfirebase;
     }
 
-    public Usuario(String cnome, String csobrenome, String ctelefone, String ccpf, String cemail, String ddatanascimento, String cidhash, int idplano, String cimgfirebase, String cusername) {
-        this.cnome = cnome;
-        this.csobrenome = csobrenome;
-        this.ctelefone = ctelefone;
-        this.ccpf = ccpf;
-        this.cemail = cemail;
-        this.ddatanascimento = ddatanascimento;
-        this.cidhash = cidhash;
-        this.idplano = idplano;
-        this.cimgfirebase = cimgfirebase;
-        this.cusername = cusername;
-    }
+//    public Usuario(String cnome, String csobrenome, String ctelefone, String ccpf, String cemail, String ddatanascimento, String cidhash, int idplano, String cimgfirebase, String cusername) {
+//        this.cnome = cnome;
+//        this.csobrenome = csobrenome;
+//        this.ctelefone = ctelefone;
+//        this.ccpf = ccpf;
+//        this.cemail = cemail;
+//        this.ddatanascimento = ddatanascimento;
+//        this.cidhash = cidhash;
+//        this.idplano = idplano;
+//        this.cimgfirebase = cimgfirebase;
+//        this.cusername = cusername;
+//    }
 
     public String getCnome() {
         return cnome;
@@ -156,19 +158,19 @@ public class Usuario {
     }
 
     public String getCimgfirebase() {
-        return cimgfirebase;
+        return imgfirebase;
     }
 
     public void setCimgfirebase(String cimgfirebase) {
-        this.cimgfirebase = cimgfirebase;
+        this.imgfirebase = cimgfirebase;
     }
 
     public String getCusername() {
-        return cusername;
+        return username;
     }
 
     public void setCusername(String cusername) {
-        this.cusername = cusername;
+        this.username = cusername;
     }
 
     @Override
@@ -185,8 +187,8 @@ public class Usuario {
                 ", cidhash='" + cidhash + '\'' +
                 ", cespecialidadeprofissional='" + null + '\'' +
                 ", idplano=" + idplano +
-                ", cimgfirebase=" + cimgfirebase +
-                ", cusername=" + cusername +
+                ", cimgfirebase=" + imgfirebase +
+                ", cusername=" + username +
                 '}';
     }
 }

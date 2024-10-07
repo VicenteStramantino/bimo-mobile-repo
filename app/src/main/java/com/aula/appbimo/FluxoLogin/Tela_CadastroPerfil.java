@@ -51,6 +51,7 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
     ShapeableImageView imgUsuario;
 
     DatabaseFoto databaseFoto = new DatabaseFoto();
+    private Map<String, String> docData = new HashMap<>();
     ImageButton bt_galeria, bt_camera;
     Button btn_voltar, btn_entrar;
     private static String[] REQUIRED_PERMISSIONS;
@@ -224,6 +225,7 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
     }
 
     public void adicionarUsuarioBanco(FirebaseUser user, Bundle bundle) {
+        databaseFoto.uploadFoto(this, imgUsuario, docData);
         String cpf = bundle.getString("CPF").replaceAll("[^\\d]", "");
         String dtNascimento = bundle.getString("DtNascimento");
         String email = bundle.getString("Email");
@@ -241,22 +243,12 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
         String primeiroNome = partesNome[0];
         String ultimoSobrenome = partesNome.length > 1 ? partesNome[partesNome.length - 1] : "";
         Usuario usuario = new Usuario(
-                primeiroNome, ultimoSobrenome, txtTelefone.getText().toString(),
-                cpf, email, dtNascimento, user.getUid(), 1, databaseFoto.getUriLink(), txtNome.getText().toString());
+                primeiroNome, ultimoSobrenome, cpf, email, null, txtTelefone.getText().toString(),
+                dtNascimento, null ,user.getUid(), null ,1, databaseFoto.getUriLink(), txtNome.getText().toString());
 
         Call<String> call = usuarioInterface.inserirUsuario(usuario);
+        Intent i = new Intent(Tela_CadastroPerfil.this, Tela_Inicial.class);
+        startActivity(i);
 
-        call.enqueue(new retrofit2.Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, retrofit2.Response<String> response) {
-                Intent i = new Intent(Tela_CadastroPerfil.this, Tela_Inicial.class);
-                startActivity(i);
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Log.e("ErroNoBanco: ", t.getMessage());
-            }
-        });
     }
 }

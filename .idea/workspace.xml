@@ -2,14 +2,7 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config>
-        <device id="pixel_5" />
-        <device id="pixel_6a" />
-        <device id="pixel_6_pro" />
-        <device id="pixel_6" />
-        <device id="pixel_7" />
-        <device id="_device_class_phone" />
-      </config>
+      <config />
     </shared>
     <layouts>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_foto.xml">
@@ -22,12 +15,37 @@
           <theme>@style/Theme.AppBiMO</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_adicionar_curso.xml">
+        <config>
+          <theme>@style/Theme.AppBiMO</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_adicionar_produto.xml">
+        <config>
+          <theme>@style/Theme.AppBiMO</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro.xml">
         <config>
           <theme>@style/Theme.AppBiMO</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_cadastro_perfil.xml">
+        <config>
+          <theme>@style/Theme.AppBiMO</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_codigo_verificacao.xml">
+        <config>
+          <theme>@style/Theme.AppBiMO</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_compra_curso.xml">
+        <config>
+          <theme>@style/Theme.AppBiMO</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_compra_produto.xml">
         <config>
           <theme>@style/Theme.AppBiMO</theme>
         </config>
@@ -63,17 +81,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6c92fef-c753-4d18-b795-d4344e089b26" name="Changes" comment="temp">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/announcement.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/template_toolbar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+    <list default="true" id="f6c92fef-c753-4d18-b795-d4344e089b26" name="Changes" comment="database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_inicial.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_inicial.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +92,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[RQCW402QBVZ]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -94,6 +103,7 @@
       <list>
         <option value="valueResourceFile" />
         <option value="resourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -126,6 +136,10 @@
     </key>
     <key name="android.template.-1304287037">
       <recent name="com.aula.appbimo.FluxoLogin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vicentesouza-ieg\AndroidStudioProjects\bimo-mobile-repo-DEV\app\src\main\res\layout" />
+      <recent name="C:\Users\vicentesouza-ieg\AndroidStudioProjects\bimo-mobile-repo-DEV\app\src\main\res\drawable" />
     </key>
   </component>
   <component name="RunManager">
@@ -222,7 +236,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727790487523</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="database">
+      <option name="closed" value="true" />
+      <created>1728049264779</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1728049264781</updated>
+    </task>
+    <task id="LOCAL-00004" summary="database">
+      <option name="closed" value="true" />
+      <created>1728297052658</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728297052658</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
