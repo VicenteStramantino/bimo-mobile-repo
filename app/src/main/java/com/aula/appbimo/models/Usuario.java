@@ -3,6 +3,8 @@ package com.aula.appbimo.models;
 public class Usuario {
 
 
+    public int sid;
+
     private String cnome;
 
     private String csobrenome;
@@ -55,18 +57,40 @@ public class Usuario {
         this.imgfirebase = imgfirebase;
     }
 
-//    public Usuario(String cnome, String csobrenome, String ctelefone, String ccpf, String cemail, String ddatanascimento, String cidhash, int idplano, String cimgfirebase, String cusername) {
-//        this.cnome = cnome;
-//        this.csobrenome = csobrenome;
-//        this.ctelefone = ctelefone;
-//        this.ccpf = ccpf;
-//        this.cemail = cemail;
-//        this.ddatanascimento = ddatanascimento;
-//        this.cidhash = cidhash;
-//        this.idplano = idplano;
-//        this.cimgfirebase = cimgfirebase;
-//        this.cusername = cusername;
-//    }
+    public Usuario(String cnome, String csobrenome, String ccpf, String cemail, String ctelefone, String ddatanascimento,  String cidhash, int plano, String imgfirebase, String username) {
+        this.cnome = cnome;
+        this.csobrenome = csobrenome;
+        this.ccpf = ccpf;
+        this.cemail = cemail;
+        this.ctelefone = ctelefone;
+        this.ddatanascimento = ddatanascimento;
+        this.cidhash = cidhash;
+        this.idplano = plano;
+        this.username = username;
+        this.imgfirebase = imgfirebase;
+    }
+    public Usuario(int id, String cnome, String csobrenome, String ccpf, String cemail, String ctelefone, String ddatanascimento,  String cidhash, int plano, String imgfirebase, String username) {
+        this.sid = id;
+        this.cnome = cnome;
+        this.csobrenome = csobrenome;
+        this.ccpf = ccpf;
+        this.cemail = cemail;
+        this.ctelefone = ctelefone;
+        this.ddatanascimento = ddatanascimento;
+        this.cidhash = cidhash;
+        this.idplano = plano;
+        this.username = username;
+        this.imgfirebase = imgfirebase;
+    }
+
+
+    public int getId() {
+        return sid;
+    }
+
+    public void setId(int id) {
+        this.sid = id;
+    }
 
     public String getCnome() {
         return cnome;
@@ -176,20 +200,19 @@ public class Usuario {
     @Override
     public String toString() {
         return "{" +
-                "cnome='" + cnome + '\'' +
+                " sid='" + sid + '\'' +
+                ",cnome='" + cnome + '\'' +
                 ", csobrenome='" + csobrenome + '\'' +
                 ", ccpf='" + ccpf + '\'' +
                 ", cemail='" + cemail + '\'' +
-                ", ccnpj='" + null + '\'' +
                 ", ctelefone='" + ctelefone + '\'' +
                 ", ddatanascimento=" + ddatanascimento +
-                ", clinklinkedin='" + null + '\'' +
                 ", cidhash='" + cidhash + '\'' +
-                ", cespecialidadeprofissional='" + null + '\'' +
                 ", idplano=" + idplano +
                 ", cimgfirebase=" + imgfirebase +
                 ", cusername=" + username +
                 '}';
     }
 }
+//"ccpf":"50248624814","cemail":"tavosouza888@gmail.com","cidhash":"QPcCSByhfmc2NRYQHEYJDFToWiM2","cnome":"Vicente","csobrenome":"Stramantino","ctelefone":"(11) 98824-8313","ddatanascimento":"16/09/2007","idplano":1,"imgfirebase":"https://firebasestorage.googleapis.com/v0/b/bimo-repo.appspot.com/o/galeria%2Fgaleria_1728349880544.jpg?alt\u003dmedia\u0026token\u003d1f9dd5cc-6ea8-4fe9-8a14-22c6ca19ff42","username":"VicenteStramantino."}
 

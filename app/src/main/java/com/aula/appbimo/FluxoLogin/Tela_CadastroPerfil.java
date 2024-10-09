@@ -17,12 +17,13 @@ import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.aula.appbimo.R;
+import com.aula.appbimo.Repositories.UsuarioInterface;
+import com.aula.appbimo.Tela_AdicionarProduto;
 import com.aula.appbimo.models.Usuario;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,6 +34,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -42,6 +44,8 @@ import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -125,7 +129,6 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
             REQUIRED_PERMISSIONS = requiredPermissions.toArray(new String[0]);
             if (allPermissionsGranted()) {
                 startCamera();
-
             } else {
                 requestPermissions();
             }
@@ -225,30 +228,51 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
     }
 
     public void adicionarUsuarioBanco(FirebaseUser user, Bundle bundle) {
-        databaseFoto.uploadFoto(this, imgUsuario, docData);
-        String cpf = bundle.getString("CPF").replaceAll("[^\\d]", "");
-        String dtNascimento = bundle.getString("DtNascimento");
-        String email = bundle.getString("Email");
-        String API = "https://bimo-web-repo.onrender.com/apibimo/usuarios/";
+        // Chamar uploadFoto e esperar o callback
+        databaseFoto.uploadFoto(this, imgUsuario, docData, uriLink -> {
+            String cpf = bundle.getString("CPF").replaceAll("[^\\d]", "");
+            String dtNascimento = bundle.getString("DtNascimento");
+            String email = bundle.getString("Email");
+            String API = "https://bimo-web-repo.onrender.com/apibimo/usuarios/";
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl(API)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(API)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+            ;
 
-        UsuarioInterface usuarioInterface = retrofit.create(UsuarioInterface.class);
-        String nomeCompleto = txtNomeCompleto.getText().toString().trim();
-        String[] partesNome = nomeCompleto.split("\\s+");
+            UsuarioInterface usuarioInterface = retrofit.create(UsuarioInterface.class);
+            String nomeCompleto = txtNomeCompleto.getText().toString().trim();
+            String[] partesNome = nomeCompleto.split("\\s+");
 
-        String primeiroNome = partesNome[0];
-        String ultimoSobrenome = partesNome.length > 1 ? partesNome[partesNome.length - 1] : "";
-        Usuario usuario = new Usuario(
-                primeiroNome, ultimoSobrenome, cpf, email, null, txtTelefone.getText().toString(),
-                dtNascimento, null ,user.getUid(), null ,1, databaseFoto.getUriLink(), txtNome.getText().toString());
+            String primeiroNome = partesNome[0];
+            String ultimoSobrenome = partesNome.length > 1 ? partesNome[partesNome.length - 1] : "";
+            Usuario usuario = new Usuario(
+                    primeiroNome, ultimoSobrenome, cpf, email, txtTelefone.getText().toString(),
+                    dtNascimento, user.getUid(),1, uriLink, txtNome.getText().toString());
+            Log.d("UsuarioJSON", new Gson().toJson(usuario));
 
-        Call<String> call = usuarioInterface.inserirUsuario(usuario);
-        Intent i = new Intent(Tela_CadastroPerfil.this, Tela_Inicial.class);
-        startActivity(i);
+            Call<String> call = usuarioInterface.inserirUsuario(usuario);
+            call.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    if (response.isSuccessful()) {
+                        Log.d("Sucesso: ", "Usuário inserido com sucesso: " + response.body());
+                        // Se a inserção for bem-sucedida, vá para a próxima tela
+                        Intent intent = new Intent(Tela_CadastroPerfil.this, Tela_Inicial.class);
+                        startActivity(intent);
+                    } else {
+                        Log.e("ErroDeInserção", "Erro ao inserir usuário: " + response.code() + " - " + response.message());
+                        Toast.makeText(Tela_CadastroPerfil.this, "Erro ao inserir usuário", Toast.LENGTH_SHORT).show();
+                    }
+                }
 
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Intent intent = new Intent( Tela_CadastroPerfil.this, Tela_AdicionarProduto.class);
+                    startActivity(intent);
+                }
+            });
+        });
     }
 }

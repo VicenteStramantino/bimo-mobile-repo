@@ -9,6 +9,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.aula.appbimo.MainActivity;
 import com.aula.appbimo.R;
+import com.aula.appbimo.Tela_AdicionarProduto;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -22,7 +23,7 @@ public class Tela_LoginCadastro extends AppCompatActivity {
         FirebaseAuth autenticar = FirebaseAuth.getInstance();
         FirebaseUser userLogin = autenticar.getCurrentUser();
         if(userLogin != null){
-            Intent intent = new Intent(Tela_LoginCadastro.this, MainActivity.class);
+            Intent intent = new Intent(Tela_LoginCadastro.this, Tela_AdicionarProduto.class);
             startActivity(intent);
         }
 
