@@ -33,8 +33,8 @@
         android:id="@+id/BoasVindas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
         android:text="Olá, !"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -124,12 +124,13 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_cursos" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="391dp"
-        android:layout_height="292dp"
-        android:layout_marginTop="91dp"
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+        android:layout_marginTop="96dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        tools:listitem="@layout/item_catalogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
