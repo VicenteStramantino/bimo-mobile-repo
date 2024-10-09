@@ -47,6 +47,78 @@ public class Produto {
         this.dDataCriacao = formato.format(dataAtual);
     }
 
+    public int getSid() {
+        return sid;
+    }
+
+    public void setSid(int sid) {
+        this.sid = sid;
+    }
+
+    public String getcNome() {
+        return cNome;
+    }
+
+    public void setcNome(String cNome) {
+        this.cNome = cNome;
+    }
+
+    public String getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(String idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    public String getcDescricao() {
+        return cDescricao;
+    }
+
+    public void setcDescricao(String cDescricao) {
+        this.cDescricao = cDescricao;
+    }
+
+    public String getdDataCriacao() {
+        return dDataCriacao;
+    }
+
+    public void setdDataCriacao(String dDataCriacao) {
+        this.dDataCriacao = dDataCriacao;
+    }
+
+    public double getFvalor() {
+        return fvalor;
+    }
+
+    public void setFvalor(double fvalor) {
+        this.fvalor = fvalor;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getcEstado() {
+        return cEstado;
+    }
+
+    public void setcEstado(String cEstado) {
+        this.cEstado = cEstado;
+    }
+
+    public String getCimgfirebase() {
+        return cimgfirebase;
+    }
+
+    public void setCimgfirebase(String cimgfirebase) {
+        this.cimgfirebase = cimgfirebase;
+    }
+
     @Override
     public String toString() {
         return "Produto{" +

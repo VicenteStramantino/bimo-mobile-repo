@@ -13,8 +13,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.aula.appbimo.AdapterProduto;
 import com.aula.appbimo.R;
+import com.aula.appbimo.Repositories.ProdutoInterface;
+import com.aula.appbimo.models.Produto;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import com.aula.appbimo.Repositories.UsuarioInterface;
 import com.aula.appbimo.Tela_AdicionarProduto;
 import com.aula.appbimo.Tela_Perfil;
@@ -29,6 +44,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Tela_Inicial extends AppCompatActivity {
+    RecyclerView recyclerView;
+    List<Produto> listaProduto = new ArrayList<>();
+    DatabaseFoto database = new DatabaseFoto();
+    AdapterProduto adapterProduto;
 
     private Usuario usuario;
 
@@ -42,6 +61,12 @@ public class Tela_Inicial extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_tela_inicial);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        adapterProduto = new AdapterProduto(listaProduto);
+        recyclerView.setAdapter(adapterProduto);
         pegarUsuario();
         txtBoasVindas = findViewById(R.id.BoasVindas);
         Bundle bundle = new Bundle();
@@ -78,22 +103,21 @@ public class Tela_Inicial extends AppCompatActivity {
                 }
             }
         }, 500);
+
+        buscarProdutos();
     }
 
 
     private void pegarUsuario() {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser userLogin = firebaseAuth.getCurrentUser();
-
         if (userLogin != null) {
             String hash = userLogin.getUid();
             String API = "https://bimo-web-repo.onrender.com/apibimo/usuarios/";
-
             retrofit = new Retrofit.Builder()
                     .baseUrl(API)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-
             UsuarioInterface usuarioInterface = retrofit.create(UsuarioInterface.class);
             Call<Usuario> call = usuarioInterface.buscarUsuarioPorHash(hash);
             call.enqueue(new Callback<Usuario>() {
@@ -106,7 +130,6 @@ public class Tela_Inicial extends AppCompatActivity {
                         Log.e("Erro API", "Resposta sem sucesso ou usuário nulo.");
                     }
                 }
-
                 @Override
                 public void onFailure(Call<Usuario> call, Throwable throwable) {
                     Log.e("API_ERRO", throwable.getMessage());
@@ -115,6 +138,31 @@ public class Tela_Inicial extends AppCompatActivity {
         } else {
             Log.e("Erro", "Usuário não autenticado.");
         }
+    }
+
+    private void buscarProdutos() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://bimo-web-repo.onrender.com/apibimo/produtos/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ProdutoInterface produtoInterface = retrofit.create(ProdutoInterface.class);
+
+        Call<List<Produto>> call = produtoInterface.listarProdutos();
+        call.enqueue(new Callback<List<Produto>>() {
+            @Override
+            public void onResponse(Call<List<Produto>> call, Response<List<Produto>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    listaProduto.clear();
+                    listaProduto.addAll(response.body());
+                    adapterProduto.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Produto>> call, Throwable t) {
+            }
+        });
     }
 
     public Usuario usuarioContectado() {
