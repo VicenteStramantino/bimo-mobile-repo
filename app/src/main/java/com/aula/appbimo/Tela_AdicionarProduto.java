@@ -48,7 +48,6 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
     private int idUsuario = 0;
     private String estadoProduto = "null";
     private Retrofit retrofit;
-    private Usuario usuario;
     private RadioGroup radioGroupEstado;
     private RadioButton btNovo, btUsado;
     private Map<String, String> docData = new HashMap<>();
@@ -58,7 +57,9 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_adicionar_produto);
-        pegaridUsuario();
+        Bundle bundle = getIntent().getExtras();
+
+        idUsuario = bundle.getInt("id");
 
         btimg = findViewById(R.id.imgColocarFoto);
         btn_publicar = findViewById(R.id.btn_publicar);
@@ -102,41 +103,7 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
         });
     }
 
-    private void pegaridUsuario() {
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser userLogin = firebaseAuth.getCurrentUser();
 
-        if (userLogin != null) {
-            String hash = userLogin.getUid();
-            String API = "https://bimo-web-repo.onrender.com/apibimo/usuarios/";
-
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(API)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-
-            UsuarioInterface usuarioInterface = retrofit.create(UsuarioInterface.class);
-            Call<Usuario> call = usuarioInterface.buscarUsuarioPorHash(hash);
-            call.enqueue(new Callback<Usuario>() {
-                @Override
-                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                    if (response.isSuccessful() && response.body() != null) {
-                        usuario = response.body();
-                        idUsuario = usuario.getId();
-                    } else {
-                        Log.e("Erro API", "Resposta sem sucesso ou usuário nulo.");
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Usuario> call, Throwable throwable) {
-                    Log.e("API_ERRO", throwable.getMessage());
-                }
-            });
-        } else {
-            Log.e("Erro", "Usuário não autenticado.");
-        }
-    }
     private void adicionarProdutoNoBanco(int idUsuario, String uriLink) {
         edt_valor = findViewById(R.id.InputPreco);
         edt_nome = findViewById(R.id.editTextNome);

@@ -33,8 +33,6 @@ public class Usuario {
 
     private String cespecialidadeprofissional;
 
-
-
     private int idplano;
 
     private String imgfirebase;
@@ -55,6 +53,10 @@ public class Usuario {
         this.idplano = plano;
         this.username = username;
         this.imgfirebase = imgfirebase;
+    }
+
+    public Usuario(){
+
     }
 
     public Usuario(String cnome, String csobrenome, String ccpf, String cemail, String ctelefone, String ddatanascimento,  String cidhash, int plano, String imgfirebase, String username) {

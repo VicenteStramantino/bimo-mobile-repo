@@ -92,16 +92,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6c92fef-c753-4d18-b795-d4344e089b26" name="Changes" comment="tela inicial atualizada">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/DatabaseFotoGeral.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/Repositories/ProdutoInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/models/Produto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/DatabaseFoto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/DatabaseFoto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/Tela_CadastroPerfil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/Tela_CadastroPerfil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/Tela_Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/Tela_Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/Tela_Inicial.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/Tela_Inicial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/Tela_LoginCadastro.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/Tela_LoginCadastro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/FluxoLogin/UsuarioInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/Repositories/UsuarioInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/Tela_AdicionarProduto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/Tela_AdicionarProduto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/Tela_Perfil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/Tela_Perfil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/models/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aula/appbimo/models/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_perfil.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_perfil.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +116,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\beatrizcabral-ieg\.android\avd\Pixel_7_Pro_API_30.ini]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[RQCX1032QDD]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -147,7 +152,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "DEV",
-    "last_opened_file_path": "C:/Users/beatrizcabral-ieg/Downloads/appbimo/appbimo/FluxoLogin",
+    "last_opened_file_path": "C:/Users/vicentesouza-ieg/AndroidStudioProjects/bimo-mobile-repo",
     "run.code.analysis.last.selected.profile": "pProject Default"
   }
 }]]></component>

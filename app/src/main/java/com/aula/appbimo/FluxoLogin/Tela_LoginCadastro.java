@@ -23,7 +23,7 @@ public class Tela_LoginCadastro extends AppCompatActivity {
         FirebaseAuth autenticar = FirebaseAuth.getInstance();
         FirebaseUser userLogin = autenticar.getCurrentUser();
         if(userLogin != null){
-            Intent intent = new Intent(Tela_LoginCadastro.this, Tela_AdicionarProduto.class);
+            Intent intent = new Intent(Tela_LoginCadastro.this, Tela_Inicial.class);
             startActivity(intent);
         }
 
