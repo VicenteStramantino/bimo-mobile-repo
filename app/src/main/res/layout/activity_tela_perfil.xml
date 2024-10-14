@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".Tela_Perfil">
 
     <androidx.appcompat.widget.AppCompatButton
@@ -156,5 +157,77 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <Button
+        android:id="@+id/btn_cursos"
+        android:layout_width="194dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Cursos"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_produtos"
+        app:layout_constraintTop_toBottomOf="@+id/btn_entrar2" />
+
+    <Button
+        android:id="@+id/btn_produtos"
+        android:layout_width="194dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Produtos"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btn_cursos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_entrar2" />
+
+    <View
+        android:id="@+id/underline_Produtos"
+        android:layout_width="82dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="2dp"
+        android:background="#76FF03"
+        app:layout_constraintEnd_toEndOf="@+id/btn_produtos"
+        app:layout_constraintStart_toStartOf="@+id/btn_produtos"
+        app:layout_constraintTop_toBottomOf="@+id/btn_produtos" />
+
+    <View
+        android:id="@+id/underline_Cursos"
+        android:layout_width="82dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="2dp"
+        android:background="#76FF03"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/btn_cursos"
+        app:layout_constraintStart_toStartOf="@+id/btn_cursos"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cursos" />
+
+    <View
+        android:id="@+id/view_cursos"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_cursos"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_cursos"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cursos" />
+
+    <FrameLayout
+        android:id="@+id/FrameConteudo"
+        android:layout_width="387dp"
+        android:layout_height="170dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_entrar2"
+        app:layout_constraintVertical_bias="0.987">
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

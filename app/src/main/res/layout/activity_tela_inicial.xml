@@ -44,12 +44,12 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="326dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="84dp"
+        android:layout_width="329dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="76dp"
         android:background="@drawable/template_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Header"
         app:titleTextColor="@android:color/white">
@@ -65,8 +65,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="326dp"
-        android:layout_height="184dp"
+        android:layout_width="325dp"
+        android:layout_height="159dp"
         android:layout_marginTop="28dp"
         android:src="@drawable/announcement"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <View
-        android:id="@+id/view_produtos"
+        android:id="@+id/underline_Produtos"
         android:layout_width="82dp"
         android:layout_height="4dp"
         android:layout_marginTop="2dp"
@@ -111,6 +111,18 @@
         app:layout_constraintEnd_toEndOf="@+id/btn_produtos"
         app:layout_constraintStart_toStartOf="@+id/btn_produtos"
         app:layout_constraintTop_toBottomOf="@+id/btn_produtos" />
+
+    <View
+        android:id="@+id/underline_Cursos"
+        android:layout_width="82dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="2dp"
+        android:background="#76FF03"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/btn_cursos"
+        app:layout_constraintStart_toStartOf="@+id/btn_cursos"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cursos" />
+
 
     <View
         android:id="@+id/view_cursos"
@@ -123,15 +135,14 @@
         app:layout_constraintStart_toStartOf="@+id/btn_cursos"
         app:layout_constraintTop_toBottomOf="@+id/btn_cursos" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="165dp"
-        android:layout_marginTop="96dp"
+    <FrameLayout
+        android:id="@+id/FrameConteudo"
+        android:layout_width="385dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        tools:listitem="@layout/item_catalogo" />
+        app:layout_constraintTop_toTopOf="@+id/imageView3"></FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,14 +5,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,31 +49,25 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Tela_Inicial extends AppCompatActivity {
-    RecyclerView recyclerView;
-    List<Produto> listaProduto = new ArrayList<>();
-    DatabaseFoto database = new DatabaseFoto();
-    AdapterProduto adapterProduto;
-
+    private Tela_ListaProdutos tela_ListaProdutos = new Tela_ListaProdutos();
+    private Tela_ListaCursos tela_ListaCursos = new Tela_ListaCursos();
     private Usuario usuario;
-
     private int idUsuario = 0;
     private Retrofit retrofit;
-
     private TextView txtBoasVindas;
+    private View underline_Produtos;
+    private View underline_Cursos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_tela_inicial);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
 
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        adapterProduto = new AdapterProduto(listaProduto);
-        recyclerView.setAdapter(adapterProduto);
         pegarUsuario();
         txtBoasVindas = findViewById(R.id.BoasVindas);
+        underline_Produtos = findViewById(R.id.underline_Produtos);
+        underline_Cursos = findViewById(R.id.underline_Cursos);
         Bundle bundle = new Bundle();
         Handler handler = new Handler(Looper.getMainLooper());
 
@@ -104,7 +103,27 @@ public class Tela_Inicial extends AppCompatActivity {
             }
         }, 500);
 
-        buscarProdutos();
+        ((Button) findViewById(R.id.btn_produtos)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                underline_Produtos.setVisibility(View.VISIBLE);
+                underline_Cursos.setVisibility(View.INVISIBLE);
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.FrameConteudo, tela_ListaProdutos);
+                transaction.commit();
+            }
+        });
+
+        ((Button) findViewById(R.id.btn_cursos)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                underline_Produtos.setVisibility(View.INVISIBLE);
+                underline_Cursos.setVisibility(View.VISIBLE);
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.FrameConteudo, tela_ListaCursos);
+                transaction.commit();
+            }
+        });
     }
 
 
@@ -138,31 +157,6 @@ public class Tela_Inicial extends AppCompatActivity {
         } else {
             Log.e("Erro", "Usuário não autenticado.");
         }
-    }
-
-    private void buscarProdutos() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://bimo-web-repo.onrender.com/apibimo/produtos/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        ProdutoInterface produtoInterface = retrofit.create(ProdutoInterface.class);
-
-        Call<List<Produto>> call = produtoInterface.listarProdutos();
-        call.enqueue(new Callback<List<Produto>>() {
-            @Override
-            public void onResponse(Call<List<Produto>> call, Response<List<Produto>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    listaProduto.clear();
-                    listaProduto.addAll(response.body());
-                    adapterProduto.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Produto>> call, Throwable t) {
-            }
-        });
     }
 
     public Usuario usuarioContectado() {

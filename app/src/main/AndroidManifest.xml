@@ -55,7 +55,7 @@
             android:name=".Tela_AdicionarProduto"
             android:exported="false" />
         <activity
-            android:name=".FluxoLogin.Tela_LoginCadastro"
+            android:name=".Tela_Perfil"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

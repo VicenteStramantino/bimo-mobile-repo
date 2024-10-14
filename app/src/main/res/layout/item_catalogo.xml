@@ -26,12 +26,12 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="155dp"
                 android:layout_height="107dp"
+                app:cardElevation="0dp"
                 app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:cardElevation="0dp" >
+                app:cardUseCompatPadding="true">
 
                 <ImageView
-                    android:id="@+id/imgProduto"
+                    android:id="@+id/imgItem"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/img_card"
@@ -43,7 +43,7 @@
 
 
             <TextView
-                android:id="@+id/tituloProduto"
+                android:id="@+id/tituloItem"
                 android:layout_width="wrap_content"
                 android:layout_height="15dp"
                 android:layout_marginTop="16dp"
@@ -53,13 +53,21 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/precoProduto"
+                android:id="@+id/precoItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/inter_bold"
                 android:text="R$99,99"
                 android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/iconCategoria"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/baseline_category_24" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
