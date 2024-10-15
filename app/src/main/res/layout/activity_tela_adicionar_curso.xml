@@ -7,16 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".Tela_AdicionarProduto">
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="25dp"
-        android:backgroundTint="#00FFFFFF"
-        android:src="@drawable/baseline_arrow_forward_24"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_publicar"
+        android:layout_width="212dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="99dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/botoes_principais"
+        android:text="Publicar curso"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+    </androidx.appcompat.widget.AppCompatButton>
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -100,10 +107,43 @@
         android:gravity="start|top"
         android:hint="Adicione a descrição do curso"
         android:inputType="textMultiLine"
-        android:lines="5"
+        android:lines="3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Preco" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDescricao">
+
+        <RadioButton
+            android:id="@+id/eletronicos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="Eletrônicos" />
+
+        <RadioButton
+            android:id="@+id/roupas"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Roupas" />
+
+        <RadioButton
+            android:id="@+id/moveis"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Móveis" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

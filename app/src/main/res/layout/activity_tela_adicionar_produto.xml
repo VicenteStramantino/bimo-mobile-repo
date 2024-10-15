@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Tela_AdicionarProduto">
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_publicar"
         android:layout_width="212dp"
@@ -20,17 +21,9 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></androidx.appcompat.widget.AppCompatButton>
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="25dp"
-        android:backgroundTint="#00FFFFFF"
-        android:src="@drawable/baseline_arrow_forward_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+    </androidx.appcompat.widget.AppCompatButton>
+
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
@@ -41,6 +34,7 @@
         android:src="@drawable/baseline_close_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -52,6 +46,7 @@
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imgColocarFoto"
         android:layout_width="391dp"
@@ -62,6 +57,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
     <EditText
         android:id="@+id/editTextNome"
         android:layout_width="330dp"
@@ -74,11 +70,13 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgColocarFoto" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Preco"
         android:layout_width="330dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/input_preco"
         android:gravity="center"
         android:orientation="vertical"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -96,6 +94,7 @@
             android:text="R$"
             android:textSize="17sp" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <EditText
         android:id="@+id/editTextDescricao"
         android:layout_width="330dp"
@@ -105,31 +104,46 @@
         android:gravity="start|top"
         android:hint="Adicione a descrição do produto"
         android:inputType="textMultiLine"
-        android:lines="5"
+        android:lines="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Preco" />
+
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/radioGroup2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="25dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDescricao">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+
         <RadioButton
-            android:id="@+id/bt_novo"
+            android:id="@+id/eletronicos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="Eletrônicos" />
+
+        <RadioButton
+            android:id="@+id/roupas"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Novo" />
+            android:text="Roupas" />
+
         <RadioButton
-            android:id="@+id/bt_usado"
+            android:id="@+id/moveis"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Usado" />
+            android:text="Móveis" />
     </RadioGroup>
+
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
@@ -141,4 +155,28 @@
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDescricao" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDescricao">
+
+        <RadioButton
+            android:id="@+id/bt_novo"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Novo" />
+
+        <RadioButton
+            android:id="@+id/bt_usado"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Usado" />
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

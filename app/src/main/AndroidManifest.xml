@@ -49,13 +49,13 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".FluxoLogin.Tela_Inicial"
-            android:exported="false" />
-        <activity
             android:name=".Tela_AdicionarProduto"
             android:exported="false" />
         <activity
             android:name=".Tela_Perfil"
+            android:exported="false" />
+        <activity
+            android:name=".FluxoLogin.Tela_Inicial"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

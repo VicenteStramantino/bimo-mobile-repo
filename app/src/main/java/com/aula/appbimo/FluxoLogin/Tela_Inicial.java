@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
@@ -39,6 +41,7 @@ import com.aula.appbimo.Repositories.UsuarioInterface;
 import com.aula.appbimo.Tela_AdicionarProduto;
 import com.aula.appbimo.Tela_Perfil;
 import com.aula.appbimo.models.Usuario;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -47,6 +50,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import android.os.Bundle;
+import android.view.MenuItem;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Tela_Inicial extends AppCompatActivity {
     private Tela_ListaProdutos tela_ListaProdutos = new Tela_ListaProdutos();
@@ -65,11 +74,36 @@ public class Tela_Inicial extends AppCompatActivity {
         setContentView(R.layout.activity_tela_inicial);
 
         pegarUsuario();
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         txtBoasVindas = findViewById(R.id.BoasVindas);
         underline_Produtos = findViewById(R.id.underline_Produtos);
         underline_Cursos = findViewById(R.id.underline_Cursos);
         Bundle bundle = new Bundle();
         Handler handler = new Handler(Looper.getMainLooper());
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.home) {
+                // Ação para Home
+                return true;
+            } else if (id == R.id.shop) {
+                // Ação para Loja
+                return true;
+            } else if (id == R.id.feed) {
+                // Ação para Feed
+                return true;
+            } else if (id == R.id.chat) {
+                // Ação para Chat
+                return true;
+            } else if (id == R.id.profile) {
+                // Ação para Perfil
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+
 
         handler.postDelayed(new Runnable() {
             @Override

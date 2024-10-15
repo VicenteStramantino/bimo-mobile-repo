@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home_selector"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/shop"
+        android:icon="@drawable/shop_selector"
+        android:title="Shop" />
+
+    <item
+        android:id="@+id/feed"
+        android:icon="@drawable/feed_selector"
+        android:title="Feed" />
+
+    <item
+        android:id="@+id/chat"
+        android:icon="@drawable/chat_selector"
+        android:title="Chat" />
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/profile_selector"
+        android:title="Profile" />
+</menu>

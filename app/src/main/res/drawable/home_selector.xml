@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true" android:drawable="@drawable/home_filled" /> <!-- Ícone preenchido -->
+    <item android:drawable="@drawable/home" /> <!-- Ícone não preenchido -->
+</selector>

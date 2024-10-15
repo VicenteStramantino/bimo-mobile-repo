@@ -57,9 +57,9 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_adicionar_produto);
-        Bundle bundle = getIntent().getExtras();
+//        Bundle bundle = getIntent().getExtras();
 
-        idUsuario = bundle.getInt("id");
+//        idUsuario = bundle.getInt("id");
 
         btimg = findViewById(R.id.imgColocarFoto);
         btn_publicar = findViewById(R.id.btn_publicar);
