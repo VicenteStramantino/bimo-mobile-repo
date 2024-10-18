@@ -123,18 +123,6 @@
         app:layout_constraintStart_toStartOf="@+id/btn_cursos"
         app:layout_constraintTop_toBottomOf="@+id/btn_cursos" />
 
-
-    <View
-        android:id="@+id/view_cursos"
-        android:layout_width="0dp"
-        android:layout_height="4dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="@+id/btn_cursos"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_cursos"
-        app:layout_constraintTop_toBottomOf="@+id/btn_cursos" />
-
     <FrameLayout
         android:id="@+id/FrameConteudo"
         android:layout_width="385dp"
