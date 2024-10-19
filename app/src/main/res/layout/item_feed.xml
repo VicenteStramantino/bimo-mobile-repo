@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteY="-12dp" >
 
         <ImageButton
-            android:id="@+id/imageButton7"
+            android:id="@+id/btn_comments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="19dp"
@@ -22,11 +22,11 @@
             android:background="#FFFFFF"
             android:paddingBottom="10dp"
             android:src="@drawable/baseline_comment_24"
-            app:layout_constraintStart_toEndOf="@+id/imageButton5"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintStart_toEndOf="@+id/qnt_curtidas"
+            app:layout_constraintTop_toBottomOf="@+id/descricao" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/perfil_user"
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:layout_marginStart="23dp"
@@ -36,7 +36,7 @@
             app:srcCompat="@drawable/user" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/nome_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -45,38 +45,22 @@
             android:text="Cleiton João"
             android:textColor="#000000"
             android:textSize="10sp"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSeguir"
-            android:layout_width="85dp"
-            android:layout_height="22dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/botao_seguir"
-            android:fontFamily="@font/inter"
-            android:padding="5dp"
-            android:text="Seguir"
-            android:textColor="#00FF00"
-            android:textSize="10sp"
-            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/perfil_user"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/mais_opcoes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="16dp"
             android:background="#FFFFFF"
             android:src="@drawable/baseline_more_vert_24"
-            app:layout_constraintStart_toEndOf="@+id/btnSeguir"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/foto"
             android:layout_width="292dp"
             android:layout_height="161dp"
             android:layout_marginTop="45dp"
@@ -87,7 +71,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/descricao"
             android:layout_width="292dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -97,10 +81,10 @@
             android:textColor="#000000"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+            app:layout_constraintTop_toBottomOf="@+id/foto" />
 
         <View
-            android:id="@+id/view"
+            android:id="@+id/line"
             android:layout_width="262dp"
             android:layout_height="1dp"
             android:layout_marginTop="8dp"
@@ -108,10 +92,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/descricao" />
+
+        <TextView
+            android:id="@+id/qnt_curtidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="19dp"
+            android:text="0"
+            android:textColor="#000000"
+            app:layout_constraintStart_toEndOf="@+id/like"
+            app:layout_constraintTop_toBottomOf="@+id/descricao" />
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -119,7 +114,7 @@
             android:background="#FFFFFF"
             android:paddingBottom="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/descricao"
             app:srcCompat="@drawable/baseline_favorite_border_24" />= />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

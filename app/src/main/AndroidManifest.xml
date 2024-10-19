@@ -24,7 +24,10 @@
         android:theme="@style/Theme.AppBiMO"
         tools:targetApi="31">
         <activity
-            android:name=".Tela_Feed"
+            android:name=".Tela_AdicionarPublicacao"
+            android:exported="false" />
+        <activity
+            android:name=".FluxoLogin.Tela_Inicial"
             android:exported="false" />
 
         <provider
@@ -62,7 +65,7 @@
             android:name=".Tela_Perfil"
             android:exported="false" />
         <activity
-            android:name=".FluxoLogin.Tela_Inicial"
+            android:name=".Tela_Feed"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

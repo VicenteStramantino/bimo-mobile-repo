@@ -12,4 +12,6 @@ public interface UsuarioInterface{
     Call<String> inserirUsuario(@Body Usuario usuario);
     @GET("selecionarPorHash/{hash}")
     Call<Usuario> buscarUsuarioPorHash(@Path("hash") String hash);
+    @GET("selecionarPorID/{id}")
+    Call<Usuario> buscarUsuarioPorID(@Path("id") int id);
 }
