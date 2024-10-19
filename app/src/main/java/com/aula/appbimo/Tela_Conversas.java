@@ -21,6 +21,6 @@ public class Tela_Conversas extends AppCompatActivity {
         setContentView(R.layout.activity_tela_conversas);
 
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));''
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
