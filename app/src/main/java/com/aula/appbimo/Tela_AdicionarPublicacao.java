@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -110,8 +111,12 @@ public class Tela_AdicionarPublicacao extends AppCompatActivity {
     );
 
     private void adicionarPostagemNoBanco(int idUsuario, String uriLink) {
-        if (edt_descricao.getText().toString().length() < 3) {
+        if (edt_descricao.getText().toString().length() < 3 || TextUtils.isEmpty(edt_descricao.getText().toString().trim())) {
             Toast.makeText(this, "O nome e a descrição devem ter no mínimo 3 caracteres.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(inserirImagem == false) {
+            Toast.makeText(this, "Escolha uma imagem para que o produto possa ser publicado.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -122,7 +127,7 @@ public class Tela_AdicionarPublicacao extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        Posts posts = new Posts(4, idUsuario, edt_descricao.getText().toString(), uriLink);
+        Posts posts = new Posts(5, idUsuario, edt_descricao.getText().toString(), uriLink);
         PostInterface PostInterface = retrofit.create(PostInterface.class);
         Call<Posts> call = PostInterface.InserirPostagem(posts);
         call.enqueue(new Callback<Posts>() {
