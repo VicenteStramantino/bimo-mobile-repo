@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,13 +19,9 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.aula.appbimo.Repositories.ProdutoInterface;
-import com.aula.appbimo.Repositories.UsuarioInterface;
 import com.aula.appbimo.models.Produto;
-import com.aula.appbimo.models.Usuario;
 import com.bumptech.glide.Glide;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -62,7 +57,7 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
 //        idUsuario = bundle.getInt("id");
 
         btimg = findViewById(R.id.imgColocarFoto);
-        btn_publicar = findViewById(R.id.btn_publicar);
+        btn_publicar = findViewById(R.id.btn_publicarPost);
         radioGroupEstado = findViewById(R.id.radioGroup);
         btNovo = findViewById(R.id.bt_novo);
         btUsado = findViewById(R.id.bt_usado);
@@ -107,7 +102,7 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
     private void adicionarProdutoNoBanco(int idUsuario, String uriLink) {
         edt_valor = findViewById(R.id.InputPreco);
         edt_nome = findViewById(R.id.editTextNome);
-        edt_descricao = findViewById(R.id.editTextDescricao);
+        edt_descricao = findViewById(R.id.edt_descricaoPost);
 
         String valorComMoeda = edt_valor.getText().toString();
         String valorSomenteNumero = valorComMoeda.replaceAll("[^\\d.,]", "");

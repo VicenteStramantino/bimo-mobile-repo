@@ -8,19 +8,19 @@
     tools:context=".Tela_AdicionarPublicacao">
 
     <EditText
-        android:id="@+id/editTextDescricao"
+        android:id="@+id/edt_descricaoPost"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Adicione a descrição do produto"
+        android:hint="Adicione a descrição da publicação"
         android:inputType="textMultiLine"
         android:lines="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/imgColocarFotoPost" />
 
     <LinearLayout
         android:id="@+id/Header"
@@ -89,8 +89,25 @@
         app:layout_constraintTop_toBottomOf="@+id/Header"
         app:srcCompat="@drawable/baseline_arrow_forward_24" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_publicarPost"
+        android:layout_width="212dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="99dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/botoes_principais"
+        android:text="Publicar produto"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+    </androidx.appcompat.widget.AppCompatButton>
+
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imgColocarFotoPost"
         android:layout_width="413dp"
         android:layout_height="264dp"
         android:layout_marginTop="60dp"

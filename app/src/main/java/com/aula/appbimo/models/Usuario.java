@@ -3,7 +3,7 @@ package com.aula.appbimo.models;
 public class Usuario {
 
 
-    public int sid;
+    public Integer sid;
 
     private String cnome;
 
@@ -86,7 +86,7 @@ public class Usuario {
     }
 
 
-    public int getId() {
+    public Integer getId() {
         return sid;
     }
 

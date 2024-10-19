@@ -23,6 +23,12 @@ public class Posts {
         this.cImgFirebase = cImgFirebase;
         this.cCurtidas = cCurtidas;
     }
+    public Posts(int sID, int iIdUsuario, String cTexto, String cImgFirebase) {
+        this.sID = sID;
+        this.iIdUsuario = iIdUsuario;
+        this.cTexto = cTexto;
+        this.cImgFirebase = cImgFirebase;
+    }
 
     public Posts() {
     }
