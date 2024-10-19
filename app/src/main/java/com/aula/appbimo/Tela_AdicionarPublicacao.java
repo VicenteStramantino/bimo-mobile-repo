@@ -35,16 +35,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Tela_AdicionarPublicacao extends AppCompatActivity {
 
-
     public boolean inserirImagem = false;
-
     private Button btn_publicar;
     private ImageView btimg;
     private EditText edt_descricao;
-
     private Retrofit retrofit;
     private MainActivity mainActivity = new MainActivity();
-
     private Map<String, String> docData = new HashMap<>();
     private DatabaseFotoGeral databaseFotoGeral = new DatabaseFotoGeral();
 

@@ -78,17 +78,6 @@
         app:layout_constraintStart_toEndOf="@+id/imageButton2"
         app:layout_constraintTop_toBottomOf="@+id/Header" />
 
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
-        android:background="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Header"
-        app:srcCompat="@drawable/baseline_arrow_forward_24" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_publicarPost"
         android:layout_width="212dp"
@@ -97,7 +86,7 @@
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/botoes_principais"
-        android:text="Publicar produto"
+        android:text="Adicionar publicação"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="14sp"

@@ -7,13 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aula.appbimo.models.Curso;
-import com.aula.appbimo.models.Produto;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -30,7 +28,7 @@ public class AdapterCurso extends RecyclerView.Adapter<AdapterCurso.ViewHolder>{
     @NonNull
     @Override
     public AdapterCurso.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View viewItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_catalogo, parent, false);
+        View viewItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_curso, parent, false);
         return new AdapterCurso.ViewHolder(viewItem);
     }
 
@@ -39,9 +37,9 @@ public class AdapterCurso extends RecyclerView.Adapter<AdapterCurso.ViewHolder>{
     public void onBindViewHolder(@NonNull AdapterCurso.ViewHolder holder, int position) {
         Glide.with(holder.itemView)
                 .load(listaCurso.get(position).getcimgfirebase())
-                .into(holder.imgItem);
-        holder.tituloItem.setText(listaCurso.get(position).getcNome());
-        holder.precoItem.setText("R$" + listaCurso.get(position).getfValor());
+                .into(holder.imgCurso);
+        holder.tituloCurso.setText(listaCurso.get(position).getcNome());
+        holder.qntAulas.setText(listaCurso.get(position).getcDuracao() + " horas");
 
         int categoria = listaCurso.get(position).getiCategoria();
 
@@ -59,15 +57,15 @@ public class AdapterCurso extends RecyclerView.Adapter<AdapterCurso.ViewHolder>{
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView imgItem, iconCategoria;
-        TextView tituloItem, precoItem;
+        ImageView imgCurso, iconCategoria;
+        TextView tituloCurso, qntAulas;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imgItem = itemView.findViewById(R.id.imgItem);
-            tituloItem = itemView.findViewById(R.id.tituloItem);
-            precoItem = itemView.findViewById(R.id.precoItem);
+            imgCurso = itemView.findViewById(R.id.imgCurso);
+            tituloCurso = itemView.findViewById(R.id.tituloCurso);
+            qntAulas = itemView.findViewById(R.id.qntAulas);
             iconCategoria = itemView.findViewById(R.id.iconCategoria);
         }
     }
