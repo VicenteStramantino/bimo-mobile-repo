@@ -15,7 +15,6 @@ public class Tela_Chat extends AppCompatActivity {
     private RecyclerView messageList;
     private EditText messageInput;
     private ImageButton sendButton;
-    private AdapterMensagem adapter;
     private List<Mensagem> messages;
 
     @Override
