@@ -2,6 +2,9 @@ package com.aula.appbimo;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,28 +48,48 @@ public class AdapterProduto extends RecyclerView.Adapter<AdapterProduto.ViewHold
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AdapterProduto.ViewHolder holder, int position) {
+        Produto produto = listaProduto.get(position);
+
+        // Carregar imagem com Glide
         Glide.with(holder.itemView)
-                .load(listaProduto.get(position).getCimgfirebase())
+                .load(produto.getCimgfirebase())
                 .into(holder.imgItem);
-        holder.tituloItem.setText(listaProduto.get(position).getcNome());
-        holder.precoItem.setText("R$" + listaProduto.get(position).getFvalor());
 
-        String categoria = listaProduto.get(position).getIdCategoria();
+        // Configurar nome e preço do produto
+        holder.tituloItem.setText(produto.getcNome());
+        holder.precoItem.setText("R$" + produto.getFvalor());
 
+        // Configurar o ícone da categoria
+        String categoria = produto.getIdCategoria();
         if (categoria != null) {
-            if (categoria.equalsIgnoreCase("prod_1")){
+            if (categoria.equalsIgnoreCase("prod_1")) {
                 holder.iconCategoria.setImageResource(R.drawable.baseline_computer_24);
             } else if (categoria.equalsIgnoreCase("prod_2")) {
                 holder.iconCategoria.setImageResource(R.drawable.noun_get_dressed_2844795);
             } else if (categoria.equalsIgnoreCase("prod_3")) {
                 holder.iconCategoria.setImageResource(R.drawable.baseline_table_bar_24);
             }
-        }
-        else {
+        } else {
             Toast.makeText(context, "ID da categoria definido como nulo", Toast.LENGTH_SHORT).show();
             holder.iconCategoria.setImageResource(R.drawable.baseline_category_24);
         }
+
+        // Configurar o clique do item para abrir a Tela_CompraProduto
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(holder.itemView.getContext(), Tela_CompraProduto.class);
+            Log.e("Produtohgcihtd: ", produto.toString());
+            Bundle bundle = new Bundle();
+            bundle.putString("nome", produto.getcNome());
+            bundle.putString("preco", String.valueOf(produto.getFvalor()));
+            bundle.putString("img", produto.getCimgfirebase());
+            bundle.putString("id", String.valueOf(produto.getSid()));
+            bundle.putInt("idUsuario", produto.getIdUsuario());
+            bundle.putString("descricao", produto.getcDescricao());
+            intent.putExtras(bundle);
+            holder.itemView.getContext().startActivity(intent);
+        });
     }
+
 
     private void buscarCategoria(String categoriaID, CategoriaCallback callback) {
         Retrofit retrofit = new Retrofit.Builder()

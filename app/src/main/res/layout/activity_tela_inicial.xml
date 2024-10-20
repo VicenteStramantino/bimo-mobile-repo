@@ -64,7 +64,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imgfotousuarioprod"
         android:layout_width="325dp"
         android:layout_height="159dp"
         android:layout_marginTop="28dp"
@@ -86,7 +86,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_produtos"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imgfotousuarioprod" />
 
     <Button
         android:id="@+id/btn_produtos"
@@ -100,7 +100,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/btn_cursos"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imgfotousuarioprod" />
 
     <View
         android:id="@+id/underline_Produtos"
@@ -131,7 +131,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3">
+        app:layout_constraintTop_toTopOf="@+id/imgfotousuarioprod">
 
     </FrameLayout>
 

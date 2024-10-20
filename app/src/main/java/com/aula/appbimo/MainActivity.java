@@ -76,7 +76,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public Usuario getUsuario() {
-        return usuario;
+    public void pegarUsuarioPorID(final UsuarioCallback callback, int id) {
+        String API = "https://bimo-web-repo.onrender.com/apibimo/usuarios/";
+        retrofit = new Retrofit.Builder()
+                .baseUrl(API)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        UsuarioInterface usuarioInterface = retrofit.create(UsuarioInterface.class);
+        Call<Usuario> call = usuarioInterface.buscarUsuarioPorID(id);
+
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Usuario usuario = response.body();
+                    int idusuario = usuario.getId();
+                    // Chama o callback com o usuário encontrado
+                    callback.onUsuarioEncontrado(usuario);
+                } else {
+                    Log.e("IDUSUARIO", "Resposta sem sucesso ou usuário nulo.");
+                    callback.onErro("Resposta sem sucesso ou usuário nulo.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable throwable) {
+                Log.e("API_ERRO", throwable.getMessage());
+                callback.onErro(throwable.getMessage());
+            }
+        });
     }
+
+
+
 }
