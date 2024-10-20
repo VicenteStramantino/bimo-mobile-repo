@@ -71,4 +71,14 @@
         app:layout_constraintTop_toBottomOf="@+id/imageButton"
         app:layout_constraintVertical_bias="0.5" />
 
+    <ImageView
+        android:id="@+id/arrowHint"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="352dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header"
+        app:srcCompat="@drawable/baseline_arrow_forward_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

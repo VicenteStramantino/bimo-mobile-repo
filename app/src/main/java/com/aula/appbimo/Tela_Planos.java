@@ -34,17 +34,19 @@ public class Tela_Planos extends AppCompatActivity {
         adapter = new AdapterPlano(cardItems);
         viewPager.setAdapter(adapter);
 
+        ImageView arrowHint = findViewById(R.id.arrowHint);
+        AlphaAnimation fadeInOut = new AlphaAnimation(0.0f, 1.0f);
+        fadeInOut.setDuration(1000);
+        fadeInOut.setRepeatMode(Animation.REVERSE);
+        fadeInOut.setRepeatCount(Animation.INFINITE);
+        arrowHint.startAnimation(fadeInOut);
+
         ViewPager2 viewPager = findViewById(R.id.viewPager);
         AdapterPlano adapter = new AdapterPlano(cardItems);
         viewPager.setAdapter(adapter);
 
         int initialPosition = Integer.MAX_VALUE / 2;
         viewPager.setCurrentItem(initialPosition, false);
-
-        viewPager.post(() -> {
-            viewPager.setCurrentItem(1, true);
-            viewPager.setCurrentItem(0, true);
-        });
 
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
