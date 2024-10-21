@@ -30,19 +30,19 @@
             android:name=".Tela_Carrinho"
             android:exported="false" />
         <activity
-            android:name=".Tela_Planos"
+            android:name=".Tela_ConfirmacaoPagamento"
             android:exported="false" />
         <activity
-            android:name=".FluxoLogin.Tela_Inicial"
+            android:name=".Tela_Planos"
             android:exported="false" />
         <activity
             android:name=".Tela_CadastrarNovaSenha"
             android:exported="false" />
         <activity
-            android:name=".Tela_AlterarEndereco"
+            android:name=".Tela_AlterarProduto"
             android:exported="false" />
         <activity
-            android:name=".Tela_AlterarInfoPerfil"
+            android:name=".Tela_OperacoesEndereco"
             android:exported="false" />
         <activity
             android:name=".Tela_CompraProduto"
@@ -54,7 +54,7 @@
             android:name=".Tela_Conversas"
             android:exported="false" />
         <activity
-            android:name=".Tela_AlterarProduto"
+            android:name=".FluxoLogin.Tela_Inicial"
             android:exported="false" />
 
         <provider
@@ -95,7 +95,7 @@
             android:name=".Tela_Feed"
             android:exported="false" />
         <activity
-            android:name=".Tela_ConfirmacaoPagamento"
+            android:name=".Tela_AlterarInfoPerfil"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

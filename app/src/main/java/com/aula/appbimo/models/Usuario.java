@@ -35,7 +35,7 @@ public class Usuario {
 
     private int idplano;
 
-    private String imgfirebase;
+    private String imgFirebase;
 
     private String username;
 
@@ -52,7 +52,7 @@ public class Usuario {
         this.cespecialidadeprofissional = cespecialidadeprofissional;
         this.idplano = plano;
         this.username = username;
-        this.imgfirebase = imgfirebase;
+        this.imgFirebase = imgfirebase;
     }
 
     public Usuario(){
@@ -69,7 +69,7 @@ public class Usuario {
         this.cidhash = cidhash;
         this.idplano = plano;
         this.username = username;
-        this.imgfirebase = imgfirebase;
+        this.imgFirebase = imgfirebase;
     }
     public Usuario(int id, String cnome, String csobrenome, String ccpf, String cemail, String ctelefone, String ddatanascimento,  String cidhash, int plano, String imgfirebase, String username) {
         this.sid = id;
@@ -82,7 +82,7 @@ public class Usuario {
         this.cidhash = cidhash;
         this.idplano = plano;
         this.username = username;
-        this.imgfirebase = imgfirebase;
+        this.imgFirebase = imgfirebase;
     }
 
 
@@ -184,11 +184,11 @@ public class Usuario {
     }
 
     public String getCimgfirebase() {
-        return imgfirebase;
+        return imgFirebase;
     }
 
     public void setCimgfirebase(String cimgfirebase) {
-        this.imgfirebase = cimgfirebase;
+        this.imgFirebase = cimgfirebase;
     }
 
     public String getCusername() {
@@ -211,7 +211,7 @@ public class Usuario {
                 ", ddatanascimento=" + ddatanascimento +
                 ", cidhash='" + cidhash + '\'' +
                 ", idplano=" + idplano +
-                ", cimgfirebase=" + imgfirebase +
+                ", cimgfirebase=" + imgFirebase +
                 ", cusername=" + username +
                 '}';
     }

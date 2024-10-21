@@ -5,6 +5,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface UsuarioInterface{
@@ -14,4 +15,7 @@ public interface UsuarioInterface{
     Call<Usuario> buscarUsuarioPorHash(@Path("hash") String hash);
     @GET("selecionarPorID/{id}")
     Call<Usuario> buscarUsuarioPorID(@Path("id") int id);
+
+    @PUT("atualizar/{id}")
+    Call<String> atualizarUsuario(@Path("id") int id, @Body Usuario usuario);
 }

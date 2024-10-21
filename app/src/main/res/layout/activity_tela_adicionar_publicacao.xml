@@ -8,7 +8,7 @@
     tools:context=".Tela_AdicionarPublicacao">
 
     <EditText
-        android:id="@+id/edt_descricaoPost"
+        android:id="@+id/edt_descricaoPostAlterar"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

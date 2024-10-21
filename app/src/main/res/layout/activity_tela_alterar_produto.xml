@@ -40,7 +40,7 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_publicarPost"
+        android:id="@+id/btn_atualizar_produto"
         android:layout_width="212dp"
         android:layout_height="45dp"
         android:layout_marginStart="99dp"
@@ -90,7 +90,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/editTextNome"
+        android:id="@+id/editTextNomeAlterar"
         android:layout_width="330dp"
         android:layout_height="50dp"
         android:layout_marginTop="25dp"
@@ -114,10 +114,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNome">
+        app:layout_constraintTop_toBottomOf="@+id/editTextNomeAlterar">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputPreco"
+            android:id="@+id/InputPrecoAlterar"
             android:layout_width="317dp"
             android:layout_height="60dp"
             android:background="@android:color/transparent"
@@ -127,7 +127,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
-        android:id="@+id/edt_descricaoPost"
+        android:id="@+id/edt_descricaoPostAlterar"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -152,7 +152,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupAtualizarProduto">
 
         <RadioButton
             android:id="@+id/eletronicos"
@@ -185,26 +185,26 @@
         android:text="Estado:"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_descricaoPost" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_descricaoPostAlterar" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/radioGroupAtualizarProduto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/edt_descricaoPost">
+        app:layout_constraintTop_toBottomOf="@+id/edt_descricaoPostAlterar">
 
         <RadioButton
-            android:id="@+id/bt_novo"
+            android:id="@+id/bt_novoAlterar"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Novo" />
 
         <RadioButton
-            android:id="@+id/bt_usado"
+            android:id="@+id/bt_usadoAlterar"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Usado" />
