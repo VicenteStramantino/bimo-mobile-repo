@@ -59,8 +59,8 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
         btimg = findViewById(R.id.imgColocarFoto);
         btn_publicar = findViewById(R.id.btn_publicarPost);
         radioGroupEstado = findViewById(R.id.radioGroup);
-        btNovo = findViewById(R.id.bt_novo);
-        btUsado = findViewById(R.id.bt_usado);
+        btNovo = findViewById(R.id.bt_novoAlterar);
+        btUsado = findViewById(R.id.bt_usadoAlterar);
 
         btimg.setOnClickListener(v2 -> {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -100,9 +100,9 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
 
 
     private void adicionarProdutoNoBanco(int idUsuario, String uriLink) {
-        edt_valor = findViewById(R.id.InputPreco);
-        edt_nome = findViewById(R.id.editTextNome);
-        edt_descricao = findViewById(R.id.edt_descricaoPost);
+        edt_valor = findViewById(R.id.InputPrecoAlterar);
+        edt_nome = findViewById(R.id.editTextNomeAlterar);
+        edt_descricao = findViewById(R.id.edt_descricaoPostAlterar);
 
         String valorComMoeda = edt_valor.getText().toString();
         String valorSomenteNumero = valorComMoeda.replaceAll("[^\\d.,]", "");

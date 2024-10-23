@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tela_AlterarEndereco">
+    tools:context=".Tela_OperacoesEndereco">
 
 
     <androidx.appcompat.widget.AppCompatButton

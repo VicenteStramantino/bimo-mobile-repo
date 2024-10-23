@@ -14,5 +14,5 @@ public interface PostInterface {
     Call<List<Posts>> listarPosts();
 
     @POST("inserir")
-    Call<Posts> InserirPostagem(@Body Posts posts);
+    Call<String> InserirPostagem(@Body Posts posts);
 }

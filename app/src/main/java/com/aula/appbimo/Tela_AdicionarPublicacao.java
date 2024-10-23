@@ -18,10 +18,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.aula.appbimo.Repositories.PostInterface;
-import com.aula.appbimo.Repositories.ProdutoInterface;
 import com.aula.appbimo.callbacks.UsuarioCallback;
 import com.aula.appbimo.models.Posts;
-import com.aula.appbimo.models.Produto;
 import com.aula.appbimo.models.Usuario;
 import com.bumptech.glide.Glide;
 
@@ -52,7 +50,7 @@ public class Tela_AdicionarPublicacao extends AppCompatActivity {
 
         btn_publicar = findViewById(R.id.btn_publicarPost);
         btimg = findViewById(R.id.imgColocarFotoPost);
-        edt_descricao = findViewById(R.id.edt_descricaoPost);
+        edt_descricao = findViewById(R.id.edt_descricaoPostAlterar);
         btimg.setOnClickListener(v2 -> {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             resultLauncherGaleria.launch(intent);
@@ -125,10 +123,10 @@ public class Tela_AdicionarPublicacao extends AppCompatActivity {
 
         Posts posts = new Posts(5, idUsuario, edt_descricao.getText().toString(), uriLink);
         PostInterface PostInterface = retrofit.create(PostInterface.class);
-        Call<Posts> call = PostInterface.InserirPostagem(posts);
-        call.enqueue(new Callback<Posts>() {
+        Call<String> call = PostInterface.InserirPostagem(posts);
+        call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<Posts> call, Response<Posts> response) {
+            public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(Tela_AdicionarPublicacao.this, "Produto adicionado com sucesso!", Toast.LENGTH_SHORT).show();
                 } else {
@@ -137,7 +135,7 @@ public class Tela_AdicionarPublicacao extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Posts> call, Throwable throwable) {
+            public void onFailure(Call<String> call, Throwable throwable) {
                 Log.e("API_ERRO", throwable.getMessage());
             }
         });

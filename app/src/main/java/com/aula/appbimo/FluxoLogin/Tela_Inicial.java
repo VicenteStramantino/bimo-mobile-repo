@@ -90,7 +90,6 @@ public class Tela_Inicial extends AppCompatActivity {
                 Log.e("Erro", mensagemErro);
             }
         });
-        Log.e("nfkjsdijds", String.valueOf(idUsuario));
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
