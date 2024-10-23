@@ -11,13 +11,12 @@
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="145dp"
+        android:layout_marginTop="124dp"
         android:fontFamily="@font/inter"
         android:text="Cadastre-se"
         android:textColor="#000000"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/code_layout" />
 
@@ -154,6 +153,16 @@
             android:textSize="18sp"
             android:layout_marginHorizontal="5dp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/EnviarNovamente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
+        android:text="Enviar o codigo novamente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView18" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

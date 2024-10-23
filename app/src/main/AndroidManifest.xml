@@ -4,6 +4,11 @@
 
     <uses-feature android:name="android.hardware.camera.any" />
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission
@@ -12,6 +17,7 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
+
 
     <application
         android:allowBackup="true"
@@ -74,7 +80,7 @@
             android:name=".FluxoLogin.Tela_CadastroPerfil"
             android:exported="false" />
         <activity
-            android:name=".FluxoLogin.Tela_EsqueciMinhaSenha"
+            android:name=".Tela_AlterarInfoPerfil"
             android:exported="false" />
         <activity
             android:name=".FluxoLogin.Tela_Login"
@@ -95,7 +101,10 @@
             android:name=".Tela_Feed"
             android:exported="false" />
         <activity
-            android:name=".Tela_AlterarInfoPerfil"
+            android:name=".Tela_CodigoVerificacao"
+            android:exported="false" />
+        <activity
+            android:name="Tela_EsqueciMinhaSenha"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

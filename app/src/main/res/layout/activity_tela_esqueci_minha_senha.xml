@@ -7,26 +7,54 @@
     android:layout_height="match_parent"
     tools:context=".Tela_EsqueciMinhaSenha">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Telefone"
+        style="@style/TextInputLayoutStyle"
+        android:layout_width="352dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="25dp"
+        android:hint="Telefone"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxStrokeColor="#2CA0EC"
+        app:helperTextTextColor="#2CA0EC"
+        app:hintTextColor="#2CA0EC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputTelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType="phone"
+            android:lines="1"
+            android:maxLength="15"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_voltar2"
+        android:id="@+id/btn_voltarAlterarSenha"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/botoes_principais"
         android:text="Voltar"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Email">
-    </androidx.appcompat.widget.AppCompatButton>
+        app:layout_constraintTop_toBottomOf="@+id/Telefone"></androidx.appcompat.widget.AppCompatButton>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_cadastrar2"
+        android:id="@+id/btn_enviarAlterarSenha"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="55dp"
         android:layout_marginEnd="45dp"
         android:background="@drawable/botoes_principais"
         android:text="Enviar"
@@ -34,35 +62,7 @@
         android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Email">
-    </androidx.appcompat.widget.AppCompatButton>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Email"
-        android:layout_width="352dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/padrao_input"
-        android:gravity="center"
-        android:hint="E-mail"
-        android:orientation="vertical"
-        android:textColorHint="#2CA0EC"
-        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:hintTextColor="#2CA0EC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11">
-
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputEmail"
-            android:layout_width="316dp"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:textSize="17sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/Telefone"></androidx.appcompat.widget.AppCompatButton>
 
     <ImageView
         android:id="@+id/logo_app2"
@@ -92,7 +92,7 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="145dp"
+        android:layout_marginTop="151dp"
         android:fontFamily="@font/inter"
         android:text="Cadastre-se"
         android:textColor="#000000"
@@ -100,5 +100,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Email" />
+        app:layout_constraintTop_toBottomOf="@+id/Telefone" />
 </androidx.constraintlayout.widget.ConstraintLayout>
