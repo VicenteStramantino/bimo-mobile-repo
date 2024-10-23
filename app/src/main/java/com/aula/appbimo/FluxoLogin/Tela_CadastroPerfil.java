@@ -53,7 +53,6 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
 
     private TextInputEditText txtTelefone, txtNome, txtNomeCompleto;
     ShapeableImageView imgUsuario;
-
     DatabaseFoto databaseFoto = new DatabaseFoto();
     private Map<String, String> docData = new HashMap<>();
     ImageButton bt_galeria, bt_camera;

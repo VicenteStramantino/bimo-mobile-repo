@@ -1,9 +1,13 @@
 package com.aula.appbimo;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,12 +50,27 @@ public class AdapterPlano extends RecyclerView.Adapter<AdapterPlano.CardViewHold
         TextView titleTextView;
         TextView descriptionTextView;
         TextView precoTextView;
+        Button assinar;
 
         CardViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTextView = itemView.findViewById(R.id.cardTitle);
             descriptionTextView = itemView.findViewById(R.id.cardDescription);
             precoTextView = itemView.findViewById(R.id.precoPlano);
+            assinar = itemView.findViewById(R.id.btn_assinar);
+
+            assinar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        // Agora você tem a posição do card que foi clicado
+                        Toast.makeText(v.getContext(), "Botão clicado no card: " + titleTextView.getText(), Toast.LENGTH_SHORT).show();
+                        // Aqui você pode fazer qualquer ação baseada na posição
+                    }
+                }
+            });
+
         }
     }
 }
