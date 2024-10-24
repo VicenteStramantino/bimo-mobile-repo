@@ -43,10 +43,12 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
     private int idUsuario = 0;
     private String estadoProduto = "null";
     private Retrofit retrofit;
-    private RadioGroup radioGroupEstado;
-    private RadioButton btNovo, btUsado;
+    private RadioGroup radioGroupEstado, radioGroup2;
+    private RadioButton btNovo, btUsado, eletronicos, roupas, moveis;
     private Map<String, String> docData = new HashMap<>();
     private DatabaseFotoGeral databaseFotoGeral = new DatabaseFotoGeral();
+
+    private String categoria = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,10 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
         radioGroupEstado = findViewById(R.id.radioGroup);
         btNovo = findViewById(R.id.bt_novoAlterar);
         btUsado = findViewById(R.id.bt_usadoAlterar);
+        radioGroup2 = findViewById(R.id.radioGroup2);
+        eletronicos = findViewById(R.id.eletronicos);
+        roupas = findViewById(R.id.roupas);
+        moveis = findViewById(R.id.moveis);
 
         btimg.setOnClickListener(v2 -> {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -96,6 +102,16 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
                 estadoProduto = "Usado";
             }
         });
+
+        radioGroup2.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == eletronicos.getId()) {
+                categoria = "PROD_1";
+            } else if (checkedId == roupas.getId()) {
+                 categoria = "PROD_2";
+            } else if (checkedId == moveis.getId()) {
+                categoria = "PROD_3";
+            }
+        });
     }
 
 
@@ -117,7 +133,7 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
         String descricao = edt_descricao.getText().toString();
 
         // Verifica se algum dos campos está nulo, se o valor não contém nenhum número ou se estadoProduto é nulo
-        if (nome.isEmpty() || descricao.isEmpty() || valorSomenteNumero.isEmpty() || estadoProduto == null) {
+        if (nome.isEmpty() || descricao.isEmpty() || valorSomenteNumero.isEmpty() || estadoProduto == null || categoria.equals("")) {
             Toast.makeText(this, "Todos os campos são obrigatórios e o valor deve ser informado.", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -135,7 +151,7 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        Produto produto = new Produto(nome, "prod_1", descricao, valor, idUsuario, estadoProduto, uriLink);
+        Produto produto = new Produto(nome, categoria, descricao, valor, idUsuario, estadoProduto, uriLink);
         ProdutoInterface produtoInterface = retrofit.create(ProdutoInterface.class);
         Call<String> call = produtoInterface.inserirProduto(produto);
         call.enqueue(new Callback<String>() {

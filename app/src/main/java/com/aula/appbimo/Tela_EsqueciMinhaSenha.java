@@ -113,7 +113,7 @@ public class Tela_EsqueciMinhaSenha extends AppCompatActivity {
 
             @Override
             public void onErro(String mensagemErro) {
-                Toast.makeText(mainActivity, "Usuario não encontrado no banco.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Tela_EsqueciMinhaSenha.this, "Usuario não encontrado no banco.", Toast.LENGTH_SHORT).show();
             }
         }, string);
     }
