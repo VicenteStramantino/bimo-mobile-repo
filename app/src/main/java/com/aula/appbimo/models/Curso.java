@@ -5,14 +5,13 @@ public class Curso {
     private double fValor;
     private String cDescricao;
     private String cCertificacao;
-    private int iCategoria;
+    private String iCategoria;
     private int iNumeroInscricao;
     private String cNome;
     private String cDuracao;
-    private String cimgfirebase;
-    private boolean transaction_made;
+    private String curlfoto;
 
-    public Curso(int sid, double fValor, String cDescricao, String cCertificacao, int iCategoria, int iNumeroInscricao, String cNome, String cDuracao, String cimgfirebase) {
+    public Curso(int sid, double fValor, String cDescricao, String cCertificacao, String iCategoria, int iNumeroInscricao, String cNome, String cDuracao, String curlfoto) {
         this.sid = sid;
         this.fValor = fValor;
         this.cDescricao = cDescricao;
@@ -21,7 +20,7 @@ public class Curso {
         this.iNumeroInscricao = iNumeroInscricao;
         this.cNome = cNome;
         this.cDuracao = cDuracao;
-        this.cimgfirebase = cimgfirebase;
+        this.curlfoto = curlfoto;
     }
 
     public Curso() {
@@ -59,11 +58,11 @@ public class Curso {
         this.cCertificacao = cCertificacao;
     }
 
-    public int getiCategoria() {
+    public String getiCategoria() {
         return iCategoria;
     }
 
-    public void setiCategoria(int iCategoria) {
+    public void setiCategoria(String iCategoria) {
         this.iCategoria = iCategoria;
     }
 
@@ -91,20 +90,12 @@ public class Curso {
         this.cDuracao = cDuracao;
     }
 
-    public boolean isTransaction_made() {
-        return transaction_made;
+    public String getCurlfoto() {
+        return curlfoto;
     }
 
-    public void setTransaction_made(boolean transaction_made) {
-        this.transaction_made = transaction_made;
-    }
-
-    public String getcimgfirebase() {
-        return cimgfirebase;
-    }
-
-    public void setcimgfirebase(String cimgfirebase) {
-        this.cimgfirebase = cimgfirebase;
+    public void setCurlfoto(String curlfoto) {
+        this.curlfoto = curlfoto;
     }
 
     @Override
@@ -118,7 +109,7 @@ public class Curso {
                 ", iNumeroInscricao=" + iNumeroInscricao +
                 ", cNome='" + cNome + '\'' +
                 ", cDuracao='" + cDuracao + '\'' +
-                ", cimgfirebase='" + cimgfirebase + '\'' +
+                ", curlFoto='" + curlfoto + '\'' +
                 '}';
     }
 }

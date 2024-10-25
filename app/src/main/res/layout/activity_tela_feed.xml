@@ -42,7 +42,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="543dp"
         android:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"

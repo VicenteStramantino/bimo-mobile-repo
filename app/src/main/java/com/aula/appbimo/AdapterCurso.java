@@ -2,6 +2,9 @@ package com.aula.appbimo;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,21 +38,36 @@ public class AdapterCurso extends RecyclerView.Adapter<AdapterCurso.ViewHolder>{
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AdapterCurso.ViewHolder holder, int position) {
+        Curso curso = listaCurso.get(position);
         Glide.with(holder.itemView)
-                .load(listaCurso.get(position).getcimgfirebase())
+                .load(curso.getCurlfoto())
                 .into(holder.imgCurso);
-        holder.tituloCurso.setText(listaCurso.get(position).getcNome());
-        holder.qntAulas.setText(listaCurso.get(position).getcDuracao() + " horas");
+        holder.tituloCurso.setText(curso.getcNome());
+        holder.qntAulas.setText(curso.getcDuracao() + " horas");
 
-        int categoria = listaCurso.get(position).getiCategoria();
+        String categoria = curso.getiCategoria();
 
-        if (categoria == 1) {
+        if (categoria.equalsIgnoreCase("curs_1")) {
             holder.iconCategoria.setImageResource(R.drawable.baseline_computer_24);
-        } else if (categoria == 2) {
+        } else if (categoria.equalsIgnoreCase("curs_2")) {
             holder.iconCategoria.setImageResource(R.drawable.baseline_wallet_24);
-        } else if (categoria == 3) {
+        } else if (categoria.equalsIgnoreCase("curs_3")) {
             holder.iconCategoria.setImageResource(R.drawable.baseline_monitor_heart_24);
         }
+
+        // Configurar o clique do item para abrir a Tela_CompraCurso
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(holder.itemView.getContext(), Tela_CompraCurso.class);
+            Log.e("Curso: ", curso.toString());
+            Bundle bundle = new Bundle();
+            bundle.putString("nome", curso.getcNome());
+            bundle.putString("preco", String.valueOf(curso.getfValor()));
+            bundle.putString("img", curso.getCurlfoto());
+            bundle.putString("id", String.valueOf(curso.getSid()));
+            bundle.putString("descricao", curso.getcDescricao());
+            intent.putExtras(bundle);
+            holder.itemView.getContext().startActivity(intent);
+        });
     }
 
     public int getItemCount() {

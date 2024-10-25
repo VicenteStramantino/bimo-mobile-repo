@@ -77,7 +77,7 @@ public class AdapterProduto extends RecyclerView.Adapter<AdapterProduto.ViewHold
         // Configurar o clique do item para abrir a Tela_CompraProduto
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(holder.itemView.getContext(), Tela_CompraProduto.class);
-            Log.e("Produtohgcihtd: ", produto.toString());
+            Log.e("Produto: ", produto.toString());
             Bundle bundle = new Bundle();
             bundle.putString("nome", produto.getcNome());
             bundle.putString("preco", String.valueOf(produto.getFvalor()));
@@ -87,34 +87,6 @@ public class AdapterProduto extends RecyclerView.Adapter<AdapterProduto.ViewHold
             bundle.putString("descricao", produto.getcDescricao());
             intent.putExtras(bundle);
             holder.itemView.getContext().startActivity(intent);
-        });
-    }
-
-
-    private void buscarCategoria(String categoriaID, CategoriaCallback callback) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://bimo-web-repo.onrender.com/apibimo/categorias/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        CategoriaInterface categoriaInterface = retrofit.create(CategoriaInterface.class);
-
-        Call<Categoria> call = categoriaInterface.getCategoryById(categoriaID);
-        Toast.makeText(context, call.toString(), Toast.LENGTH_SHORT).show();
-        call.enqueue(new Callback<Categoria>() {
-            @Override
-            public void onResponse(Call<Categoria> call, Response<Categoria> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    Toast.makeText(context, response.body().toString(), Toast.LENGTH_SHORT).show();
-                    callback.onCategoriaRecebida(response.body().getcNome());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Categoria> call, Throwable t) {
-                callback.onErro(t.getMessage());
-                Toast.makeText(context, "aaaaaaaaaaaaaaa", Toast.LENGTH_SHORT).show();
-            }
         });
     }
 

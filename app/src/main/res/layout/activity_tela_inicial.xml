@@ -4,13 +4,13 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#F2F2F2"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/Header"
-        android:layout_width="412dp"
-        android:layout_height="106dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:background="@drawable/template_header"
         android:orientation="vertical"
         android:paddingHorizontal="12dp"
@@ -20,13 +20,23 @@
 
         <ImageView
             android:id="@+id/Logo"
-            android:layout_width="32dp"
-            android:layout_height="49dp"
-            android:layout_marginVertical="40dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="24dp"
+            android:layout_height="36dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="6dp"
             android:scaleType="fitXY"
             android:src="@drawable/union" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#FFFFFF"
+            android:baselineAligned="false"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="107dp">
+
+        </FrameLayout>
     </LinearLayout>
 
     <TextView
@@ -35,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="28dp"
-        android:text="Olá, !"
+        android:text="Boas-vindas, "
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -79,7 +89,7 @@
         android:layout_width="194dp"
         android:layout_height="40dp"
         android:layout_marginTop="30dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="#F2F2F2"
         android:text="Cursos"
         android:textColor="#000000"
         android:textSize="15sp"
@@ -93,7 +103,7 @@
         android:layout_width="194dp"
         android:layout_height="40dp"
         android:layout_marginTop="30dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="#F2F2F2"
         android:text="Produtos"
         android:textColor="#000000"
         android:textSize="15sp"
@@ -125,29 +135,29 @@
 
     <FrameLayout
         android:id="@+id/FrameConteudo"
-        android:layout_width="385dp"
-        android:layout_height="220dp"
-        android:layout_marginTop="260dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgfotousuarioprod">
-
+        app:layout_constraintTop_toBottomOf="@+id/underline_Produtos">
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/navbar"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@drawable/bottom_nav_menu"
-        app:labelVisibilityMode="unlabeled"/>
+        app:menu="@drawable/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

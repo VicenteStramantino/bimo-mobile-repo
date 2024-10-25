@@ -22,6 +22,7 @@ public class Tela_LoginCadastro extends AppCompatActivity {
         setContentView(R.layout.activity_tela_login_cadastro);
         FirebaseAuth autenticar = FirebaseAuth.getInstance();
         FirebaseUser userLogin = autenticar.getCurrentUser();
+
         if(userLogin != null){
             Intent intent = new Intent(Tela_LoginCadastro.this, Tela_Inicial.class);
             startActivity(intent);

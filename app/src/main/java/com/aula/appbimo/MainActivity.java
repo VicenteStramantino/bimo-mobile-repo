@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-
-
     public void pegarUsuario(final UsuarioCallback callback) {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser userLogin = firebaseAuth.getCurrentUser();
@@ -136,8 +134,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
 }

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,7 +86,7 @@ public class Tela_ListaCursos extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tela__lista_cursos, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
 
         adapterCurso = new AdapterCurso(listaCurso, getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -108,7 +109,9 @@ public class Tela_ListaCursos extends Fragment {
         call.enqueue(new Callback<List<Curso>>() {
             @Override
             public void onResponse(Call<List<Curso>> call, Response<List<Curso>> response) {
+                Log.e("Tela_ListaCursos", response.body().toString());
                 if (response.isSuccessful() && response.body() != null) {
+                    Toast.makeText(getContext(), response.body().toString(), Toast.LENGTH_SHORT).show();
                     listaCurso.clear();
                     listaCurso.addAll(response.body());
                     adapterCurso.notifyDataSetChanged();
@@ -120,6 +123,7 @@ public class Tela_ListaCursos extends Fragment {
 
             @Override
             public void onFailure(Call<List<Curso>> call, Throwable t) {
+                Log.e("Tela_ListaCursos", t.getMessage());
             }
         });
     }

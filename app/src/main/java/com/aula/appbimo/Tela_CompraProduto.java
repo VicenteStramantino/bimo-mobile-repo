@@ -16,14 +16,12 @@ public class Tela_CompraProduto extends Activity {
     private TextView txtdescricao;
     private TextView txtpreco;
     private ImageView imgproduto;
-
     private MainActivity mainActivity =  new MainActivity();
-
     private TextView txtnome;
-
     private TextView txtnmusuario;
-
     private ImageView imgusuario;
+    private ImageView voltar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,34 +32,37 @@ public class Tela_CompraProduto extends Activity {
         txtnome = findViewById(R.id.precoProduto);
         imgusuario = findViewById(R.id.imgfotousuarioprod);
         txtnmusuario = findViewById(R.id.txtnmusuarioprod);
+        voltar = findViewById(R.id.voltar);
         Bundle bundle = getIntent().getExtras();
         String nome = bundle.getString("nome");
         String preco = bundle.getString("preco");
-        String imagem = bundle.getString("imagem");
+        String imagem = bundle.getString("img");
         String descricao = bundle.getString("descricao");
         int idusuario = bundle.getInt("idUsuario");
         String id = bundle.getString("id");
 
         txtdescricao.setText(descricao);
-        txtpreco.setText(preco);
+        txtpreco.setText("R$ " + preco);
         Glide.with(this).load(imagem).into(imgproduto);
         txtnome.setText(nome);
-        mainActivity.pegarUsuario(new UsuarioCallback() {
+        mainActivity.pegarUsuarioPorID(new UsuarioCallback() {
             @Override
             public void onUsuarioEncontrado(Usuario usuario) {
                 txtnmusuario.setText(usuario.getCnome());
                 Glide.with(Tela_CompraProduto.this)
                         .load(usuario.getCimgfirebase())
-                        .apply(RequestOptions.circleCropTransform()) // Aplica o efeito de círculo
+                        .apply(RequestOptions.circleCropTransform())
                         .into(imgusuario);
             }
 
             @Override
             public void onErro(String mensagemErro) {
-                // Lida com o erro
+                // Lida com o erro ao buscar o usuário
                 Log.e("Erro", mensagemErro);
             }
-        });
+        }, idusuario);
+
+        voltar.setOnClickListener(v -> finish());
 
     }
 }

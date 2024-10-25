@@ -216,7 +216,7 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
                 } else {
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                         Toast.makeText(Tela_CadastroPerfil.this, "E-mail já está em uso!", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(Tela_CadastroPerfil.this, Tela_Cadastro.class);
+                        Intent i = new Intent(Tela_CadastroPerfil.this, Tela_LoginCadastro.class);
                         startActivity(i);
                     } else {
                         Toast.makeText(Tela_CadastroPerfil.this, "Erro ao cadastrar: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

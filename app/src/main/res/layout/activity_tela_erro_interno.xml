@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Tela_ErroInterno">
+
+    <TextView
+        android:id="@+id/EsqueciMinhaSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/btn_voltar"
+        android:textColor="#80000000"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_voltar" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_voltar"
+        android:layout_width="207dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/botoes_principais"
+        android:text="Tentar novamente"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView29">
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <LinearLayout
+        android:id="@+id/Header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/template_header"
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/voltar"
+            android:layout_width="30dp"
+            android:layout_height="36dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="6dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/baseline_arrow_back_24" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#FFFFFF"
+            android:baselineAligned="false"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="107dp">
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header"
+        app:srcCompat="@drawable/error" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Algo deu errado!"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="308dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:fontFamily="@font/inter"
+        android:text="Houve um problema no servidor e esse serviço está temporariamente inacessível.\n\nPor favor, tente novamente mais tarde."
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+</androidx.constraintlayout.widget.ConstraintLayout>

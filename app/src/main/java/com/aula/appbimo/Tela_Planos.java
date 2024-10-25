@@ -2,6 +2,7 @@ package com.aula.appbimo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -10,7 +11,9 @@ import android.widget.ImageView;
 
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.aula.appbimo.FluxoLogin.Tela_Inicial;
 import com.aula.appbimo.models.CardPlano;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +55,37 @@ public class Tela_Planos extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+            }
+        });
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.home) {
+                Intent intent = new Intent(Tela_Planos.this, Tela_Inicial.class);
+                startActivity(intent);
+                item.setIcon(R.drawable.home_filled);
+                finish();
+                return true;
+            } else if (id == R.id.shop) {
+                Intent intent = new Intent(Tela_Planos.this, Tela_Planos.class);
+                startActivity(intent);
+                item.setIcon(R.drawable.baseline_star_24);
+                finish();
+                return true;
+            } else if (id == R.id.feed) {
+                // Ação para Feed
+                return true;
+            } else if (id == R.id.chat) {
+                // Ação para Chat
+                return true;
+            } else if (id == R.id.profile) {
+                // Ação para Perfil
+                return true;
+            } else {
+                return false;
             }
         });
 

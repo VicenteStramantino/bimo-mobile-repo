@@ -28,6 +28,8 @@ import com.aula.appbimo.AdapterProduto;
 import com.aula.appbimo.MainActivity;
 import com.aula.appbimo.R;
 import com.aula.appbimo.Repositories.ProdutoInterface;
+import com.aula.appbimo.Tela_Planos;
+import com.aula.appbimo.Tela_ResumoPedido;
 import com.aula.appbimo.callbacks.UsuarioCallback;
 import com.aula.appbimo.models.Produto;
 
@@ -65,7 +67,6 @@ public class Tela_Inicial extends AppCompatActivity {
     private int idUsuario = 0;
     private TextView txtBoasVindas;
     private View underline_Produtos;
-
     MainActivity mainActivity = new MainActivity();
     private View underline_Cursos;
 
@@ -97,10 +98,16 @@ public class Tela_Inicial extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.home) {
-                // Ação para Home
+                Intent intent = new Intent(Tela_Inicial.this, Tela_Inicial.class);
+                startActivity(intent);
+                item.setIcon(R.drawable.home);
+                finish();
                 return true;
             } else if (id == R.id.shop) {
-                // Ação para Loja
+                Intent intent = new Intent(Tela_Inicial.this, Tela_Planos.class);
+                startActivity(intent);
+                item.setIcon(R.drawable.baseline_star_outline_24);
+                finish();
                 return true;
             } else if (id == R.id.feed) {
                 // Ação para Feed
@@ -115,8 +122,6 @@ public class Tela_Inicial extends AppCompatActivity {
                 return false;
             }
         });
-
-
 
 
         ((Button) findViewById(R.id.btn_produtos)).setOnClickListener(new View.OnClickListener() {
