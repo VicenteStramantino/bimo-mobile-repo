@@ -45,9 +45,6 @@
             android:name=".Tela_CadastrarNovaSenha"
             android:exported="false" />
         <activity
-            android:name=".Tela_AlterarEndereco"
-            android:exported="false" />
-        <activity
             android:name=".Tela_AlterarInfoPerfil"
             android:exported="false" />
         <activity
@@ -80,7 +77,7 @@
             android:name=".FluxoLogin.Tela_CadastroPerfil"
             android:exported="false" />
         <activity
-            android:name=".FluxoLogin.Tela_EsqueciMinhaSenha"
+            android:name="Tela_EsqueciMinhaSenha"
             android:exported="false" />
         <activity
             android:name=".FluxoLogin.Tela_Login"
@@ -98,10 +95,10 @@
             android:name=".Tela_Perfil"
             android:exported="false" />
         <activity
-            android:name=".Tela_Feed"
+            android:name=".Tela_CadastroCartao"
             android:exported="false" />
         <activity
-            android:name=".Tela_CadastroCartao"
+            android:name=".Tela_Feed"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

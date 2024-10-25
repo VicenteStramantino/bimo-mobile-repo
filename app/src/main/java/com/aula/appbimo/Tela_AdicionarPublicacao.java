@@ -23,6 +23,8 @@ import com.aula.appbimo.models.Posts;
 import com.aula.appbimo.models.Usuario;
 import com.bumptech.glide.Glide;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -121,7 +123,12 @@ public class Tela_AdicionarPublicacao extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        Posts posts = new Posts(5, idUsuario, edt_descricao.getText().toString(), uriLink);
+        LocalDateTime agora = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
+        String id = agora.format(formatter);
+
+
+        Posts posts = new Posts(id, idUsuario, edt_descricao.getText().toString(), uriLink);
         PostInterface PostInterface = retrofit.create(PostInterface.class);
         Call<String> call = PostInterface.InserirPostagem(posts);
         call.enqueue(new Callback<String>() {
