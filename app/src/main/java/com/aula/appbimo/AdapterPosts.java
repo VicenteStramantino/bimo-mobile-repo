@@ -16,18 +16,29 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aula.appbimo.callbacks.UsuarioCallback;
+import com.aula.appbimo.Repositories.PostInterface;
+import com.aula.appbimo.callbacks.UsuarioCallback;
 import com.aula.appbimo.models.Curso;
 import com.aula.appbimo.models.Posts;
 import com.aula.appbimo.models.Usuario;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.ViewHolder>{
     List<Posts> listaPosts;
     Context context;
     MainActivity mainActivity = new MainActivity();
+    private Retrofit retrofit;
 
     public AdapterPosts(List<Posts> arg, Context context) {
         this.listaPosts = arg;
@@ -55,7 +66,6 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.ViewHolder>{
             }
             @Override
             public void onErro(String mensagemErro) {
-                // Lida com o erro ao buscar o usuário
                 Log.e("Erro", mensagemErro);
             }
         }, listaPosts.get(position).getiIdUsuario());
@@ -65,16 +75,104 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.ViewHolder>{
                 .into(holder.foto);
         holder.descricao.setText(listaPosts.get(position).getcTexto());
         holder.qnt_curtidas.setText(String.valueOf(listaPosts.get(position).getcCurtidas()));
+
+
+        boolean isLiked = listaPosts.get(position).isLiked();
+        updateLikeButton(holder, isLiked);
+
+
+        holder.curtidas.setOnClickListener(view -> {
+            boolean currentlyLiked = listaPosts.get(position).isLiked();
+            boolean newLikedState = !currentlyLiked;
+            listaPosts.get(position).setLiked(newLikedState);
+            updateLikeButton(holder, newLikedState);
+
+        });
+    }
+
+
+    private void updateLikeButton(AdapterPosts.ViewHolder holder, boolean isLiked) {
+        if (isLiked) {
+            holder.curtidas.setImageResource(R.drawable.coracao);
+            holder.qnt_curtidas.setText(String.valueOf(Integer.parseInt(holder.qnt_curtidas.getText().toString()) + 1));
+            curtirPostagem(listaPosts.get(holder.getAdapterPosition()).getsID());
+        } else {
+            holder.curtidas.setImageResource(R.drawable.baseline_favorite_border_24);
+            if(Integer.parseInt(holder.qnt_curtidas.getText().toString()) > 0){
+                holder.qnt_curtidas.setText(String.valueOf(Integer.parseInt(holder.qnt_curtidas.getText().toString()) - 1));
+                descurtirPostagem(listaPosts.get(holder.getAdapterPosition()).getsID());
+            }
+
+        }
+
     }
 
     public int getItemCount() {
         return listaPosts.size();
     }
 
+    public void curtirPostagem(String id) {
+        String API = "https://bimomongoapi.onrender.com/bimomongoapi/postagens/";
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(API)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        PostInterface PostInterface = retrofit.create(PostInterface.class);
+        Call<Posts> call = PostInterface.curtirPostagem(id);
+        call.enqueue(new Callback<Posts>() {
+            @Override
+            public void onResponse(Call<Posts> call, Response<Posts> response) {
+                if (response.isSuccessful()) {
+                    Posts postagemCurtida = response.body();
+                    Log.d("Postagem", "Postagem curtida: " + postagemCurtida);
+                } else {
+                    Log.e("API_ERRO", "Erro ao curtir postagem: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Posts> call, Throwable t) {
+                Log.e("API_ERRO", "Falha na requisição: " + t.getMessage());
+            }
+        });
+    }
+
+    public void descurtirPostagem(String id) {
+        String API = "https://bimomongoapi.onrender.com/bimomongoapi/postagens/";
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(API)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        PostInterface PostInterface = retrofit.create(PostInterface.class);
+        Call<Posts> call = PostInterface.descurtirPostagem(id);
+        call.enqueue(new Callback<Posts>() {
+            @Override
+            public void onResponse(Call<Posts> call, Response<Posts> response) {
+                if (response.isSuccessful()) {
+                    Posts postagemCurtida = response.body();
+                    Log.d("Postagem", "Postagem curtida: " + postagemCurtida);
+                } else {
+                    Log.e("API_ERRO", "Erro ao curtir postagem: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Posts> call, Throwable t) {
+                Log.e("API_ERRO", "Falha na requisição: " + t.getMessage());
+            }
+        });
+    }
+
+
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView perfil_user, foto;
         TextView nome_user, descricao, qnt_curtidas;
+        ImageButton curtidas;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,7 +182,7 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.ViewHolder>{
             nome_user = itemView.findViewById(R.id.nome_user);
             descricao = itemView.findViewById(R.id.descricao);
             qnt_curtidas = itemView.findViewById(R.id.qnt_curtidas);
-
+            curtidas = itemView.findViewById(R.id.like);
         }
     }
 }

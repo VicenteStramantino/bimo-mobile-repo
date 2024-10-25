@@ -25,7 +25,7 @@ public class Tela_AlterarInfoPerfil extends AppCompatActivity {
 
     private TextInputEditText InputNomeDeUsuario, InputEmail;
 
-    private AppCompatButton btn_cancelar, btn_salvar, btn_alterar_endereco, btn_alterar_senha;
+    private AppCompatButton btn_cancelar, btn_salvar, btn_alterar_senha;
 
     private MainActivity mainActivity =  new MainActivity();
 
@@ -39,7 +39,6 @@ public class Tela_AlterarInfoPerfil extends AppCompatActivity {
             InputEmail = findViewById(R.id.InputEmail);
             btn_salvar = findViewById(R.id.btn_salvar);
             btn_cancelar = findViewById(R.id.btn_cancelar);
-            btn_alterar_endereco = findViewById(R.id.alterar_endereco);
             btn_alterar_senha = findViewById(R.id.alterar_senha);
             btn_cancelar.setOnClickListener(view -> {
                 finish();
@@ -47,25 +46,6 @@ public class Tela_AlterarInfoPerfil extends AppCompatActivity {
 
             btn_salvar.setOnClickListener(view -> {
                 alterarInfo();
-            });
-            btn_alterar_endereco.setOnClickListener(view -> {
-                mainActivity.pegarUsuario(new UsuarioCallback() {
-                    @Override
-                    public void onUsuarioEncontrado(Usuario usuario) {
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("id", usuario.getId());
-                        Intent intent = new Intent(Tela_AlterarInfoPerfil.this, Tela_OperacoesEndereco.class);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-                    }
-
-                    @Override
-                    public void onErro(String mensagemErro) {
-
-                    }
-                });
-                Intent intent = new Intent(Tela_AlterarInfoPerfil.this, Tela_OperacoesEndereco.class);
-                startActivity(intent);
             });
 
             btn_alterar_senha.setOnClickListener(view -> {

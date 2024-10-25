@@ -26,6 +26,8 @@ public class Tela_CompraProduto extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_compra_produto);
+
+        // Inicializa os componentes da UI
         txtdescricao = findViewById(R.id.descricaoProduto);
         txtpreco = findViewById(R.id.tituloProduto);
         imgproduto = findViewById(R.id.imgProd);
@@ -33,6 +35,8 @@ public class Tela_CompraProduto extends Activity {
         imgusuario = findViewById(R.id.imgfotousuarioprod);
         txtnmusuario = findViewById(R.id.txtnmusuarioprod);
         voltar = findViewById(R.id.voltar);
+
+        // Recebe os dados do bundle
         Bundle bundle = getIntent().getExtras();
         String nome = bundle.getString("nome");
         String preco = bundle.getString("preco");
@@ -41,10 +45,13 @@ public class Tela_CompraProduto extends Activity {
         int idusuario = bundle.getInt("idUsuario");
         String id = bundle.getString("id");
 
+        // Atualiza a UI com as informações recebidas
         txtdescricao.setText(descricao);
         txtpreco.setText("R$ " + preco);
         Glide.with(this).load(imagem).into(imgproduto);
         txtnome.setText(nome);
+
+        // Chama o método pegarUsuarioPorID e atualiza a UI com as informações do usuário
         mainActivity.pegarUsuarioPorID(new UsuarioCallback() {
             @Override
             public void onUsuarioEncontrado(Usuario usuario) {
@@ -63,6 +70,5 @@ public class Tela_CompraProduto extends Activity {
         }, idusuario);
 
         voltar.setOnClickListener(v -> finish());
-
     }
 }

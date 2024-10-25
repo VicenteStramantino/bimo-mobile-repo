@@ -2,15 +2,17 @@ package com.aula.appbimo.models;
 
 public class Posts {
     private String id;
-    private int sID;
+    private String cID;
     private int iIdUsuario;
     private String cTexto;
     private String cImgFirebase;
     private int cCurtidas;
 
-    public Posts(String id, int sID, int iIdUsuario, String cTexto, String cImgFirebase, int cCurtidas) {
+    private boolean liked;
+
+    public Posts(String id, String cID, int iIdUsuario, String cTexto, String cImgFirebase, int cCurtidas) {
         this.id = id;
-        this.sID = sID;
+        this.cID = cID;
         this.iIdUsuario = iIdUsuario;
         this.cTexto = cTexto;
         this.cImgFirebase = cImgFirebase;
@@ -23,8 +25,8 @@ public class Posts {
         this.cImgFirebase = cImgFirebase;
         this.cCurtidas = cCurtidas;
     }
-    public Posts(int sID, int iIdUsuario, String cTexto, String cImgFirebase) {
-        this.sID = sID;
+    public Posts(String cID, int iIdUsuario, String cTexto, String cImgFirebase) {
+        this.cID = cID;
         this.iIdUsuario = iIdUsuario;
         this.cTexto = cTexto;
         this.cImgFirebase = cImgFirebase;
@@ -41,12 +43,12 @@ public class Posts {
         this.id = id;
     }
 
-    public int getsID() {
-        return sID;
+    public String getsID() {
+        return cID;
     }
 
-    public void setsID(int sID) {
-        this.sID = sID;
+    public void setsID(String cID) {
+        this.cID = cID;
     }
 
     public int getiIdUsuario() {
@@ -81,10 +83,18 @@ public class Posts {
         this.cCurtidas = cCurtidas;
     }
 
+    public boolean isLiked() {
+        return liked;
+    }
+
+    public void setLiked(boolean liked) {
+        this.liked = liked;
+    }
+
     public String toString() {
         return "Posts{" +
                 "id='" + id + '\'' +
-                ", sID=" + sID +
+                ", sID=" + cID +
                 ", iIdUsuario=" + iIdUsuario +
                 ", cTexto='" + cTexto + '\'' +
                 ", cImgFirebase='" + cImgFirebase + '\'' +
