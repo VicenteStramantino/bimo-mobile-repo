@@ -42,13 +42,10 @@
             android:name=".Tela_Planos"
             android:exported="false" />
         <activity
-            android:name=".Tela_Feed"
+            android:name=".Tela_ErroInterno"
             android:exported="false" />
         <activity
             android:name=".Tela_CadastrarNovaSenha"
-            android:exported="false" />
-        <activity
-            android:name=".Tela_OperacoesEndereco"
             android:exported="false" />
         <activity
             android:name=".Tela_AlterarInfoPerfil"
@@ -113,11 +110,10 @@
             android:name=".FluxoLogin.Tela_Inicial"
             android:exported="false" />
         <activity
-            android:name=".Tela_ErroInterno"
+            android:name=".Tela_Feed"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
