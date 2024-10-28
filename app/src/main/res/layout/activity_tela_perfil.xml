@@ -5,24 +5,40 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#F2F2F2"
     tools:context=".Tela_Perfil">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_entrar2"
-        android:layout_width="220dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/botoes_principais"
-        android:text="Editar"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="14sp"
+    <LinearLayout
+        android:id="@+id/Header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/template_header"
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailUsuario">
-    </androidx.appcompat.widget.AppCompatButton>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/Logo"
+            android:layout_width="24dp"
+            android:layout_height="36dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="6dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/union" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#FFFFFF"
+            android:baselineAligned="false"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="107dp">
+
+        </FrameLayout>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/emailUsuario"
@@ -56,47 +72,49 @@
         android:id="@+id/imageButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="25dp"
         android:backgroundTint="#00FFFFFF"
         android:src="@drawable/baseline_exit_to_app_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/Header" />
 
     <ImageButton
         android:id="@+id/imageButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="50dp"
         android:backgroundTint="#00FFFFFF"
-        android:src="@drawable/baseline_arrow_back_24"
+        android:src="@drawable/baseline_arrow_back_25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/Header" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="55dp"
         android:fontFamily="@font/inter"
         android:text="Seu perfil"
+        android:textColor="#000000"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/imageButton4"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/Header" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="55dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/inter"
         android:text="Sair"
+        android:textColor="#000000"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/Header" />
 
     <ImageView
         android:id="@+id/fotoUsuario"
@@ -162,29 +180,29 @@
         android:id="@+id/btn_cursos"
         android:layout_width="194dp"
         android:layout_height="40dp"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="#FFFFFF"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#F2F2F2"
         android:text="Cursos"
         android:textColor="#000000"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_produtos"
-        app:layout_constraintTop_toBottomOf="@+id/btn_entrar2" />
+        app:layout_constraintTop_toBottomOf="@+id/emailUsuario" />
 
     <Button
         android:id="@+id/btn_produtos"
         android:layout_width="194dp"
         android:layout_height="40dp"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="#FFFFFF"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#F2F2F2"
         android:text="Produtos"
         android:textColor="#000000"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/btn_cursos"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_entrar2" />
+        app:layout_constraintTop_toBottomOf="@+id/emailUsuario" />
 
     <View
         android:id="@+id/underline_Produtos"
@@ -207,27 +225,32 @@
         app:layout_constraintStart_toStartOf="@+id/btn_cursos"
         app:layout_constraintTop_toBottomOf="@+id/btn_cursos" />
 
-    <View
-        android:id="@+id/view_cursos"
-        android:layout_width="0dp"
-        android:layout_height="4dp"
-        android:layout_marginTop="4dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="@+id/btn_cursos"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_cursos"
-        app:layout_constraintTop_toBottomOf="@+id/btn_cursos" />
-
     <FrameLayout
         android:id="@+id/FrameConteudo"
-        android:layout_width="387dp"
-        android:layout_height="170dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/underline_Produtos">
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/navbar"
+        app:menu="@drawable/bottom_nav_menu"
+        style="@style/BottomNavigationViewStyle"
+        app:itemIconTint="@color/white"
+        app:itemBackground="@drawable/selector_nav_item_background"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_entrar2"
-        app:layout_constraintVertical_bias="0.987">
-    </FrameLayout>
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

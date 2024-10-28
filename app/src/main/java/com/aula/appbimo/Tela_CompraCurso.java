@@ -1,7 +1,10 @@
 package com.aula.appbimo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
@@ -13,6 +16,8 @@ public class Tela_CompraCurso extends Activity {
     private MainActivity mainActivity =  new MainActivity();
     private TextView txtnome;
     private ImageView voltar;
+    private Button btnComprar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +28,17 @@ public class Tela_CompraCurso extends Activity {
         imgproduto = findViewById(R.id.imgCurso);
         txtnome = findViewById(R.id.precoProduto);
         voltar = findViewById(R.id.voltar);
+        btnComprar = findViewById(R.id.btn_comprar);
+
+        btnComprar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chama o método comprar e fecha a tela
+                startActivity(new Intent(getApplicationContext(), Tela_Chat.class));
+                finish();
+            }
+        });
+
         Bundle bundle = getIntent().getExtras();
         String nome = bundle.getString("nome");
         String preco = bundle.getString("preco");

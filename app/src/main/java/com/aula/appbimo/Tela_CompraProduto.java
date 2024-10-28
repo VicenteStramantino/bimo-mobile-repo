@@ -1,8 +1,11 @@
 package com.aula.appbimo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +24,7 @@ public class Tela_CompraProduto extends Activity {
     private TextView txtnmusuario;
     private ImageView imgusuario;
     private ImageView voltar;
+    private Button btnComprar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,16 @@ public class Tela_CompraProduto extends Activity {
         imgusuario = findViewById(R.id.imgfotousuarioprod);
         txtnmusuario = findViewById(R.id.txtnmusuarioprod);
         voltar = findViewById(R.id.voltar);
+        btnComprar = findViewById(R.id.btn_comprar);
+
+        btnComprar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chama o método comprar e fecha a tela
+                startActivity(new Intent(getApplicationContext(), Tela_Chat.class));
+                finish();
+            }
+        });
 
         // Recebe os dados do bundle
         Bundle bundle = getIntent().getExtras();
@@ -44,6 +58,13 @@ public class Tela_CompraProduto extends Activity {
         String descricao = bundle.getString("descricao");
         int idusuario = bundle.getInt("idUsuario");
         String id = bundle.getString("id");
+
+        //Manda um bundle para a tela de chat
+        Bundle bundle2 = new Bundle();
+        bundle2.putString("nome", nome);
+        bundle2.putString("img", imagem);
+        Intent intent = new Intent(Tela_CompraProduto.this, Tela_Chat.class);
+        intent.putExtras(bundle2);
 
         // Atualiza a UI com as informações recebidas
         txtdescricao.setText(descricao);

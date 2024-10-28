@@ -59,30 +59,26 @@ public class Tela_Planos extends AppCompatActivity {
         });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-
+        bottomNavigationView.setSelectedItemId(R.id.shop);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.home) {
-                Intent intent = new Intent(Tela_Planos.this, Tela_Inicial.class);
-                startActivity(intent);
-                item.setIcon(R.drawable.home_filled);
-                finish();
+                startActivity(new Intent(getApplicationContext(), Tela_Inicial.class));
+                overridePendingTransition(0, 0);
                 return true;
             } else if (id == R.id.shop) {
-                Intent intent = new Intent(Tela_Planos.this, Tela_Planos.class);
-                startActivity(intent);
-                item.setIcon(R.drawable.baseline_star_24);
-                finish();
                 return true;
             } else if (id == R.id.feed) {
-                // Ação para Feed
+                startActivity(new Intent(getApplicationContext(), Tela_Feed.class));
+                overridePendingTransition(0, 0);
                 return true;
             } else if (id == R.id.chat) {
-                // Ação para Chat
+                startActivity(new Intent(getApplicationContext(), Tela_Conversas.class));
+                overridePendingTransition(0, 0);
                 return true;
             } else if (id == R.id.profile) {
-                // Ação para Perfil
+                startActivity(new Intent(getApplicationContext(), Tela_Perfil.class));
+                overridePendingTransition(0, 0);
                 return true;
             } else {
                 return false;

@@ -11,4 +11,7 @@
         <item name="cornerSize">75dp</item>
         <item name="color">@color/black</item>
     </style>
+    <style name="BottomNavigationViewStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemBackground">@drawable/selector_nav_item_background</item>
+    </style>
 </resources>

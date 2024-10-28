@@ -19,6 +19,8 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,6 +30,9 @@ import com.aula.appbimo.AdapterProduto;
 import com.aula.appbimo.MainActivity;
 import com.aula.appbimo.R;
 import com.aula.appbimo.Repositories.ProdutoInterface;
+import com.aula.appbimo.Tela_Chat;
+import com.aula.appbimo.Tela_Conversas;
+import com.aula.appbimo.Tela_Feed;
 import com.aula.appbimo.Tela_Planos;
 import com.aula.appbimo.Tela_ResumoPedido;
 import com.aula.appbimo.callbacks.UsuarioCallback;
@@ -93,36 +98,35 @@ public class Tela_Inicial extends AppCompatActivity {
         });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-
+        bottomNavigationView.setSelectedItemId(R.id.home);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.home) {
-                Intent intent = new Intent(Tela_Inicial.this, Tela_Inicial.class);
-                startActivity(intent);
-                item.setIcon(R.drawable.home);
-                finish();
                 return true;
             } else if (id == R.id.shop) {
-                Intent intent = new Intent(Tela_Inicial.this, Tela_Planos.class);
-                startActivity(intent);
-                item.setIcon(R.drawable.baseline_star_outline_24);
-                finish();
+                startActivity(new Intent(getApplicationContext(), Tela_Planos.class));
+                overridePendingTransition(0, 0);
                 return true;
             } else if (id == R.id.feed) {
-                // Ação para Feed
+                startActivity(new Intent(getApplicationContext(), Tela_Feed.class));
+                overridePendingTransition(0, 0);
                 return true;
             } else if (id == R.id.chat) {
-                // Ação para Chat
+                startActivity(new Intent(getApplicationContext(), Tela_Conversas.class));
+                overridePendingTransition(0, 0);
                 return true;
             } else if (id == R.id.profile) {
-                // Ação para Perfil
+                startActivity(new Intent(getApplicationContext(), Tela_Perfil.class));
+                overridePendingTransition(0, 0);
                 return true;
             } else {
                 return false;
             }
         });
 
+        if (savedInstanceState == null) {
+            loadFragment(new Tela_ListaProdutos());
+        }
 
         ((Button) findViewById(R.id.btn_produtos)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,6 +149,15 @@ public class Tela_Inicial extends AppCompatActivity {
                 transaction.commit();
             }
         });
+    }
+
+    private void loadFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.replace(R.id.FrameConteudo, fragment);
+
+        fragmentTransaction.commit();
     }
 
 }

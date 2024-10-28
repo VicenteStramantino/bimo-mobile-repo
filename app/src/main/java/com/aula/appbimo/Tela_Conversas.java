@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.aula.appbimo.FluxoLogin.Tela_Inicial;
 import com.aula.appbimo.models.Conversas;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -22,5 +25,32 @@ public class Tela_Conversas extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.chat);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.home) {
+                startActivity(new Intent(getApplicationContext(), Tela_Inicial.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (id == R.id.shop) {
+                startActivity(new Intent(getApplicationContext(), Tela_Planos.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (id == R.id.feed) {
+                startActivity(new Intent(getApplicationContext(), Tela_Feed.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (id == R.id.chat) {
+                return true;
+            } else if (id == R.id.profile) {
+                startActivity(new Intent(getApplicationContext(), Tela_Perfil.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else {
+                return false;
+            }
+        });
     }
 }
