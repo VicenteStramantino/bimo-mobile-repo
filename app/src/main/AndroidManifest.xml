@@ -24,9 +24,6 @@
         android:theme="@style/Theme.AppBiMO"
         tools:targetApi="31">
         <activity
-            android:name=".Tela_ErroInterno"
-            android:exported="false" />
-        <activity
             android:name=".Teste"
             android:exported="false" />
         <activity
@@ -42,10 +39,13 @@
             android:name=".Tela_Planos"
             android:exported="false" />
         <activity
-            android:name=".Tela_Feed"
+            android:name=".Tela_ErroInterno"
             android:exported="false" />
         <activity
             android:name=".Tela_CadastrarNovaSenha"
+            android:exported="false" />
+        <activity
+            android:name=".Tela_Feed"
             android:exported="false" />
         <activity
             android:name=".Tela_AlterarInfoPerfil"

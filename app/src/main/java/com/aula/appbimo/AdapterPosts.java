@@ -58,7 +58,6 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.ViewHolder>{
             @Override
             public void onUsuarioEncontrado(Usuario usuario) {
                 holder.nome_user.setText(usuario.getCnome());
-                Log.e("Foto de perfil:", usuario.getCimgfirebase());
                 Glide.with(context)
                         .load(usuario.getCimgfirebase())
                         .apply(RequestOptions.circleCropTransform()) // Aplica o efeito de círculo na imagem do usuário
@@ -78,7 +77,6 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.ViewHolder>{
 
 
         boolean isLiked = listaPosts.get(position).isLiked();
-        updateLikeButton(holder, isLiked);
 
 
         holder.curtidas.setOnClickListener(view -> {

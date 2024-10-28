@@ -6,24 +6,24 @@ public class Posts {
     private int iIdUsuario;
     private String cTexto;
     private String cImgFirebase;
-    private int cCurtidas;
+    private int iCurtidas;
 
     private boolean liked;
 
-    public Posts(String id, String cID, int iIdUsuario, String cTexto, String cImgFirebase, int cCurtidas) {
+    public Posts(String id, String cID, int iIdUsuario, String cTexto, String cImgFirebase, int iCurtidas) {
         this.id = id;
         this.cID = cID;
         this.iIdUsuario = iIdUsuario;
         this.cTexto = cTexto;
         this.cImgFirebase = cImgFirebase;
-        this.cCurtidas = cCurtidas;
+        this.iCurtidas = iCurtidas;
     }
 
-    public Posts(int iIdUsuario, String cTexto, String cImgFirebase, int cCurtidas) {
+    public Posts(int iIdUsuario, String cTexto, String cImgFirebase, int iCurtidas) {
         this.iIdUsuario = iIdUsuario;
         this.cTexto = cTexto;
         this.cImgFirebase = cImgFirebase;
-        this.cCurtidas = cCurtidas;
+        this.iCurtidas = iCurtidas;
     }
     public Posts(String cID, int iIdUsuario, String cTexto, String cImgFirebase) {
         this.cID = cID;
@@ -76,11 +76,11 @@ public class Posts {
     }
 
     public int getcCurtidas() {
-        return cCurtidas;
+        return iCurtidas;
     }
 
     public void setcCurtidas(int cCurtidas) {
-        this.cCurtidas = cCurtidas;
+        this.iCurtidas = cCurtidas;
     }
 
     public boolean isLiked() {
@@ -98,7 +98,7 @@ public class Posts {
                 ", iIdUsuario=" + iIdUsuario +
                 ", cTexto='" + cTexto + '\'' +
                 ", cImgFirebase='" + cImgFirebase + '\'' +
-                ", cCurtidas=" + cCurtidas +
+                ", cCurtidas=" + iCurtidas +
                 '}';
     }
 }
