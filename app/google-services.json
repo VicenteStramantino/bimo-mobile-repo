@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "719615377750",
+    "project_id": "bimo-repo",
+    "storage_bucket": "bimo-repo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719615377750:android:8a3fe99ff21585fd7a56f7",
+        "android_client_info": {
+          "package_name": "com.aula.appbimo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDan9XJddiFVxIUlglLzdMWMO2Hgki48Xc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

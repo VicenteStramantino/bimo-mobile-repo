@@ -1,0 +1,171 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFFFFF">
+
+    <!-- Imagem do cartão personalizada -->
+    <ImageView
+        android:id="@+id/card_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@drawable/cartao_template" />
+
+    <!-- Número do Cartão -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/NumeroCartao"
+        style="@style/TextInputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:hint="Número do Cartão"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxStrokeColor="#2CA0EC"
+        app:helperTextTextColor="#2CA0EC"
+        app:hintTextColor="#2CA0EC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_app">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputNumeroCartao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:lines="1"
+            android:maxLength="19"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Linha com vencimento e CVV -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Data de Vencimento -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Vencimento"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:hint="Vencimento"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="#2CA0EC"
+            app:helperTextTextColor="#2CA0EC"
+            app:hintTextColor="#2CA0EC"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_app">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/InputVencimento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:imeOptions="actionDone"
+                android:inputType="date"
+                android:lines="1"
+                android:maxLength="5"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- CVV -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Cvv"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:hint="CVV"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="#2CA0EC"
+            app:helperTextTextColor="#2CA0EC"
+            app:hintTextColor="#2CA0EC"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_app">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/InputCvv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:imeOptions="actionDone"
+                android:inputType="numberPassword"
+                android:lines="1"
+                android:maxLength="3"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <!-- Nome no Cartão -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/NomeCartao"
+        style="@style/TextInputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:hint="Nome no cartão"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxStrokeColor="#2CA0EC"
+        app:helperTextTextColor="#2CA0EC"
+        app:hintTextColor="#2CA0EC">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputNomeCartao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:imeOptions="actionDone"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Checkbox para salvar o cartão -->
+
+    <!-- Botão de Adicionar Cartão -->
+    <CheckBox
+        android:id="@+id/cb_save_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="30dp"
+        android:text="Salvar para compras futuras" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/botoes_principais"
+        android:backgroundTint="#00AEEF"
+        android:text="Adicionar Cartão"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>

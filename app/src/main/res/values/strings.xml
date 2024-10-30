@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BiMO</string>
+    <string name="take_photo">Tirar foto</string>
+    <string name="salvar">Salvar Foto</string>
+    <string name="bt_camera">bt_camera</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_voltar"><u>Voltar</u></string>
+</resources>

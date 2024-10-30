@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:layout_marginBaseline="5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="-12dp" >
+
+        <ImageButton
+            android:id="@+id/btn_comments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="20dp"
+            android:background="#FFFFFF"
+            android:paddingBottom="10dp"
+            android:src="@drawable/baseline_comment_24"
+            app:layout_constraintStart_toEndOf="@+id/qnt_curtidas"
+            app:layout_constraintTop_toBottomOf="@+id/descricao" />
+
+        <ImageView
+            android:id="@+id/perfil_user"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="9dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/user" />
+
+        <TextView
+            android:id="@+id/nome_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/inter"
+            android:text="Cleiton João"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/perfil_user"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/mais_opcoes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="16dp"
+            android:background="#FFFFFF"
+            android:src="@drawable/baseline_more_vert_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/foto"
+            android:layout_width="292dp"
+            android:layout_height="161dp"
+            android:layout_marginTop="45dp"
+            android:src="@drawable/post"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/descricao"
+            android:layout_width="292dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/inter"
+            android:text="Cleiton João: Mais um dia fazendo parte desse time maravilhoso!!😁😁❤️❤🙏 🙏"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/foto" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="262dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descricao" />
+
+        <TextView
+            android:id="@+id/qnt_curtidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="19dp"
+            android:text="0"
+            android:textColor="#000000"
+            app:layout_constraintStart_toEndOf="@+id/like"
+            app:layout_constraintTop_toBottomOf="@+id/descricao" />
+
+        <ImageButton
+            android:id="@+id/like"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="19dp"
+            android:background="#FFFFFF"
+            android:paddingBottom="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descricao"
+            app:srcCompat="@drawable/baseline_favorite_border_24" />= />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
