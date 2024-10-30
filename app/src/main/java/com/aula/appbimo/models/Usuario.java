@@ -199,22 +199,7 @@ public class Usuario {
         this.username = cusername;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                " sid='" + sid + '\'' +
-                ",cnome='" + cnome + '\'' +
-                ", csobrenome='" + csobrenome + '\'' +
-                ", ccpf='" + ccpf + '\'' +
-                ", cemail='" + cemail + '\'' +
-                ", ctelefone='" + ctelefone + '\'' +
-                ", ddatanascimento=" + ddatanascimento +
-                ", cidhash='" + cidhash + '\'' +
-                ", idplano=" + idplano +
-                ", cimgfirebase=" + imgFirebase +
-                ", cusername=" + username +
-                '}';
-    }
+
 }
 //"ccpf":"50248624814","cemail":"tavosouza888@gmail.com","cidhash":"QPcCSByhfmc2NRYQHEYJDFToWiM2","cnome":"Vicente","csobrenome":"Stramantino","ctelefone":"(11) 98824-8313","ddatanascimento":"16/09/2007","idplano":1,"imgfirebase":"https://firebasestorage.googleapis.com/v0/b/bimo-repo.appspot.com/o/galeria%2Fgaleria_1728349880544.jpg?alt\u003dmedia\u0026token\u003d1f9dd5cc-6ea8-4fe9-8a14-22c6ca19ff42","username":"VicenteStramantino."}
 

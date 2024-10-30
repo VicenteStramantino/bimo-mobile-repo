@@ -70,7 +70,6 @@ public class AdapterProduto extends RecyclerView.Adapter<AdapterProduto.ViewHold
                 holder.iconCategoria.setImageResource(R.drawable.baseline_table_bar_24);
             }
         } else {
-            Toast.makeText(context, "ID da categoria definido como nulo", Toast.LENGTH_SHORT).show();
             holder.iconCategoria.setImageResource(R.drawable.baseline_category_24);
         }
 

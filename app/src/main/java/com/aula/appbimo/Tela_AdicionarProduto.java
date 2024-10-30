@@ -38,6 +38,9 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
     private EditText edt_nome, edt_descricao;
     private TextInputEditText edt_valor;
 
+
+    private Intent intent = new Intent(Tela_AdicionarProduto.this, Tela_ErroInterno.class);
+
     private boolean inserirImagem = false;
     private Button btn_publicar;
     private int idUsuario = 0;
@@ -126,7 +129,7 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
         try {
             valor = Double.parseDouble(valorSomenteNumero.replace(",", "."));
         } catch (NumberFormatException e) {
-            Log.e("Erro na transformação do numero", "Valor inválido: " + valorSomenteNumero);
+            startActivity(intent);
         }
 
         String nome = edt_nome.getText().toString();

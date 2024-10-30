@@ -24,8 +24,6 @@ import com.aula.appbimo.models.Usuario;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import retrofit2.Call;
