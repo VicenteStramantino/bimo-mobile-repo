@@ -51,6 +51,7 @@ import com.aula.appbimo.Tela_AdicionarProduto;
 import com.aula.appbimo.Tela_Perfil;
 import com.aula.appbimo.models.Usuario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -69,7 +70,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class Tela_Inicial extends AppCompatActivity {
     private Tela_ListaProdutos tela_ListaProdutos = new Tela_ListaProdutos();
     private Tela_ListaCursos tela_ListaCursos = new Tela_ListaCursos();
-    private int idUsuario = 0;
     private TextView txtBoasVindas;
     private View underline_Produtos;
     MainActivity mainActivity = new MainActivity();
@@ -83,11 +83,13 @@ public class Tela_Inicial extends AppCompatActivity {
         txtBoasVindas = findViewById(R.id.BoasVindas);
         underline_Produtos = findViewById(R.id.underline_Produtos);
         underline_Cursos = findViewById(R.id.underline_Cursos);
+
         mainActivity.pegarUsuario(new UsuarioCallback() {
             @Override
             public void onUsuarioEncontrado(Usuario usuario) {
                 txtBoasVindas.setText("Boas-vindas, " + usuario.getCnome());
 
+                tela_ListaProdutos.setUserId(0);
             }
 
             @Override
@@ -128,18 +130,18 @@ public class Tela_Inicial extends AppCompatActivity {
             loadFragment(new Tela_ListaProdutos());
         }
 
-        ((Button) findViewById(R.id.btn_produtos)).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_produtos).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 underline_Produtos.setVisibility(View.VISIBLE);
                 underline_Cursos.setVisibility(View.INVISIBLE);
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.FrameConteudo, tela_ListaProdutos);
-                transaction.commit();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.FrameConteudo, tela_ListaProdutos)
+                        .commit();
             }
         });
 
-        ((Button) findViewById(R.id.btn_cursos)).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_cursos).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 underline_Produtos.setVisibility(View.INVISIBLE);
@@ -147,6 +149,14 @@ public class Tela_Inicial extends AppCompatActivity {
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.FrameConteudo, tela_ListaCursos);
                 transaction.commit();
+            }
+        });
+
+        findViewById(R.id.btn_AddProduto).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Tela_AdicionarProduto.class));
+                finish();
             }
         });
     }

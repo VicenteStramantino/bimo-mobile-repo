@@ -36,8 +36,7 @@ public class Tela_AlterarProduto extends AppCompatActivity {
     private ImageView btimg;
     private EditText edt_nome, edt_descricao;
     private TextInputEditText edt_valor;
-
-    private boolean inserirImagem = false;
+    private boolean inserirImagem = true;
     private Button btn_publicar;
     private int idUsuario = 108;
     private String estadoProduto = "null";
@@ -66,6 +65,29 @@ public class Tela_AlterarProduto extends AppCompatActivity {
         eletronicos = findViewById(R.id.eletronicos);
         roupas = findViewById(R.id.roupas);
         moveis = findViewById(R.id.moveis);
+        edt_valor = findViewById(R.id.InputPrecoAlterar);
+        edt_nome = findViewById(R.id.editTextNomeAlterar);
+        edt_descricao = findViewById(R.id.edt_descricaoPostAlterar);
+
+
+        //carregar valores atuais
+        Bundle bundle = getIntent().getExtras();
+        Glide.with(this).load(bundle.getString("img")).into(btimg);
+        edt_nome.setText(bundle.getString("nome"));
+        edt_valor.setText(bundle.getString("preco"));
+        edt_descricao.setText(bundle.getString("descricao"));
+        if (bundle.getString("estado").equals("Novo")) {
+            btNovo.setChecked(true);
+        } else if (bundle.getString("estado").equals("Usado")) {
+            btUsado.setChecked(true);
+        }
+        if (bundle.getString("categoria").equalsIgnoreCase("prod_1")) {
+            eletronicos.setChecked(true);
+        } else if (bundle.getString("categoria").equalsIgnoreCase("prod_2")) {
+            roupas.setChecked(true);
+        } else if (bundle.getString("categoria").equalsIgnoreCase("prod_3")) {
+            moveis.setChecked(true);
+        }
 
         btimg.setOnClickListener(v2 -> {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -107,21 +129,18 @@ public class Tela_AlterarProduto extends AppCompatActivity {
 
         radioGroup2.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == eletronicos.getId()) {
-                categoria = "PROD_1";
+                categoria = "prod_1";
             } else if (checkedId == roupas.getId()) {
-                categoria = "PROD_2";
+                categoria = "prod_2";
             } else if (checkedId == moveis.getId()) {
-                categoria = "PROD_3";
+                categoria = "prod_3";
             }
         });
+
+
+        findViewById(R.id.fecharTela).setOnClickListener(v -> finish());
     }
-
-
     private void alterarProduto(int idUsuario, String uriLink, int idproduto) {
-        edt_valor = findViewById(R.id.InputPrecoAlterar);
-        edt_nome = findViewById(R.id.editTextNomeAlterar);
-        edt_descricao = findViewById(R.id.edt_descricaoPostAlterar);
-
         String valorComMoeda = edt_valor.getText().toString();
         String valorSomenteNumero = valorComMoeda.replaceAll("[^\\d.,]", "");
         double valor = 0;
@@ -166,9 +185,6 @@ public class Tela_AlterarProduto extends AppCompatActivity {
         Intent intent = new Intent(Tela_AlterarProduto.this, Tela_Perfil.class);
         startActivity(intent);
     }
-
-
-
 
     private ActivityResultLauncher<Intent> resultLauncherGaleria = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),

@@ -16,7 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aula.appbimo.Repositories.CategoriaInterface;
+import com.aula.appbimo.callbacks.UsuarioCallback;
 import com.aula.appbimo.models.Categoria;
+import com.aula.appbimo.models.Usuario;
 import com.bumptech.glide.Glide;
 
 import com.aula.appbimo.models.Produto;
@@ -32,8 +34,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class AdapterProduto extends RecyclerView.Adapter<AdapterProduto.ViewHolder>{
     List<Produto> listaProduto;
     Context context;
+    MainActivity mainActivity = new MainActivity();
 
-    public AdapterProduto(List<Produto> arg, Context context){
+    public AdapterProduto(List<Produto> arg, Context context) {
         this.listaProduto = arg;
         this.context = context;
     }
@@ -74,10 +77,27 @@ public class AdapterProduto extends RecyclerView.Adapter<AdapterProduto.ViewHold
             holder.iconCategoria.setImageResource(R.drawable.baseline_category_24);
         }
 
-        // Configurar o clique do item para abrir a Tela_CompraProduto
+        Intent intent = new Intent();
+
+        mainActivity.pegarUsuario(new UsuarioCallback() {
+            @Override
+            public void onUsuarioEncontrado(Usuario usuario) {
+                // Agora, você pode definir o tipo de intent no callback
+                if (produto.getIdUsuario() == usuario.getId()) {
+                    intent.setClass(holder.itemView.getContext(), Tela_AlterarProduto.class);
+                } else {
+                    intent.setClass(holder.itemView.getContext(), Tela_CompraProduto.class);
+                }
+            }
+
+            @Override
+            public void onErro(String mensagemErro) {
+                // Lida com o erro
+                Log.e("Erro", mensagemErro);
+            }
+        });
+
         holder.itemView.setOnClickListener(view -> {
-            Intent intent = new Intent(holder.itemView.getContext(), Tela_CompraProduto.class);
-            Log.e("Produto: ", produto.toString());
             Bundle bundle = new Bundle();
             bundle.putString("nome", produto.getcNome());
             bundle.putString("preco", String.valueOf(produto.getFvalor()));
@@ -85,8 +105,15 @@ public class AdapterProduto extends RecyclerView.Adapter<AdapterProduto.ViewHold
             bundle.putString("id", String.valueOf(produto.getSid()));
             bundle.putInt("idUsuario", produto.getIdUsuario());
             bundle.putString("descricao", produto.getcDescricao());
+            bundle.putString("estado", produto.getcEstado());
+            bundle.putString("categoria", produto.getIdCategoria());
             intent.putExtras(bundle);
-            holder.itemView.getContext().startActivity(intent);
+
+            if (intent.getComponent() != null) {
+                holder.itemView.getContext().startActivity(intent);
+            } else {
+                Log.e("Erro", "Intent não foi definida corretamente.");
+            }
         });
     }
 

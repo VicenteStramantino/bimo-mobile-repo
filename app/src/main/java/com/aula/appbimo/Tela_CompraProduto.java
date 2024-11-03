@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aula.appbimo.callbacks.UsuarioCallback;
 import com.aula.appbimo.models.Usuario;
@@ -41,36 +42,22 @@ public class Tela_CompraProduto extends Activity {
         voltar = findViewById(R.id.voltar);
         btnComprar = findViewById(R.id.btn_comprar);
 
-        btnComprar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Chama o método comprar e fecha a tela
-                startActivity(new Intent(getApplicationContext(), Tela_Chat.class));
-                finish();
-            }
-        });
-
         // Recebe os dados do bundle
         Bundle bundle = getIntent().getExtras();
         String nome = bundle.getString("nome");
-        String preco = bundle.getString("preco");
         String imagem = bundle.getString("img");
+        String preco = bundle.getString("preco");
         String descricao = bundle.getString("descricao");
         int idusuario = bundle.getInt("idUsuario");
         String id = bundle.getString("id");
-
-        //Manda um bundle para a tela de chat
-        Bundle bundle2 = new Bundle();
-        bundle2.putString("nome", nome);
-        bundle2.putString("img", imagem);
-        Intent intent = new Intent(Tela_CompraProduto.this, Tela_Chat.class);
-        intent.putExtras(bundle2);
 
         // Atualiza a UI com as informações recebidas
         txtdescricao.setText(descricao);
         txtpreco.setText("R$ " + preco);
         Glide.with(this).load(imagem).into(imgproduto);
         txtnome.setText(nome);
+
+        Bundle bundle2 = new Bundle();
 
         // Chama o método pegarUsuarioPorID e atualiza a UI com as informações do usuário
         mainActivity.pegarUsuarioPorID(new UsuarioCallback() {
@@ -81,6 +68,9 @@ public class Tela_CompraProduto extends Activity {
                         .load(usuario.getCimgfirebase())
                         .apply(RequestOptions.circleCropTransform())
                         .into(imgusuario);
+
+                bundle2.putString("nome", usuario.getCnome());
+                bundle2.putString("img", usuario.getCimgfirebase());
             }
 
             @Override
@@ -89,6 +79,16 @@ public class Tela_CompraProduto extends Activity {
                 Log.e("Erro", mensagemErro);
             }
         }, idusuario);
+
+        btnComprar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Tela_CompraProduto.this, Tela_Chat.class);
+                intent.putExtras(bundle2);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         voltar.setOnClickListener(v -> finish());
     }

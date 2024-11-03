@@ -24,6 +24,12 @@
         android:theme="@style/Theme.AppBiMO"
         tools:targetApi="31">
         <activity
+            android:name=".Tela_ResumoProduto"
+            android:exported="false" />
+        <activity
+            android:name=".Tela_Dashboard"
+            android:exported="false" />
+        <activity
             android:name=".Teste"
             android:exported="false" />
         <activity
@@ -61,9 +67,6 @@
             android:exported="false" />
         <activity
             android:name=".Tela_AdicionarPublicacao"
-            android:exported="false" />
-        <activity
-            android:name=".Tela_Conversas"
             android:exported="false" />
         <activity
             android:name=".Tela_AlterarProduto"
@@ -108,6 +111,9 @@
             android:exported="false" />
         <activity
             android:name=".Tela_Chat"
+            android:exported="false" />
+        <activity
+            android:name=".Tela_Conversas"
             android:exported="false" />
         <activity
             android:name=".FluxoLogin.Tela_Inicial"

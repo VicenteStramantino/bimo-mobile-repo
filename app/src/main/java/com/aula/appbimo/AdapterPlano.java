@@ -1,5 +1,7 @@
 package com.aula.appbimo;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,9 +66,14 @@ public class AdapterPlano extends RecyclerView.Adapter<AdapterPlano.CardViewHold
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
-                        // Agora você tem a posição do card que foi clicado
-                        Toast.makeText(v.getContext(), "Botão clicado no card: " + titleTextView.getText(), Toast.LENGTH_SHORT).show();
-                        // Aqui você pode fazer qualquer ação baseada na posição
+                        Bundle bundle = new Bundle();
+                        bundle.putString("nome", titleTextView.getText().toString());
+                        bundle.putString("descricao", descriptionTextView.getText().toString());
+                        bundle.putString("preco", precoTextView.getText().toString());
+                        Intent intent = new Intent(v.getContext(), Tela_ResumoPedido.class);
+                        intent.putExtras(bundle);
+
+                        v.getContext().startActivity(intent);
                     }
                 }
             });

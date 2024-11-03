@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,15 @@ public class Tela_ListaProdutos extends Fragment {
 
     List<Produto> listaProduto = new ArrayList<>();
     AdapterProduto adapterProduto;
+    private int userID = 0;
+
+    public void setUserId(int userId) {
+        this.userID = userId;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
 
     public Tela_ListaProdutos() {
         // Required empty public constructor
@@ -76,10 +86,15 @@ public class Tela_ListaProdutos extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        buscarProdutos();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_tela__lista_produtos, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
@@ -88,8 +103,6 @@ public class Tela_ListaProdutos extends Fragment {
         adapterProduto = new AdapterProduto(listaProduto, getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapterProduto);
-
-        buscarProdutos();
 
         return view;
     }
@@ -108,7 +121,13 @@ public class Tela_ListaProdutos extends Fragment {
             public void onResponse(Call<List<Produto>> call, Response<List<Produto>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     listaProduto.clear();
-                    listaProduto.addAll(response.body());
+
+                    for (Produto p : response.body()) {
+                        if (userID == 0 || p.getIdUsuario() == userID) {
+                            listaProduto.add(p);
+                        }
+                    }
+
                     adapterProduto.notifyDataSetChanged();
                 }
             }

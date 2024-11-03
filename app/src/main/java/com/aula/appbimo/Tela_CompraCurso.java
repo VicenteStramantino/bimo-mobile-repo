@@ -13,7 +13,6 @@ public class Tela_CompraCurso extends Activity {
     private TextView txtdescricao;
     private TextView txtpreco;
     private ImageView imgproduto;
-    private MainActivity mainActivity =  new MainActivity();
     private TextView txtnome;
     private ImageView voltar;
     private Button btnComprar;

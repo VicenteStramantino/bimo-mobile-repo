@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.aula.appbimo.FluxoLogin.Tela_Inicial;
@@ -73,6 +74,14 @@ public class Tela_Feed extends AppCompatActivity {
                 return true;
             } else {
                 return false;
+            }
+        });
+
+        findViewById(R.id.btn_AddPublicacao).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Tela_AdicionarPublicacao.class));
+                finish();
             }
         });
 

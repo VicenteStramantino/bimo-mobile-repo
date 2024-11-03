@@ -1,45 +1,24 @@
 package com.aula.appbimo.models;
 
+import com.google.gson.Gson;
+
 public class Usuario {
-
-
     public Integer sid;
-
     private String cnome;
-
     private String csobrenome;
-
     private String ccpf;
-
-
     private String cemail;
-
-
     private String ccnpj;
-
-
     private String ctelefone;
-
-
     private String ddatanascimento;
-
-
     private String clinklinkedin;
-
-
-
     private String cidhash;
-
-
     private String cespecialidadeprofissional;
-
     private int idplano;
-
     private String imgFirebase;
+    private String cusername;
 
-    private String username;
-
-    public Usuario(String cnome, String csobrenome, String ccpf, String cemail, String ccnpj, String ctelefone, String ddatanascimento, String clinklinkedin, String cidhash, String cespecialidadeprofissional, int plano, String imgfirebase, String username) {
+    public Usuario(String cnome, String csobrenome, String ccpf, String cemail, String ccnpj, String ctelefone, String ddatanascimento, String clinklinkedin, String cidhash, String cespecialidadeprofissional, int plano, String imgfirebase, String cusername) {
         this.cnome = cnome;
         this.csobrenome = csobrenome;
         this.ccpf = ccpf;
@@ -51,7 +30,7 @@ public class Usuario {
         this.cidhash = cidhash;
         this.cespecialidadeprofissional = cespecialidadeprofissional;
         this.idplano = plano;
-        this.username = username;
+        this.cusername = cusername;
         this.imgFirebase = imgfirebase;
     }
 
@@ -59,7 +38,7 @@ public class Usuario {
 
     }
 
-    public Usuario(String cnome, String csobrenome, String ccpf, String cemail, String ctelefone, String ddatanascimento,  String cidhash, int plano, String imgfirebase, String username) {
+    public Usuario(String cnome, String csobrenome, String ccpf, String cemail, String ctelefone, String ddatanascimento,  String cidhash, int plano, String imgfirebase, String cusername) {
         this.cnome = cnome;
         this.csobrenome = csobrenome;
         this.ccpf = ccpf;
@@ -68,10 +47,10 @@ public class Usuario {
         this.ddatanascimento = ddatanascimento;
         this.cidhash = cidhash;
         this.idplano = plano;
-        this.username = username;
+        this.cusername = cusername;
         this.imgFirebase = imgfirebase;
     }
-    public Usuario(int id, String cnome, String csobrenome, String ccpf, String cemail, String ctelefone, String ddatanascimento,  String cidhash, int plano, String imgfirebase, String username) {
+    public Usuario(int id, String cnome, String csobrenome, String ccpf, String cemail, String ctelefone, String ddatanascimento,  String cidhash, int plano, String imgfirebase, String cusername) {
         this.sid = id;
         this.cnome = cnome;
         this.csobrenome = csobrenome;
@@ -81,7 +60,7 @@ public class Usuario {
         this.ddatanascimento = ddatanascimento;
         this.cidhash = cidhash;
         this.idplano = plano;
-        this.username = username;
+        this.cusername = cusername;
         this.imgFirebase = imgfirebase;
     }
 
@@ -191,30 +170,33 @@ public class Usuario {
         this.imgFirebase = cimgfirebase;
     }
 
-    public String getCusername() {
-        return username;
+    public String getcusername() {
+        return cusername;
     }
 
-    public void setCusername(String cusername) {
-        this.username = cusername;
+    public void setcusername(String ccusername) {
+        this.cusername = ccusername;
     }
 
     @Override
     public String toString() {
-        return "{" +
-                " sid='" + sid + '\'' +
-                ",cnome='" + cnome + '\'' +
-                ", csobrenome='" + csobrenome + '\'' +
-                ", ccpf='" + ccpf + '\'' +
-                ", cemail='" + cemail + '\'' +
-                ", ctelefone='" + ctelefone + '\'' +
-                ", ddatanascimento=" + ddatanascimento +
-                ", cidhash='" + cidhash + '\'' +
-                ", idplano=" + idplano +
-                ", cimgfirebase=" + imgFirebase +
-                ", cusername=" + username +
+        return "Usuario{" +
+                "\"sid\":" + sid + ",\n" +
+                "\"cnome\":'" + cnome + "',\n" +
+                "\"csobrenome\":'" + csobrenome + "',\n" +
+                "\"ccpf\":'" + ccpf + "',\n" +
+                "\"cemail\":'" + cemail + "',\n" +
+                "\"ccnpj\":'" + ccnpj + "',\n" +
+                "\"ctelefone\":'" + ctelefone + "',\n" +
+                "\"ddatanascimento\":'" + ddatanascimento + "',\n" +
+                "\"clinklinkedin\":'" + clinklinkedin + "',\n" +
+                "\"cidhash\":'" + cidhash + "',\n" +
+                "\"cespecialidadeprofissional\":'" + cespecialidadeprofissional + "',\n" +
+                "\"idplano\":" + idplano + ",\n" +
+                "\"imgFirebase\":'" + imgFirebase + "',\n" +
+                "\"cusername\":'" + cusername + "'\n" +
                 '}';
     }
 }
-//"ccpf":"50248624814","cemail":"tavosouza888@gmail.com","cidhash":"QPcCSByhfmc2NRYQHEYJDFToWiM2","cnome":"Vicente","csobrenome":"Stramantino","ctelefone":"(11) 98824-8313","ddatanascimento":"16/09/2007","idplano":1,"imgfirebase":"https://firebasestorage.googleapis.com/v0/b/bimo-repo.appspot.com/o/galeria%2Fgaleria_1728349880544.jpg?alt\u003dmedia\u0026token\u003d1f9dd5cc-6ea8-4fe9-8a14-22c6ca19ff42","username":"VicenteStramantino."}
+//"ccpf":"50248624814","cemail":"tavosouza888@gmail.com","cidhash":"QPcCSByhfmc2NRYQHEYJDFToWiM2","cnome":"Vicente","csobrenome":"Stramantino","ctelefone":"(11) 98824-8313","ddatanascimento":"16/09/2007","idplano":1,"imgfirebase":"https://firebasestorage.googleapis.com/v0/b/bimo-repo.appspot.com/o/galeria%2Fgaleria_1728349880544.jpg?alt\u003dmedia\u0026token\u003d1f9dd5cc-6ea8-4fe9-8a14-22c6ca19ff42","cusername":"VicenteStramantino."}
 

@@ -45,17 +45,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/inter_bold"
-        android:text="Cadastrar catão"
+        android:text="Cadastrar cartão"
         android:textColor="#000000"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/btn_voltar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Header" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btn_voltar"
         android:layout_width="40dp"
         android:layout_height="37dp"
         android:layout_marginStart="32dp"
@@ -67,7 +67,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="616dp"
+        android:layout_height="600dp"
         android:layout_marginTop="12dp"
         android:background="#F2F2F2"
         android:orientation="vertical"
@@ -110,9 +110,7 @@
                 android:id="@+id/InputNumeroCartao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:digits="0123456789"
                 android:imeOptions="actionDone"
-                android:inputType="number"
                 android:lines="1"
                 android:maxLength="19"
                 android:maxLines="1" />
@@ -149,7 +147,6 @@
                     android:id="@+id/InputVencimento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:digits="0123456789"
                     android:imeOptions="actionDone"
                     android:inputType="date"
                     android:lines="1"
@@ -182,7 +179,6 @@
                     android:id="@+id/InputCvv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:digits="0123456789"
                     android:imeOptions="actionDone"
                     android:inputType="numberPassword"
                     android:lines="1"
@@ -196,44 +192,39 @@
             android:id="@+id/NomeCartao"
             style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:hint="Nome no cartão"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:hint="Número no Cartão"
             app:boxCornerRadiusBottomEnd="20dp"
             app:boxCornerRadiusBottomStart="20dp"
             app:boxCornerRadiusTopEnd="20dp"
             app:boxCornerRadiusTopStart="20dp"
             app:boxStrokeColor="#2CA0EC"
             app:helperTextTextColor="#2CA0EC"
-            app:hintTextColor="#2CA0EC">
+            app:hintTextColor="#2CA0EC"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_app">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/InputNomeCartao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:digits="0123456789"
                 android:imeOptions="actionDone"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:lines="1"
+                android:maxLines="1"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Checkbox para salvar o cartão -->
-        <CheckBox
-            android:id="@+id/cb_save_card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Salvar para compras futuras" />
-
         <!-- Botão de Adicionar Cartão -->
-
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_add_card"
+            android:id="@+id/prosseguir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="@drawable/botoes_principais"
             android:backgroundTint="#00AEEF"
-            android:text="Adicionar Cartão"
+            android:text="Efetuar pagamento"
             android:textColor="#FFFFFF" />
 
     </LinearLayout>
