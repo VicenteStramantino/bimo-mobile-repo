@@ -1,5 +1,6 @@
 package com.aula.appbimo.FluxoLogin;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import com.aula.appbimo.AdapterProduto;
 import com.aula.appbimo.R;
 import com.aula.appbimo.Repositories.CursoInterface;
 import com.aula.appbimo.Repositories.ProdutoInterface;
+import com.aula.appbimo.Tela_ErroInterno;
 import com.aula.appbimo.models.Curso;
 import com.aula.appbimo.models.Produto;
 
@@ -111,19 +113,20 @@ public class Tela_ListaCursos extends Fragment {
             public void onResponse(Call<List<Curso>> call, Response<List<Curso>> response) {
                 Log.e("Tela_ListaCursos", response.body().toString());
                 if (response.isSuccessful() && response.body() != null) {
-                    Toast.makeText(getContext(), response.body().toString(), Toast.LENGTH_SHORT).show();
                     listaCurso.clear();
                     listaCurso.addAll(response.body());
                     adapterCurso.notifyDataSetChanged();
                 }
                 else {
-                    Toast.makeText(getContext(), "Cursos não encontrados", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getContext(), Tela_ErroInterno.class);
+                    startActivity(intent);
                 }
             }
 
             @Override
             public void onFailure(Call<List<Curso>> call, Throwable t) {
-                Log.e("Tela_ListaCursos", t.getMessage());
+                Intent intent = new Intent(getContext(), Tela_ErroInterno.class);
+                startActivity(intent);
             }
         });
     }

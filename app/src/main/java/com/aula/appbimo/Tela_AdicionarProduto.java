@@ -41,15 +41,15 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
     private TextInputEditText edt_valor;
     private boolean inserirImagem = false;
     private Button btn_publicar;
+    private int idUsuario = 0;
     private String estadoProduto = "null";
     private Retrofit retrofit;
     private RadioGroup radioGroupEstado, radioGroup2;
     private RadioButton btNovo, btUsado, eletronicos, roupas, moveis;
     private Map<String, String> docData = new HashMap<>();
     private DatabaseFotoGeral databaseFotoGeral = new DatabaseFotoGeral();
-
+    private Intent intent = new Intent(Tela_AdicionarProduto.this, Tela_ErroInterno.class);
     private MainActivity  mainActivity =  new MainActivity();
-
     private String categoria = "";
 
     @Override
@@ -71,6 +71,27 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             resultLauncherGaleria.launch(intent);
         });
+
+//        btn_publicar.setOnClickListener(v -> {
+//            Handler handler = new Handler(Looper.getMainLooper());
+//            handler.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    if (idUsuario != 0) {
+//                        if(inserirImagem == false) {
+//                            Toast.makeText(Tela_AdicionarProduto.this, "Escolha uma imagem para que o produto possa ser publicado.", Toast.LENGTH_SHORT).show();
+//                        }
+//                        else{
+//                            databaseFotoGeral.uploadFoto(Tela_AdicionarProduto.this, btimg, docData, uriLink -> {
+//                                adicionarProdutoNoBanco(idUsuario, uriLink);
+//                            });
+//                        }
+//                    } else {
+//                        handler.postDelayed(this, 500);
+//                    }
+//                }
+//            }, 500);
+//        });
 
         btn_publicar.setOnClickListener(v -> {
             mainActivity.pegarUsuario(new UsuarioCallback() {
@@ -126,7 +147,6 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
 
 
     private void adicionarProdutoNoBanco(int idUsuario, String uriLink) {
-        Log.e("Tela_AdicionarProdutosad", uriLink);
         edt_valor = findViewById(R.id.InputPrecoAlterar);
         edt_nome = findViewById(R.id.editTextNomeAlterar);
         edt_descricao = findViewById(R.id.edt_descricaoPostAlterar);
@@ -137,7 +157,7 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
         try {
             valor = Double.parseDouble(valorSomenteNumero.replace(",", "."));
         } catch (NumberFormatException e) {
-            Log.e("Erro na transformação do numero", "Valor inválido: " + valorSomenteNumero);
+            startActivity(intent);
         }
 
         String nome = edt_nome.getText().toString();
@@ -163,13 +183,11 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
                 .build();
 
         Produto produto = new Produto(nome, categoria, descricao, valor, idUsuario, estadoProduto, uriLink);
-        Log.e("Produto", produto.toString());
         ProdutoInterface produtoInterface = retrofit.create(ProdutoInterface.class);
         Call<String> call = produtoInterface.inserirProduto(produto);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                Log.e("API_ERRO", response.message());
                 if (response.isSuccessful()) {
                     Toast.makeText(Tela_AdicionarProduto.this, "Produto adicionado com sucesso!", Toast.LENGTH_SHORT).show();
                 } else {

@@ -1,11 +1,11 @@
 package com.aula.appbimo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -51,12 +51,14 @@ public class DatabaseFotoGeral {
                                     }
                                 })
                                 .addOnFailureListener(e -> {
-                                    Toast.makeText(c, "Falha ao obter a URL da imagem.", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(c, Tela_ErroInterno.class);
+                                    c.startActivity(intent);
                                 });
                     }
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(c, "Algo deu errado!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(c, Tela_ErroInterno.class);
+                    c.startActivity(intent);;
                 });
     }
 }

@@ -2,53 +2,24 @@ package com.aula.appbimo.FluxoLogin;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.aula.appbimo.AdapterProduto;
 import com.aula.appbimo.MainActivity;
 import com.aula.appbimo.R;
-import com.aula.appbimo.Repositories.ProdutoInterface;
-import com.aula.appbimo.Tela_Chat;
 import com.aula.appbimo.Tela_Conversas;
 import com.aula.appbimo.Tela_Feed;
-import com.aula.appbimo.Tela_Planos;
-import com.aula.appbimo.Tela_ResumoPedido;
-import com.aula.appbimo.callbacks.UsuarioCallback;
-import com.aula.appbimo.models.Produto;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import com.aula.appbimo.Repositories.UsuarioInterface;
-import com.aula.appbimo.Tela_AdicionarProduto;
 import com.aula.appbimo.Tela_Perfil;
+import com.aula.appbimo.Tela_Planos;
+import com.aula.appbimo.callbacks.UsuarioCallback;
 import com.aula.appbimo.models.Usuario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -70,6 +41,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class Tela_Inicial extends AppCompatActivity {
     private Tela_ListaProdutos tela_ListaProdutos = new Tela_ListaProdutos();
     private Tela_ListaCursos tela_ListaCursos = new Tela_ListaCursos();
+    private int idUsuario = 0;
     private TextView txtBoasVindas;
     private View underline_Produtos;
     MainActivity mainActivity = new MainActivity();
@@ -83,7 +55,6 @@ public class Tela_Inicial extends AppCompatActivity {
         txtBoasVindas = findViewById(R.id.BoasVindas);
         underline_Produtos = findViewById(R.id.underline_Produtos);
         underline_Cursos = findViewById(R.id.underline_Cursos);
-
         mainActivity.pegarUsuario(new UsuarioCallback() {
             @Override
             public void onUsuarioEncontrado(Usuario usuario) {
