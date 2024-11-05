@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.aula.appbimo.MainActivity;
 import com.aula.appbimo.R;
+import com.aula.appbimo.Tela_AdicionarProduto;
 import com.aula.appbimo.Tela_Conversas;
 import com.aula.appbimo.Tela_Feed;
 import com.aula.appbimo.Tela_Perfil;

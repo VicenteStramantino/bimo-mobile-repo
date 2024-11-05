@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2F2F2"
+    android:textAlignment="center"
     tools:context=".Tela_ResumoPedido">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -94,8 +95,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView6"
-        android:layout_width="305dp"
-        android:layout_height="380dp"
+        android:layout_width="394dp"
+        android:layout_height="560dp"
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -104,18 +105,18 @@
 
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="51dp"
-            android:layout_height="88dp"
+            android:layout_width="66dp"
+            android:layout_height="116dp"
             android:layout_marginStart="43dp"
             android:layout_marginTop="32dp"
             app:srcCompat="@drawable/union" />
 
         <TextView
             android:id="@+id/tituloPlano"
-            android:layout_width="202dp"
+            android:layout_width="234dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="40dp"
             android:fontFamily="@font/inter_bold"
             android:text="Plano \n&lt;Nome&gt;"
             android:textAlignment="center"
@@ -125,19 +126,20 @@
         <TextView
             android:id="@+id/descricaoPlano"
             android:layout_width="wrap_content"
-            android:layout_height="227dp"
+            android:layout_height="369dp"
             android:layout_gravity="bottom"
             android:layout_marginStart="43dp"
             android:layout_marginEnd="29dp"
             android:fontFamily="@font/inter"
             android:text="Ideal para empresas que desejam aumentar sua visibilidade online. Inclui anúncios em banners laterais e rodapés, com 0 impressões garantidas por mês."
+            android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView5"
-        android:layout_width="305dp"
+        android:layout_width="394dp"
         android:layout_height="82dp"
         android:layout_marginTop="1dp"
         android:background="@drawable/valor_total"
@@ -157,8 +159,8 @@
 
         <TextView
             android:id="@+id/precoPlano"
-            android:layout_width="189dp"
-            android:layout_height="59dp"
+            android:layout_width="281dp"
+            android:layout_height="55dp"
             android:layout_gravity="end"
             android:fontFamily="@font/inter"
             android:gravity="bottom|center"
@@ -168,7 +170,7 @@
 
         <TextView
             android:id="@+id/textView27"
-            android:layout_width="wrap_content"
+            android:layout_width="74dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_marginEnd="20dp"

@@ -9,6 +9,8 @@ import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.aula.appbimo.FluxoLogin.Tela_Cadastro;
 import com.aula.appbimo.callbacks.UsuarioCallback;
 import com.aula.appbimo.models.Usuario;
 import com.google.android.material.textfield.TextInputEditText;
@@ -49,6 +52,15 @@ public class Tela_EsqueciMinhaSenha extends AppCompatActivity {
         });
         btn_trocar.setOnClickListener(view -> {
             trocarSenha();
+        });
+
+        TextView cadastrar = findViewById(R.id.btn_cadastrar);
+        cadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Tela_EsqueciMinhaSenha.this, Tela_Cadastro.class));
+                finish();
+            }
         });
 
         InputTelefone.addTextChangedListener(new TextWatcher() {
