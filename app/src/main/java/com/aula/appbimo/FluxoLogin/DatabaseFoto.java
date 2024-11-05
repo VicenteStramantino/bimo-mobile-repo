@@ -42,8 +42,8 @@ public class DatabaseFoto {
                                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
                                     public void onSuccess(Uri uri) {
-                                        String uriLink = uri.toString(); // Atribui o URI diretamente
-                                        docData.put("url", uriLink); // Atualiza o docData com a URL
+                                        String uriLink = uri.toString();
+                                        docData.put("url", uriLink);
                                         Toast.makeText(c, "Foto salva com sucesso!", Toast.LENGTH_SHORT).show();
 
                                         // Notifica o listener com o URI obtido

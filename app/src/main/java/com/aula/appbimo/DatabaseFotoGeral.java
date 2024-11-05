@@ -36,15 +36,13 @@ public class DatabaseFotoGeral {
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // Obtém a URL da imagem após o upload
                         taskSnapshot.getMetadata().getReference().getDownloadUrl()
                                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
                                     public void onSuccess(Uri uri) {
-                                        String uriLink = uri.toString(); // Atribui o URI diretamente
-                                        docData.put("url", uriLink); // Atualiza o docData com a URL
+                                        String uriLink = uri.toString();
+                                        docData.put("url", uriLink);
 
-                                        // Notifica o listener com o URI obtido
                                         if (listener != null) {
                                             listener.onUriReceived(uriLink);
                                         }

@@ -72,26 +72,6 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
             resultLauncherGaleria.launch(intent);
         });
 
-//        btn_publicar.setOnClickListener(v -> {
-//            Handler handler = new Handler(Looper.getMainLooper());
-//            handler.postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    if (idUsuario != 0) {
-//                        if(inserirImagem == false) {
-//                            Toast.makeText(Tela_AdicionarProduto.this, "Escolha uma imagem para que o produto possa ser publicado.", Toast.LENGTH_SHORT).show();
-//                        }
-//                        else{
-//                            databaseFotoGeral.uploadFoto(Tela_AdicionarProduto.this, btimg, docData, uriLink -> {
-//                                adicionarProdutoNoBanco(idUsuario, uriLink);
-//                            });
-//                        }
-//                    } else {
-//                        handler.postDelayed(this, 500);
-//                    }
-//                }
-//            }, 500);
-//        });
 
         btn_publicar.setOnClickListener(v -> {
             mainActivity.pegarUsuario(new UsuarioCallback() {

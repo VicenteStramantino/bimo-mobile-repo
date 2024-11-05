@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.aula.appbimo.R;
 import com.aula.appbimo.Repositories.UsuarioInterface;
 import com.aula.appbimo.Tela_AdicionarProduto;
+import com.aula.appbimo.Tela_ErroInterno;
 import com.aula.appbimo.models.Usuario;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -76,6 +77,7 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
         txtTelefone = findViewById(R.id.InputTelefone);
         txtNome = findViewById(R.id.InputNomeDeUsuario);
         txtNomeCompleto = findViewById(R.id.InputNomeCompleto);
+
 
         btn_voltar.setOnClickListener(v -> finish());
 
@@ -131,6 +133,7 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
             } else {
                 requestPermissions();
             }
+            Log.e("edgibfvejhbgv", photoUri.toString());
         });
     }
 
@@ -142,7 +145,7 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
                     uri = imageUri;
                     Glide.with(this).load(imageUri).centerCrop().into(imgUsuario);
                 } else {
-                    uri = Uri.parse("https://i.pinimg.com/736x/e8/a1/52/e8a15286aec46a1ac01c9c4091c3d793.jpg");
+                    uri = Uri.parse("https://cdn-icons-png.flaticon.com/512/3135/3135707.png");
                     Glide.with(this).load(uri).centerCrop().into(imgUsuario);
                     Toast.makeText(this, "Nenhuma imagem foi selecionada. Usando imagem padrão.", Toast.LENGTH_SHORT).show();
                 }
@@ -202,8 +205,6 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
     );
 
     private void salvarUsuario(Bundle bundle) {
-        String cpf = bundle.getString("CPF");
-        String dtNascimento = bundle.getString("DtNascimento");
         String email = bundle.getString("Email");
         String senha = bundle.getString("Senha");
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -257,7 +258,6 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
                 public void onResponse(Call<String> call, Response<String> response) {
                     if (response.isSuccessful()) {
                         Log.d("Sucesso: ", "Usuário inserido com sucesso: " + response.body());
-                        // Se a inserção for bem-sucedida, vá para a próxima tela
                         Intent intent = new Intent(Tela_CadastroPerfil.this, Tela_Inicial.class);
                         startActivity(intent);
                     } else {
@@ -268,7 +268,7 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-                    Intent intent = new Intent( Tela_CadastroPerfil.this, Tela_AdicionarProduto.class);
+                    Intent intent = new Intent( Tela_CadastroPerfil.this, Tela_ErroInterno.class);
                     startActivity(intent);
                 }
             });

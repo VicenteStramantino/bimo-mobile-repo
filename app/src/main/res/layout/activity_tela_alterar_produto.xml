@@ -47,14 +47,13 @@
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/botoes_principais"
-        android:text="Publicar produto"
+        android:text="Alterar produto"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-    </androidx.appcompat.widget.AppCompatButton>
+        app:layout_constraintStart_toStartOf="parent"></androidx.appcompat.widget.AppCompatButton>
 
     <TextView
         android:id="@+id/textView4"
@@ -213,5 +212,17 @@
             android:layout_height="wrap_content"
             android:text="Usado" />
     </RadioGroup>
+
+    <ImageButton
+        android:id="@+id/excluir"
+        android:layout_width="54dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="52dp"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.971"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/delete_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

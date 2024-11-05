@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.aula.appbimo.MainActivity;
 import com.aula.appbimo.R;
+import com.aula.appbimo.Tela_AdicionarProduto;
 import com.aula.appbimo.Tela_Conversas;
 import com.aula.appbimo.Tela_Feed;
 import com.aula.appbimo.Tela_Perfil;
@@ -34,6 +35,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -61,6 +64,21 @@ public class Tela_Inicial extends AppCompatActivity {
                 txtBoasVindas.setText("Boas-vindas, " + usuario.getCnome());
 
                 tela_ListaProdutos.setUserId(0);
+                findViewById(R.id.btn_cursos).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(usuario.getIdplano() == 1) {
+                            Toast.makeText(Tela_Inicial.this, "Você precisa ter o plano prata ou ouro!", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            underline_Produtos.setVisibility(View.INVISIBLE);
+                            underline_Cursos.setVisibility(View.VISIBLE);
+                            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.FrameConteudo, tela_ListaCursos);
+                            transaction.commit();
+                        }
+                    }
+                });
             }
 
             @Override
@@ -112,16 +130,6 @@ public class Tela_Inicial extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btn_cursos).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                underline_Produtos.setVisibility(View.INVISIBLE);
-                underline_Cursos.setVisibility(View.VISIBLE);
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.FrameConteudo, tela_ListaCursos);
-                transaction.commit();
-            }
-        });
 
         findViewById(R.id.btn_AddProduto).setOnClickListener(new View.OnClickListener() {
             @Override
