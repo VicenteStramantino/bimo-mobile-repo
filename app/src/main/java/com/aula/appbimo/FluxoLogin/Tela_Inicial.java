@@ -16,7 +16,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.aula.appbimo.MainActivity;
 import com.aula.appbimo.R;
 import com.aula.appbimo.Tela_AdicionarProduto;
-import com.aula.appbimo.Tela_Conversas;
 import com.aula.appbimo.Tela_Feed;
 import com.aula.appbimo.Tela_Perfil;
 import com.aula.appbimo.Tela_Planos;
@@ -49,6 +48,7 @@ public class Tela_Inicial extends AppCompatActivity {
     private View underline_Produtos;
     MainActivity mainActivity = new MainActivity();
     private View underline_Cursos;
+    private Button btn_cursos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,13 +58,19 @@ public class Tela_Inicial extends AppCompatActivity {
         txtBoasVindas = findViewById(R.id.BoasVindas);
         underline_Produtos = findViewById(R.id.underline_Produtos);
         underline_Cursos = findViewById(R.id.underline_Cursos);
+        btn_cursos = findViewById(R.id.btn_cursos);
+        btn_cursos.setAlpha(0.5f);
         mainActivity.pegarUsuario(new UsuarioCallback() {
             @Override
             public void onUsuarioEncontrado(Usuario usuario) {
                 txtBoasVindas.setText("Boas-vindas, " + usuario.getCnome());
 
                 tela_ListaProdutos.setUserId(0);
-                findViewById(R.id.btn_cursos).setOnClickListener(new View.OnClickListener() {
+
+                if (usuario.getIdplano() != 1) {
+                    btn_cursos.setAlpha(1.0f);
+                }
+                btn_cursos.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if(usuario.getIdplano() == 1) {
@@ -100,10 +106,6 @@ public class Tela_Inicial extends AppCompatActivity {
                 return true;
             } else if (id == R.id.feed) {
                 startActivity(new Intent(getApplicationContext(), Tela_Feed.class));
-                overridePendingTransition(0, 0);
-                return true;
-            } else if (id == R.id.chat) {
-                startActivity(new Intent(getApplicationContext(), Tela_Conversas.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (id == R.id.profile) {

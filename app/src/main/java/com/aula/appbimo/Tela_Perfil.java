@@ -133,10 +133,6 @@ public class Tela_Perfil extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), Tela_Feed.class));
                 overridePendingTransition(0, 0);
                 return true;
-            } else if (id == R.id.chat) {
-                startActivity(new Intent(getApplicationContext(), Tela_Conversas.class));
-                overridePendingTransition(0, 0);
-                return true;
             } else if (id == R.id.profile) {
                 return true;
             } else {
