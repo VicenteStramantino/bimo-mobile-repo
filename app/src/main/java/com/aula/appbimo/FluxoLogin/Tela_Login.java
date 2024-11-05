@@ -24,7 +24,6 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 public class Tela_Login extends AppCompatActivity {
 
     AppCompatButton btn_voltar, btn_entrar;
-
     TextInputEditText InputEmail, InputSenha;
     TextView esqueciMinhaSenha;
 
