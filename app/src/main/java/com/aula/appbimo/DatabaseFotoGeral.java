@@ -1,11 +1,11 @@
 package com.aula.appbimo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -36,27 +36,27 @@ public class DatabaseFotoGeral {
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // Obtém a URL da imagem após o upload
                         taskSnapshot.getMetadata().getReference().getDownloadUrl()
                                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
                                     public void onSuccess(Uri uri) {
-                                        String uriLink = uri.toString(); // Atribui o URI diretamente
-                                        docData.put("url", uriLink); // Atualiza o docData com a URL
+                                        String uriLink = uri.toString();
+                                        docData.put("url", uriLink);
 
-                                        // Notifica o listener com o URI obtido
                                         if (listener != null) {
                                             listener.onUriReceived(uriLink);
                                         }
                                     }
                                 })
                                 .addOnFailureListener(e -> {
-                                    Toast.makeText(c, "Falha ao obter a URL da imagem.", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(c, Tela_ErroInterno.class);
+                                    c.startActivity(intent);
                                 });
                     }
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(c, "Algo deu errado!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(c, Tela_ErroInterno.class);
+                    c.startActivity(intent);;
                 });
     }
 }

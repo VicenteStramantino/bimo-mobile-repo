@@ -18,8 +18,11 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.aula.appbimo.FluxoLogin.Tela_Inicial;
 import com.aula.appbimo.Repositories.ProdutoInterface;
+import com.aula.appbimo.callbacks.UsuarioCallback;
 import com.aula.appbimo.models.Produto;
+import com.aula.appbimo.models.Usuario;
 import com.bumptech.glide.Glide;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -33,11 +36,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Tela_AdicionarProduto extends AppCompatActivity {
-
     private ImageView btimg;
     private EditText edt_nome, edt_descricao;
     private TextInputEditText edt_valor;
-
     private boolean inserirImagem = false;
     private Button btn_publicar;
     private int idUsuario = 0;
@@ -47,16 +48,14 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
     private RadioButton btNovo, btUsado, eletronicos, roupas, moveis;
     private Map<String, String> docData = new HashMap<>();
     private DatabaseFotoGeral databaseFotoGeral = new DatabaseFotoGeral();
-
+    private Intent intent = new Intent(Tela_AdicionarProduto.this, Tela_ErroInterno.class);
+    private MainActivity  mainActivity =  new MainActivity();
     private String categoria = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_adicionar_produto);
-//        Bundle bundle = getIntent().getExtras();
-
-//        idUsuario = bundle.getInt("id");
 
         btimg = findViewById(R.id.imgColocarFoto);
         btn_publicar = findViewById(R.id.btn_publicarPost);
@@ -73,25 +72,35 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
             resultLauncherGaleria.launch(intent);
         });
 
+
         btn_publicar.setOnClickListener(v -> {
-            Handler handler = new Handler(Looper.getMainLooper());
-            handler.postDelayed(new Runnable() {
+            mainActivity.pegarUsuario(new UsuarioCallback() {
                 @Override
-                public void run() {
-                    if (idUsuario != 0) {
+                public void onUsuarioEncontrado(Usuario usuario) {
+                    if (usuario.getId() != 0) {
                         if(inserirImagem == false) {
                             Toast.makeText(Tela_AdicionarProduto.this, "Escolha uma imagem para que o produto possa ser publicado.", Toast.LENGTH_SHORT).show();
+                            Log.e("dbhkujldgyudawvyuhk", "ldhiuugildqwutgiladwyiu");
                         }
                         else{
+                            Log.e("Tela_AdicionarProdutdasdaosad", "ldhiuugildqwutgiladwyiu");
                             databaseFotoGeral.uploadFoto(Tela_AdicionarProduto.this, btimg, docData, uriLink -> {
-                                adicionarProdutoNoBanco(idUsuario, uriLink);
+                                adicionarProdutoNoBanco(usuario.getId(), uriLink);
                             });
+                            startActivity(new Intent(Tela_AdicionarProduto.this, Tela_Inicial.class));
+                            finish();
                         }
                     } else {
-                        handler.postDelayed(this, 500);
+                        Log.e("Erro", "ID do usuário não encontrado.");
                     }
                 }
-            }, 500);
+
+                @Override
+                public void onErro(String mensagemErro) {
+                    // Lida com o erro
+                    Log.e("Erro", mensagemErro);
+                }
+            });
         });
 
 
@@ -112,6 +121,8 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
                 categoria = "PROD_3";
             }
         });
+
+        findViewById(R.id.fecharTela).setOnClickListener(v -> finish());
     }
 
 
@@ -126,7 +137,7 @@ public class Tela_AdicionarProduto extends AppCompatActivity {
         try {
             valor = Double.parseDouble(valorSomenteNumero.replace(",", "."));
         } catch (NumberFormatException e) {
-            Log.e("Erro na transformação do numero", "Valor inválido: " + valorSomenteNumero);
+            startActivity(intent);
         }
 
         String nome = edt_nome.getText().toString();

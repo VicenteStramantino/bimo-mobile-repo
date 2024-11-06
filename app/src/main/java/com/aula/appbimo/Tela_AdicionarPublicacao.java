@@ -57,6 +57,10 @@ public class Tela_AdicionarPublicacao extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             resultLauncherGaleria.launch(intent);
         });
+        findViewById(R.id.fecharTela).setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), Tela_Feed.class));
+            finish();
+        });
         mainActivity.pegarUsuario(new UsuarioCallback() {
             @Override
             public void onUsuarioEncontrado(Usuario usuario) {
@@ -73,6 +77,8 @@ public class Tela_AdicionarPublicacao extends AppCompatActivity {
                                     databaseFotoGeral.uploadFoto(Tela_AdicionarPublicacao.this, btimg, docData, uriLink -> {
                                         adicionarPostagemNoBanco(usuario.getId(), uriLink);
                                     });
+                                    Toast.makeText(Tela_AdicionarPublicacao.this, "Publicação adicionada com sucesso!", Toast.LENGTH_SHORT).show();
+                                    finish();
                                 }
                             } else {
                                 handler.postDelayed(this, 500);
@@ -85,7 +91,6 @@ public class Tela_AdicionarPublicacao extends AppCompatActivity {
 
             @Override
             public void onErro(String mensagemErro) {
-                // Lida com o erro
                 Log.e("Erro", mensagemErro);
             }
         });

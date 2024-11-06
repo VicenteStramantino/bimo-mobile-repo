@@ -8,6 +8,21 @@
     android:background="#F2F2F2"
     tools:context=".Tela_Perfil">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_dash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="140dp"
+        android:clickable="true"
+        app:backgroundTint="@android:color/black"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/dash"
+        app:tint="@android:color/white" />
+
     <LinearLayout
         android:id="@+id/Header"
         android:layout_width="match_parent"
@@ -69,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nomeUsuario" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/btn_sair"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -79,73 +94,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/Header" />
 
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="#00FFFFFF"
-        android:src="@drawable/baseline_arrow_back_25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/Header" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="55dp"
-        android:fontFamily="@font/inter"
-        android:text="Seu perfil"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/imageButton4"
-        app:layout_constraintTop_toTopOf="@id/Header" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/inter"
-        android:text="Sair"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-        app:layout_constraintTop_toTopOf="@id/Header" />
-
     <ImageView
         android:id="@+id/fotoUsuario"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/Header"
         app:srcCompat="@drawable/ellipse_5" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/editPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="11dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton6"
+        app:layout_constraintBottom_toBottomOf="@+id/pencilIcon"
         app:layout_constraintEnd_toEndOf="@+id/fotoUsuario"
         app:layout_constraintStart_toStartOf="@+id/fotoUsuario"
-        app:srcCompat="@drawable/vector" />
+        app:srcCompat="@drawable/semi_circlre" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/pencilIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/fotoUsuario"
-        app:layout_constraintEnd_toEndOf="@+id/imageView6"
-        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintEnd_toEndOf="@+id/editPerfil"
+        app:layout_constraintStart_toStartOf="@+id/editPerfil"
         app:srcCompat="@drawable/baseline_edit_24" />
 
     <TextView
@@ -158,7 +136,7 @@
         android:textColor="#2CA0EC"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/editPerfil" />
 
     <TextView
         android:id="@+id/nomeUsuario"

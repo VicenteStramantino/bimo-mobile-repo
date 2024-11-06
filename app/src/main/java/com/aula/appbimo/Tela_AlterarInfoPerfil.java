@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.aula.appbimo.Repositories.UsuarioInterface;
 import com.aula.appbimo.callbacks.UsuarioCallback;
 import com.aula.appbimo.models.Usuario;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,23 +37,41 @@ public class Tela_AlterarInfoPerfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_alterar_info_perfil);
-            InputNomeDeUsuario = findViewById(R.id.InputNomeDeUsuario);
-            InputEmail = findViewById(R.id.InputEmail);
-            btn_salvar = findViewById(R.id.btn_salvar);
-            btn_cancelar = findViewById(R.id.btn_cancelar);
-            btn_alterar_senha = findViewById(R.id.alterar_senha);
-            btn_cancelar.setOnClickListener(view -> {
-                finish();
-            });
+        InputNomeDeUsuario = findViewById(R.id.InputNomeDeUsuario);
+        InputEmail = findViewById(R.id.InputEmail);
+        btn_salvar = findViewById(R.id.btn_salvar);
+        btn_cancelar = findViewById(R.id.btn_cancelar);
+        btn_alterar_senha = findViewById(R.id.alterar_senha);
+        btn_cancelar.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), Tela_Perfil.class));
+            finish();
+        });
 
-            btn_salvar.setOnClickListener(view -> {
-                alterarInfo();
-            });
+        mainActivity.pegarUsuario(new UsuarioCallback() {
+            @Override
+            public void onUsuarioEncontrado(Usuario usuario) {
+                InputNomeDeUsuario.setText(usuario.getcusername());
+                InputEmail.setText(usuario.getCemail());
+            }
 
-            btn_alterar_senha.setOnClickListener(view -> {
-                Intent intent = new Intent(Tela_AlterarInfoPerfil.this, Tela_EsqueciMinhaSenha.class);
-                startActivity(intent);
-            });
+            @Override
+            public void onErro(String mensagemErro) {
+                // Lida com o erro
+                Log.e("Erro", mensagemErro);
+            }
+        });
+
+        btn_salvar.setOnClickListener(view -> {
+            alterarInfo();
+            Intent intent = new Intent(Tela_AlterarInfoPerfil.this, Tela_Perfil.class);
+            startActivity(intent);
+            finish();
+        });
+
+        btn_alterar_senha.setOnClickListener(view -> {
+            Intent intent = new Intent(Tela_AlterarInfoPerfil.this, Tela_EsqueciMinhaSenha.class);
+            startActivity(intent);
+        });
     }
 
 
@@ -72,7 +92,7 @@ public class Tela_AlterarInfoPerfil extends AppCompatActivity {
             mainActivity.pegarUsuario(new UsuarioCallback() {
                 @Override
                 public void onUsuarioEncontrado(Usuario usuario) {
-                    usuario.setCusername(nomeusuario);
+                    usuario.setcusername(nomeusuario);
                     usuario.setCemail(email);
                     retrofit = new Retrofit.Builder()
                             .baseUrl(API)
@@ -80,26 +100,32 @@ public class Tela_AlterarInfoPerfil extends AppCompatActivity {
                             .build();
 
                     UsuarioInterface usuarioInterface = retrofit.create(UsuarioInterface.class);
-                    Log.e("Usuarionjkdbjdbjd", usuario.toString());
                     Call<String> call = usuarioInterface.atualizarUsuario(usuario.getId(), usuario);
                     call.enqueue(new Callback<String>() {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
+                            if (response.isSuccessful()) {
+                                Log.d("API", "Usuário atualizado com sucesso: " + response.body());
+                            } else {
+                                Log.e("API", "Falha ao atualizar usuário: " + response.message());
+                            }
                         }
 
                         @Override
-                        public void onFailure(Call<String> call, Throwable throwable) {
+                        public void onFailure(Call<String> call, Throwable t) {
+                            Log.e("API", "Erro na chamada da API", t);
                         }
                     });
+
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        user.updateEmail(email)
-                                .addOnCompleteListener(task -> {
-                                    if (task.isSuccessful()) {
-                                        Log.d("Firebase", "Email atualizado com sucesso.");
-                                    } else {
-                                        Log.e("Firebase", "Erro ao atualizar o email.", task.getException());
-                                    }
-                                });
+                    user.updateEmail(email)
+                            .addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    Log.d("Firebase", "Email atualizado com sucesso.");
+                                } else {
+                                    Log.e("Firebase", "Erro ao atualizar o email.", task.getException());
+                                }
+                            });
                 }
 
                 @Override

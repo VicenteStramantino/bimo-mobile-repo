@@ -42,7 +42,7 @@
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="393dp"
-        android:layout_height="630dp"
+        android:layout_height="685dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -57,9 +57,9 @@
             <ImageView
                 android:id="@+id/imgProd"
                 android:layout_width="match_parent"
-                android:layout_height="308dp"
-                android:layout_marginTop="0dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/rectangle_36" />

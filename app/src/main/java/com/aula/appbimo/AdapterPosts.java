@@ -24,8 +24,6 @@ import com.aula.appbimo.models.Usuario;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import retrofit2.Call;
@@ -57,7 +55,7 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.ViewHolder>{
         mainActivity.pegarUsuarioPorID(new UsuarioCallback() {
             @Override
             public void onUsuarioEncontrado(Usuario usuario) {
-                holder.nome_user.setText(usuario.getCnome());
+                holder.nome_user.setText(usuario.getcusername());
                 Glide.with(context)
                         .load(usuario.getCimgfirebase())
                         .apply(RequestOptions.circleCropTransform()) // Aplica o efeito de círculo na imagem do usuário

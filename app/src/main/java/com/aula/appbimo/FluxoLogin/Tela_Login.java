@@ -24,7 +24,6 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 public class Tela_Login extends AppCompatActivity {
 
     AppCompatButton btn_voltar, btn_entrar;
-
     TextInputEditText InputEmail, InputSenha;
     TextView esqueciMinhaSenha;
 
@@ -37,6 +36,8 @@ public class Tela_Login extends AppCompatActivity {
 
         btn_voltar = findViewById(R.id.btn_voltar);
         btn_entrar = findViewById(R.id.btn_entrar);
+        InputEmail = findViewById(R.id.InputEmail);
+        InputSenha = findViewById(R.id.InputSenha);
 
         esqueciMinhaSenha = findViewById(R.id.EsqueciMinhaSenha);
 
@@ -51,9 +52,6 @@ public class Tela_Login extends AppCompatActivity {
         btn_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                InputEmail = findViewById(R.id.InputEmail);
-                InputSenha = findViewById(R.id.InputSenha);
                 String txtEmail = InputEmail.getText().toString();
                 String txtSenha = InputSenha.getText().toString();
 
@@ -61,18 +59,15 @@ public class Tela_Login extends AppCompatActivity {
                     Toast.makeText(Tela_Login.this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    //Autentica usuario
                     autenticar.signInWithEmailAndPassword(txtEmail, txtSenha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if (task.isSuccessful()) {
-                                //Abrir a tela principal
                                 Intent intent = new Intent(Tela_Login.this, Tela_Inicial.class);
                                 startActivity(intent);
                             }
                             else {
-                                //Exibir mensagem de erro
                                 String msg = "Deu RED";
                                 try {
                                     throw task.getException();

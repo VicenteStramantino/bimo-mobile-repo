@@ -24,8 +24,8 @@
 
     <LinearLayout
         android:id="@+id/Header"
-        android:layout_width="412dp"
-        android:layout_height="90dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:background="@drawable/template_header"
         android:orientation="vertical"
         android:paddingHorizontal="12dp"
@@ -35,9 +35,9 @@
 
         <ImageView
             android:id="@+id/Logo"
-            android:layout_width="32dp"
-            android:layout_height="49dp"
-            android:layout_marginVertical="20dp"
+            android:layout_width="24dp"
+            android:layout_height="36dp"
+            android:layout_marginVertical="5dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="6dp"
             android:scaleType="fitXY"
@@ -54,28 +54,30 @@
         </FrameLayout>
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:background="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Header"
-        app:srcCompat="@drawable/baseline_close_24" />
-
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/inter"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_bold"
         android:text="Adicionar publicação"
         android:textColor="#000000"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fecharTela"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header" />
+
+    <ImageButton
+        android:id="@+id/fecharTela"
+        android:layout_width="40dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#00FFFFFF"
+        android:src="@drawable/baseline_close_24"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Header" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -84,7 +86,7 @@
         android:layout_height="45dp"
         android:layout_marginStart="99dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/botoes_principais"
         android:text="Adicionar publicação"
         android:textAllCaps="false"
@@ -92,6 +94,7 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
     </androidx.appcompat.widget.AppCompatButton>
 
@@ -104,5 +107,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Header"
-        app:srcCompat="@drawable/placeholderpubli" />
+        app:srcCompat="@drawable/group_50" />
 </androidx.constraintlayout.widget.ConstraintLayout>

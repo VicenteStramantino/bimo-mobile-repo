@@ -9,6 +9,8 @@ import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.aula.appbimo.FluxoLogin.Tela_Cadastro;
 import com.aula.appbimo.callbacks.UsuarioCallback;
 import com.aula.appbimo.models.Usuario;
 import com.google.android.material.textfield.TextInputEditText;
@@ -49,6 +52,15 @@ public class Tela_EsqueciMinhaSenha extends AppCompatActivity {
         });
         btn_trocar.setOnClickListener(view -> {
             trocarSenha();
+        });
+
+        TextView cadastrar = findViewById(R.id.btn_cadastrar);
+        cadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Tela_EsqueciMinhaSenha.this, Tela_Cadastro.class));
+                finish();
+            }
         });
 
         InputTelefone.addTextChangedListener(new TextWatcher() {
@@ -91,7 +103,6 @@ public class Tela_EsqueciMinhaSenha extends AppCompatActivity {
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
             return;
         }
-        Log.e("Telefoneoadjsda2", string.trim());
         mainActivity.pegarUsuarioPorTelefone(new UsuarioCallback() {
             @Override
             public void onUsuarioEncontrado(Usuario usuario) {
@@ -103,7 +114,7 @@ public class Tela_EsqueciMinhaSenha extends AppCompatActivity {
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
 
-                                Toast.makeText(Tela_EsqueciMinhaSenha.this, "Senha alterada", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Tela_EsqueciMinhaSenha.this, "Email de alteração de senha enviado!", Toast.LENGTH_SHORT).show();
                             } else {
                                 // Algo deu errado
                                 Toast.makeText(Tela_EsqueciMinhaSenha.this, "Senha não alterada", Toast.LENGTH_SHORT).show();

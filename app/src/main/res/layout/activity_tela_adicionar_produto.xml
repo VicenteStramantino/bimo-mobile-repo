@@ -7,6 +7,38 @@
     android:layout_height="match_parent"
     tools:context=".Tela_AdicionarProduto">
 
+    <LinearLayout
+        android:id="@+id/Header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/template_header"
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/Logo"
+            android:layout_width="24dp"
+            android:layout_height="36dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="6dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/union" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#FFFFFF"
+            android:baselineAligned="false"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="107dp">
+
+        </FrameLayout>
+    </LinearLayout>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_publicarPost"
         android:layout_width="212dp"
@@ -24,34 +56,37 @@
         app:layout_constraintStart_toStartOf="parent">
     </androidx.appcompat.widget.AppCompatButton>
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        android:backgroundTint="#00FFFFFF"
-        android:src="@drawable/baseline_close_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="35dp"
-        android:fontFamily="@font/inter"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_bold"
         android:text="Adicionar produto"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fecharTela"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header" />
+
+    <ImageButton
+        android:id="@+id/fecharTela"
+        android:layout_width="40dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#00FFFFFF"
+        android:src="@drawable/baseline_close_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header" />
 
     <ImageView
         android:id="@+id/imgColocarFoto"
         android:layout_width="391dp"
         android:layout_height="192dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/adicionarfotogrupo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -62,7 +97,7 @@
         android:id="@+id/editTextNomeAlterar"
         android:layout_width="330dp"
         android:layout_height="50dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Adicione o nome do produto"
         android:inputType="text"
@@ -104,7 +139,7 @@
         android:gravity="start|top"
         android:hint="Adicione a descrição do produto"
         android:inputType="textMultiLine"
-        android:lines="3"
+        android:lines="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"

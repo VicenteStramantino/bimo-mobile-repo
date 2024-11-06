@@ -42,12 +42,12 @@ public class Tela_Cadastro extends AppCompatActivity {
         txtDataNasc.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // Nada aqui
+
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // Nada aqui
+
             }
 
             @Override
@@ -77,16 +77,14 @@ public class Tela_Cadastro extends AppCompatActivity {
             }
         });
 
-        //formatar CPF
         txtCpf.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // Nada aqui
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // Nada aqui
+
             }
 
             @Override

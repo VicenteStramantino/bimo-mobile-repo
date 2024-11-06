@@ -13,18 +13,6 @@
         tools:layout_editor_absoluteX="-1dp"
         tools:layout_editor_absoluteY="-12dp" >
 
-        <ImageButton
-            android:id="@+id/btn_comments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="19dp"
-            android:layout_marginTop="20dp"
-            android:background="#FFFFFF"
-            android:paddingBottom="10dp"
-            android:src="@drawable/baseline_comment_24"
-            app:layout_constraintStart_toEndOf="@+id/qnt_curtidas"
-            app:layout_constraintTop_toBottomOf="@+id/descricao" />
-
         <ImageView
             android:id="@+id/perfil_user"
             android:layout_width="26dp"
@@ -46,17 +34,6 @@
             android:textColor="#000000"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/perfil_user"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/mais_opcoes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:layout_marginEnd="16dp"
-            android:background="#FFFFFF"
-            android:src="@drawable/baseline_more_vert_24"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView

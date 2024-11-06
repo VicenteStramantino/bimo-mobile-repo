@@ -9,8 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="411dp"
-        android:layout_height="134dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
         android:background="@drawable/infos_compra"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_voltar"
+            android:id="@+id/btn_pagar"
             android:layout_width="207dp"
             android:layout_height="wrap_content"
             android:background="@drawable/botoes_principais"
@@ -41,15 +41,16 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/inter_bold"
         android:text="Sua assinatura"
+        android:textColor="#000000"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/fecharTela"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Header" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/fecharTela"
         android:layout_width="40dp"
         android:layout_height="37dp"
         android:layout_marginStart="32dp"
@@ -94,13 +95,12 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView6"
         android:layout_width="305dp"
-        android:layout_height="353dp"
-        android:layout_marginTop="39dp"
-        app:layout_constraintBottom_toTopOf="@+id/cardView5"
+        android:layout_height="380dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" >
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <ImageView
             android:id="@+id/imageView5"
@@ -111,11 +111,11 @@
             app:srcCompat="@drawable/union" />
 
         <TextView
-            android:id="@+id/textView25"
+            android:id="@+id/tituloPlano"
             android:layout_width="202dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/inter_bold"
             android:text="Plano \n&lt;Nome&gt;"
             android:textAlignment="center"
@@ -123,13 +123,12 @@
             android:textSize="40sp" />
 
         <TextView
-            android:id="@+id/textView26"
+            android:id="@+id/descricaoPlano"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="227dp"
             android:layout_gravity="bottom"
             android:layout_marginStart="43dp"
             android:layout_marginEnd="29dp"
-            android:layout_marginBottom="40dp"
             android:fontFamily="@font/inter"
             android:text="Ideal para empresas que desejam aumentar sua visibilidade online. Inclui anúncios em banners laterais e rodapés, com 0 impressões garantidas por mês."
             android:textColor="@color/black"
@@ -140,12 +139,11 @@
         android:id="@+id/cardView5"
         android:layout_width="305dp"
         android:layout_height="82dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginTop="1dp"
         android:background="@drawable/valor_total"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView6">
 
         <TextView
             android:id="@+id/textView23"
@@ -158,13 +156,13 @@
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/textView24"
+            android:id="@+id/precoPlano"
             android:layout_width="189dp"
             android:layout_height="59dp"
             android:layout_gravity="end"
             android:fontFamily="@font/inter"
             android:gravity="bottom|center"
-            android:text="R$0,00"
+            android:text=""
             android:textColor="#000000"
             android:textSize="24sp" />
 

@@ -2,46 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tela_OperacoesEndereco">
+    tools:context=".FluxoLogin.Tela_Cadastro">
 
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_voltar"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/botoes_principais"
-        android:text="Voltar"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Cidade">
-    </androidx.appcompat.widget.AppCompatButton>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_confirmar"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="50dp"
-        android:background="@drawable/botoes_principais"
-        android:text="Confirmar"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Cidade">
-    </androidx.appcompat.widget.AppCompatButton>
 
     <ImageView
-        android:id="@+id/logo_app3"
+        android:id="@+id/logo_app"
         android:layout_width="135dp"
         android:layout_height="220dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,12 +20,12 @@
         app:srcCompat="@drawable/union" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Rua"
+        android:id="@+id/Email"
         style="@style/TextInputLayoutStyle"
         android:layout_width="352dp"
         android:layout_height="60dp"
-        android:layout_marginTop="30dp"
-        android:hint="Rua"
+        android:layout_marginTop="80dp"
+        android:hint="E-mail"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
@@ -64,25 +35,25 @@
         app:hintTextColor="#2CA0EC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_app3">
+        app:layout_constraintTop_toBottomOf="@+id/logo_app">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputRua"
+            android:id="@+id/InputEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:lines="1"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Numero"
+        android:id="@+id/DataDeNascimento"
         style="@style/TextInputLayoutStyle"
         android:layout_width="352dp"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
-        android:hint="Número"
+        android:hint="Data de Nascimento"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
@@ -92,26 +63,27 @@
         app:hintTextColor="#2CA0EC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Rua">
+        app:layout_constraintTop_toBottomOf="@+id/Email">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputNumero"
+            android:id="@+id/InputDataDeNascimento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:inputType="text"
+            android:inputType="number"
+            android:maxLength="10"
             android:lines="1"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Bairro"
+        android:id="@+id/Senha"
         style="@style/TextInputLayoutStyle"
         android:layout_width="352dp"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
-        android:hint="Bairro"
+        android:hint="Senha"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
@@ -121,25 +93,25 @@
         app:hintTextColor="#2CA0EC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Numero">
+        app:layout_constraintTop_toBottomOf="@+id/DataDeNascimento">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputBairro"
+            android:id="@+id/InputSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:lines="1"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Estado"
+        android:id="@+id/Cpf"
         style="@style/TextInputLayoutStyle"
         android:layout_width="352dp"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
-        android:hint="Estado"
+        android:hint="CPF"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
@@ -149,44 +121,46 @@
         app:hintTextColor="#2CA0EC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Bairro">
+        app:layout_constraintTop_toBottomOf="@+id/Senha">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputEstado"
+            android:id="@+id/InputCpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:inputType="text"
+            android:inputType="number"
             android:lines="1"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Cidade"
-        style="@style/TextInputLayoutStyle"
-        android:layout_width="352dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:hint="Cidade"
-        app:boxCornerRadiusBottomEnd="20dp"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        app:boxStrokeColor="#2CA0EC"
-        app:helperTextTextColor="#2CA0EC"
-        app:hintTextColor="#2CA0EC"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_Continuar"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="140dp"
+        android:background="@drawable/botoes_principais"
+        android:text="Continuar"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Estado">
+        app:layout_constraintTop_toBottomOf="@id/Cpf">
+    </androidx.appcompat.widget.AppCompatButton>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/InputCidade"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionDone"
-            android:inputType="text"
-            android:lines="1"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_voltar"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/botoes_principais"
+        android:text="Voltar"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Cpf">
+    </androidx.appcompat.widget.AppCompatButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

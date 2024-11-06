@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.aula.appbimo.FluxoLogin.Tela_Inicial;
@@ -63,16 +64,20 @@ public class Tela_Feed extends AppCompatActivity {
                 return true;
             } else if (id == R.id.feed) {
                 return true;
-            } else if (id == R.id.chat) {
-                startActivity(new Intent(getApplicationContext(), Tela_Conversas.class));
-                overridePendingTransition(0, 0);
-                return true;
-            } else if (id == R.id.profile) {
+            }  else if (id == R.id.profile) {
                 startActivity(new Intent(getApplicationContext(), Tela_Perfil.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else {
                 return false;
+            }
+        });
+
+        findViewById(R.id.btn_AddPublicacao).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Tela_AdicionarPublicacao.class));
+                finish();
             }
         });
 

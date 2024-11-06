@@ -15,10 +15,8 @@ public interface UsuarioInterface{
     Call<Usuario> buscarUsuarioPorHash(@Path("hash") String hash);
     @GET("selecionarPorID/{id}")
     Call<Usuario> buscarUsuarioPorID(@Path("id") int id);
-
     @PUT("atualizar/{id}")
     Call<String> atualizarUsuario(@Path("id") int id, @Body Usuario usuario);
-
     @GET("selecionarPorTelefone/{telefone}")
     Call<Usuario> buscarUsuarioPorTelefone(@Path("telefone") String telefone);
 }
