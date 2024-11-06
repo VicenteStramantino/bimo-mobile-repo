@@ -30,11 +30,8 @@ public class Tela_ResumoPedido extends AppCompatActivity {
     private TextView descricaoPlano;
     private ImageView fecharTela;
     private Button btn_pagar;
-
     private MainActivity mainActivity =  new MainActivity();
-
     private Retrofit retrofit;
-
     private int idPlano = 0;
 
     @Override
@@ -78,7 +75,7 @@ public class Tela_ResumoPedido extends AppCompatActivity {
                 }
 
                 alteraUsuarioBanco();
-//                startActivity(new Intent(Tela_ResumoPedido.this, Tela_CadastroCartao.class));
+                startActivity(new Intent(Tela_ResumoPedido.this, Tela_CadastroCartao.class));
             }
         });
     }
@@ -109,8 +106,6 @@ public class Tela_ResumoPedido extends AppCompatActivity {
                         Log.e("Errosadsad", t.getMessage());
                     }
                 });
-                startActivity(new Intent(Tela_ResumoPedido.this, Tela_ConfirmacaoPagamento.class));
-                finish();
 
             }
             @Override

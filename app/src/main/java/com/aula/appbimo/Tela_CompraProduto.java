@@ -28,7 +28,6 @@ import com.bumptech.glide.request.RequestOptions;
 public class Tela_CompraProduto extends Activity {
 
     private static final int REQUEST_CODE_NOTIFICATIONS = 1; // Código para solicitação de permissão
-
     private TextView txtdescricao;
     private TextView txtpreco;
     private ImageView imgproduto;

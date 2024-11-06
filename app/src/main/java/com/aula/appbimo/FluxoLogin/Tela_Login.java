@@ -36,6 +36,8 @@ public class Tela_Login extends AppCompatActivity {
 
         btn_voltar = findViewById(R.id.btn_voltar);
         btn_entrar = findViewById(R.id.btn_entrar);
+        InputEmail = findViewById(R.id.InputEmail);
+        InputSenha = findViewById(R.id.InputSenha);
 
         esqueciMinhaSenha = findViewById(R.id.EsqueciMinhaSenha);
 
@@ -50,9 +52,6 @@ public class Tela_Login extends AppCompatActivity {
         btn_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                InputEmail = findViewById(R.id.InputEmail);
-                InputSenha = findViewById(R.id.InputSenha);
                 String txtEmail = InputEmail.getText().toString();
                 String txtSenha = InputSenha.getText().toString();
 

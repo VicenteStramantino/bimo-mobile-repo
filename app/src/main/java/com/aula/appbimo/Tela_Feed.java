@@ -64,11 +64,7 @@ public class Tela_Feed extends AppCompatActivity {
                 return true;
             } else if (id == R.id.feed) {
                 return true;
-            } else if (id == R.id.chat) {
-                startActivity(new Intent(getApplicationContext(), Tela_Conversas.class));
-                overridePendingTransition(0, 0);
-                return true;
-            } else if (id == R.id.profile) {
+            }  else if (id == R.id.profile) {
                 startActivity(new Intent(getApplicationContext(), Tela_Perfil.class));
                 overridePendingTransition(0, 0);
                 return true;
