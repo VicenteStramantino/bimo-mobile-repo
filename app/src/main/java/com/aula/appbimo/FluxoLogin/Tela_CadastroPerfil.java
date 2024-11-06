@@ -13,6 +13,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -27,6 +29,7 @@ import com.aula.appbimo.Tela_AdicionarProduto;
 import com.aula.appbimo.Tela_ErroInterno;
 import com.aula.appbimo.models.Usuario;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -133,7 +136,6 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
             } else {
                 requestPermissions();
             }
-            Log.e("edgibfvejhbgv", photoUri.toString());
         });
     }
 
@@ -143,7 +145,7 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
                 if (result != null && result.getData() != null && result.getData().getData() != null) {
                     Uri imageUri = result.getData().getData();
                     uri = imageUri;
-                    Glide.with(this).load(imageUri).centerCrop().into(imgUsuario);
+                    Glide.with(this).load(uri).diskCacheStrategy(DiskCacheStrategy.NONE).centerCrop().into(imgUsuario);
                 } else {
                     uri = Uri.parse("https://cdn-icons-png.flaticon.com/512/3135/3135707.png");
                     Glide.with(this).load(uri).centerCrop().into(imgUsuario);
@@ -168,10 +170,20 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
-                    Glide.with(this).load(photoUri).centerCrop().into(imgUsuario);
+                    if (photoUri != null) {
+                        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                            Glide.with(this)
+                                    .load(photoUri)
+                                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                                    .skipMemoryCache(true)
+                                    .centerCrop()
+                                    .into(imgUsuario);
+                        }, 500);
+                    }
                 }
             }
     );
+
 
     private boolean allPermissionsGranted() {
         for (String permission : REQUIRED_PERMISSIONS) {
@@ -228,8 +240,8 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
     }
 
     public void adicionarUsuarioBanco(FirebaseUser user, Bundle bundle) {
-        // Chamar uploadFoto e esperar o callback
         databaseFoto.uploadFoto(this, imgUsuario, docData, uriLink -> {
+            Log.e("URI", uriLink);
             String cpf = bundle.getString("CPF").replaceAll("[^\\d]", "");
             String dtNascimento = bundle.getString("DtNascimento");
             String email = bundle.getString("Email");
@@ -250,7 +262,6 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
             Usuario usuario = new Usuario(
                     primeiroNome, ultimoSobrenome, cpf, email, txtTelefone.getText().toString(),
                     dtNascimento, user.getUid(),1, uriLink, txtNome.getText().toString());
-            Log.d("UsuarioJSON", new Gson().toJson(usuario));
 
             Call<String> call = usuarioInterface.inserirUsuario(usuario);
             call.enqueue(new Callback<String>() {
@@ -268,8 +279,14 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-                    Intent intent = new Intent( Tela_CadastroPerfil.this, Tela_ErroInterno.class);
-                    startActivity(intent);
+                    if (t.getMessage() != null && t.getMessage().contains("Use JsonReader.setLenient(true)")) {
+                        Intent intent = new Intent(Tela_CadastroPerfil.this, Tela_Inicial.class);
+                        startActivity(intent);
+                    } else {
+                        Log.e("ErroDeInserção", "Erro ao inserir usuário: " + t.getMessage());
+                        Intent intent = new Intent(Tela_CadastroPerfil.this, Tela_ErroInterno.class);
+                        startActivity(intent);
+                    }
                 }
             });
         });

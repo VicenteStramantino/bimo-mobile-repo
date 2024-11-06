@@ -37,15 +37,15 @@ public class Tela_AlterarInfoPerfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_alterar_info_perfil);
-            InputNomeDeUsuario = findViewById(R.id.InputNomeDeUsuario);
-            InputEmail = findViewById(R.id.InputEmail);
-            btn_salvar = findViewById(R.id.btn_salvar);
-            btn_cancelar = findViewById(R.id.btn_cancelar);
-            btn_alterar_senha = findViewById(R.id.alterar_senha);
-            btn_cancelar.setOnClickListener(view -> {
-                startActivity(new Intent(getApplicationContext(), Tela_Perfil.class));
-                finish();
-            });
+        InputNomeDeUsuario = findViewById(R.id.InputNomeDeUsuario);
+        InputEmail = findViewById(R.id.InputEmail);
+        btn_salvar = findViewById(R.id.btn_salvar);
+        btn_cancelar = findViewById(R.id.btn_cancelar);
+        btn_alterar_senha = findViewById(R.id.alterar_senha);
+        btn_cancelar.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), Tela_Perfil.class));
+            finish();
+        });
 
         mainActivity.pegarUsuario(new UsuarioCallback() {
             @Override
@@ -61,17 +61,17 @@ public class Tela_AlterarInfoPerfil extends AppCompatActivity {
             }
         });
 
-            btn_salvar.setOnClickListener(view -> {
-                alterarInfo();
-                Intent intent = new Intent(Tela_AlterarInfoPerfil.this, Tela_Perfil.class);
-                startActivity(intent);
-                finish();
-            });
+        btn_salvar.setOnClickListener(view -> {
+            alterarInfo();
+            Intent intent = new Intent(Tela_AlterarInfoPerfil.this, Tela_Perfil.class);
+            startActivity(intent);
+            finish();
+        });
 
-            btn_alterar_senha.setOnClickListener(view -> {
-                Intent intent = new Intent(Tela_AlterarInfoPerfil.this, Tela_EsqueciMinhaSenha.class);
-                startActivity(intent);
-            });
+        btn_alterar_senha.setOnClickListener(view -> {
+            Intent intent = new Intent(Tela_AlterarInfoPerfil.this, Tela_EsqueciMinhaSenha.class);
+            startActivity(intent);
+        });
     }
 
 
@@ -93,7 +93,6 @@ public class Tela_AlterarInfoPerfil extends AppCompatActivity {
                 @Override
                 public void onUsuarioEncontrado(Usuario usuario) {
                     usuario.setcusername(nomeusuario);
-                    Toast.makeText(Tela_AlterarInfoPerfil.this, usuario.getcusername(), Toast.LENGTH_SHORT).show();
                     usuario.setCemail(email);
                     retrofit = new Retrofit.Builder()
                             .baseUrl(API)
@@ -101,13 +100,10 @@ public class Tela_AlterarInfoPerfil extends AppCompatActivity {
                             .build();
 
                     UsuarioInterface usuarioInterface = retrofit.create(UsuarioInterface.class);
-                    Log.e("usuario", usuario.toString());
                     Call<String> call = usuarioInterface.atualizarUsuario(usuario.getId(), usuario);
                     call.enqueue(new Callback<String>() {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
-                            Log.e("usuario", usuario.toString());
-                            Log.e("response", response.toString());
                             if (response.isSuccessful()) {
                                 Log.d("API", "Usuário atualizado com sucesso: " + response.body());
                             } else {
@@ -122,14 +118,14 @@ public class Tela_AlterarInfoPerfil extends AppCompatActivity {
                     });
 
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        user.updateEmail(email)
-                                .addOnCompleteListener(task -> {
-                                    if (task.isSuccessful()) {
-                                        Log.d("Firebase", "Email atualizado com sucesso.");
-                                    } else {
-                                        Log.e("Firebase", "Erro ao atualizar o email.", task.getException());
-                                    }
-                                });
+                    user.updateEmail(email)
+                            .addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    Log.d("Firebase", "Email atualizado com sucesso.");
+                                } else {
+                                    Log.e("Firebase", "Erro ao atualizar o email.", task.getException());
+                                }
+                            });
                 }
 
                 @Override

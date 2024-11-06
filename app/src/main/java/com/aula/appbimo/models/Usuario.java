@@ -186,12 +186,9 @@ public class Usuario {
                 "\"csobrenome\":'" + csobrenome + "',\n" +
                 "\"ccpf\":'" + ccpf + "',\n" +
                 "\"cemail\":'" + cemail + "',\n" +
-                "\"ccnpj\":'" + ccnpj + "',\n" +
                 "\"ctelefone\":'" + ctelefone + "',\n" +
                 "\"ddatanascimento\":'" + ddatanascimento + "',\n" +
-                "\"clinklinkedin\":'" + clinklinkedin + "',\n" +
                 "\"cidhash\":'" + cidhash + "',\n" +
-                "\"cespecialidadeprofissional\":'" + cespecialidadeprofissional + "',\n" +
                 "\"idplano\":" + idplano + ",\n" +
                 "\"imgFirebase\":'" + imgFirebase + "',\n" +
                 "\"cusername\":'" + cusername + "'\n" +

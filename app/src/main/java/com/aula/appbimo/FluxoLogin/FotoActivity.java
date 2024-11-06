@@ -45,7 +45,6 @@ public class FotoActivity extends AppCompatActivity {
 
     private static final String FILENAME_FORMAT = "dd-MM-yyyy-HH-mm-ss-SSS";
 
-    // objetos
     private ExecutorService cameraExecutor;
     private androidx.camera.view.PreviewView viewFinder;
     private ImageView foto;
@@ -75,7 +74,6 @@ public class FotoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_foto);
 
-        // obter objetos
         cameraExecutor = Executors.newSingleThreadExecutor();
         viewFinder = findViewById(R.id.viewFinder);
         foto = findViewById(R.id.foto);
@@ -105,22 +103,20 @@ public class FotoActivity extends AppCompatActivity {
             resultIntent.setData(Uri.parse(docData.get("url")));
             setResult(RESULT_OK, resultIntent);
 
-            // Finaliza a Activity após capturar a foto
+
             finish();
         });
 
-        // Request de permissão
         if (allPermissionsGranted()) {
-            // ativar câmera
+
             startCamera();
         } else {
-            // pedir permissão
-            // requestPermissions(REQUIRED_PERMISSIONS, 0);
+
             requestPermissions();
         }
 
         btPhoto.setOnClickListener(v -> {
-            // tirar imagem
+
             takePhoto();
         });
     }
@@ -131,20 +127,19 @@ public class FotoActivity extends AppCompatActivity {
             return;
         }
 
-        // definir nome e caminho da imagem
+
         String name = new SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(System.currentTimeMillis());
         ContentValues contentValues = new ContentValues();
         contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, name);
         contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg");
         contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, "Pictures/MyCameraApp");
 
-        // carregando imagem com as configurações
+
         ImageCapture.OutputFileOptions outputFileOptions = new ImageCapture.OutputFileOptions.Builder(
                 getContentResolver(),
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 contentValues).build();
 
-        // salvar as fotos de acordo com a orientação
         OrientationEventListener orientationEventListener = new OrientationEventListener(this) {
             @Override
             public void onOrientationChanged(int orientation) {
@@ -165,7 +160,7 @@ public class FotoActivity extends AppCompatActivity {
 
         orientationEventListener.enable();
 
-        // listener para gerar imagem
+
         imageCapture.takePicture(
                 outputFileOptions,
                 ContextCompat.getMainExecutor(this),
@@ -191,7 +186,7 @@ public class FotoActivity extends AppCompatActivity {
 
         cameraProviderFuture.addListener(() -> {
             try {
-                // Used to bind the lifecycle of cameras to the lifecycle owner
+
                 ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
 
                 // Preview

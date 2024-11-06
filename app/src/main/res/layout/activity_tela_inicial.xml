@@ -52,37 +52,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Header" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="329dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="76dp"
-        android:background="@drawable/template_toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Header"
-        app:titleTextColor="@android:color/white">
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:queryHint="Pesquise" />
-
-    </androidx.appcompat.widget.Toolbar>
-
     <ImageView
         android:id="@+id/imgfotousuarioprod"
         android:layout_width="325dp"
         android:layout_height="159dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/announcement"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/BoasVindas" />
 
     <Button
         android:id="@+id/btn_cursos"

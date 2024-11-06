@@ -44,7 +44,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class Tela_Inicial extends AppCompatActivity {
     private Tela_ListaProdutos tela_ListaProdutos = new Tela_ListaProdutos();
     private Tela_ListaCursos tela_ListaCursos = new Tela_ListaCursos();
-    private int idUsuario = 0;
     private TextView txtBoasVindas;
     private View underline_Produtos;
     MainActivity mainActivity = new MainActivity();
@@ -61,6 +60,7 @@ public class Tela_Inicial extends AppCompatActivity {
         mainActivity.pegarUsuario(new UsuarioCallback() {
             @Override
             public void onUsuarioEncontrado(Usuario usuario) {
+                Log.e("Usuaioadsad", usuario.toString());
                 txtBoasVindas.setText("Boas-vindas, " + usuario.getCnome());
 
                 tela_ListaProdutos.setUserId(0);

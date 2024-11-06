@@ -96,15 +96,17 @@ public class Tela_ResumoPedido extends AppCompatActivity {
                         .build();
 
                 UsuarioInterface usuarioInterface = retrofit.create(UsuarioInterface.class);
-                Log.e("usuario", usuario.toString());
+                Log.e("Usuaruijdjsid", usuario.toString());
                 Call<String> call = usuarioInterface.atualizarUsuario(usuario.getId(), usuario);
 
                 call.enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
+                        Log.i("Sucessoadas", response.body().toString());
                     }
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
+                        Log.e("Errosadsad", t.getMessage());
                     }
                 });
                 startActivity(new Intent(Tela_ResumoPedido.this, Tela_ConfirmacaoPagamento.class));
@@ -114,7 +116,7 @@ public class Tela_ResumoPedido extends AppCompatActivity {
             @Override
             public void onErro(String mensagemErro) {
                 // Lida com o erro
-                Log.e("Erro", mensagemErro);
+                Log.e("Errosdasda", mensagemErro);
             }
         });
     }

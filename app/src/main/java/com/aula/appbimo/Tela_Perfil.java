@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,7 @@ import com.aula.appbimo.models.Usuario;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -38,6 +40,8 @@ public class Tela_Perfil extends AppCompatActivity {
     private View underline_Cursos;
     private ImageView btn_sair;
     private ImageView editPerfil;
+    private Button btn_sair2;
+    private FloatingActionButton btn_dash;
     private ImageView pencilIcon;
     private int idUser;
     private Tela_ListaProdutos tela_ListaProdutos = new Tela_ListaProdutos();
@@ -59,6 +63,8 @@ public class Tela_Perfil extends AppCompatActivity {
         btn_sair = findViewById(R.id.btn_sair);
         editPerfil = findViewById(R.id.editPerfil);
         pencilIcon = findViewById(R.id.pencilIcon);
+        btn_dash = findViewById(R.id.btn_dash);
+
 
         mainActivity.pegarUsuario(new UsuarioCallback() {
             @Override
@@ -74,6 +80,13 @@ public class Tela_Perfil extends AppCompatActivity {
 
                 tela_ListaProdutos.setUserId(idUser);
 
+                if(idUser == 115){
+                    btn_dash.setVisibility(View.VISIBLE);
+                }
+                else{
+                    btn_dash.setVisibility(View.INVISIBLE);
+                }
+
                 if (savedInstanceState == null) {
                     loadFragment();
                 }
@@ -86,7 +99,9 @@ public class Tela_Perfil extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btn_produtos).setOnClickListener(new View.OnClickListener() {
+
+
+        btn_dash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 underline_Produtos.setVisibility(View.VISIBLE);
@@ -97,14 +112,30 @@ public class Tela_Perfil extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btn_cursos).setOnClickListener(new View.OnClickListener() {
+        mainActivity.pegarUsuario(new UsuarioCallback() {
             @Override
-            public void onClick(View v) {
-                underline_Produtos.setVisibility(View.INVISIBLE);
-                underline_Cursos.setVisibility(View.VISIBLE);
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.FrameConteudo, tela_ListaCursos);
-                transaction.commit();
+            public void onUsuarioEncontrado(Usuario usuario) {
+                findViewById(R.id.btn_cursos).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(usuario.getIdplano() == 1) {
+                            Toast.makeText(Tela_Perfil.this, "Você precisa ter o plano prata ou ouro!", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            underline_Produtos.setVisibility(View.INVISIBLE);
+                            underline_Cursos.setVisibility(View.VISIBLE);
+                            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.FrameConteudo, tela_ListaCursos);
+                            transaction.commit();
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onErro(String mensagemErro) {
+                // Lida com o erro
+                Log.e("Erro", mensagemErro);
             }
         });
 

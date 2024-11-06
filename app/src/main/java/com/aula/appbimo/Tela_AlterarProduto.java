@@ -107,6 +107,8 @@ public class Tela_AlterarProduto extends AppCompatActivity {
 
         excluir.setOnClickListener(v -> {
             deletarProduto(id);
+            Toast.makeText(this, "Produto deletado com sucesso!", Toast.LENGTH_SHORT).show();
+            finish();
         });
         radioGroupEstado.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == btNovo.getId()) {

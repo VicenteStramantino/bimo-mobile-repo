@@ -55,7 +55,7 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.ViewHolder>{
         mainActivity.pegarUsuarioPorID(new UsuarioCallback() {
             @Override
             public void onUsuarioEncontrado(Usuario usuario) {
-                holder.nome_user.setText(usuario.getCnome());
+                holder.nome_user.setText(usuario.getcusername());
                 Glide.with(context)
                         .load(usuario.getCimgfirebase())
                         .apply(RequestOptions.circleCropTransform()) // Aplica o efeito de círculo na imagem do usuário
