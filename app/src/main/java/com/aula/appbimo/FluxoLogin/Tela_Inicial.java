@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,23 +22,6 @@ import com.aula.appbimo.Tela_Perfil;
 import com.aula.appbimo.Tela_Planos;
 import com.aula.appbimo.callbacks.UsuarioCallback;
 import com.aula.appbimo.models.Usuario;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Tela_Inicial extends AppCompatActivity {
@@ -62,7 +46,6 @@ public class Tela_Inicial extends AppCompatActivity {
         mainActivity.pegarUsuario(new UsuarioCallback() {
             @Override
             public void onUsuarioEncontrado(Usuario usuario) {
-                Log.e("Usuaioadsad", usuario.toString());
                 txtBoasVindas.setText("Boas-vindas, " + usuario.getCnome());
 
                 tela_ListaProdutos.setUserId(0);

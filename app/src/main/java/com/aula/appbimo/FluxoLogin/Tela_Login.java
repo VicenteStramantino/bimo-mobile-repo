@@ -59,18 +59,15 @@ public class Tela_Login extends AppCompatActivity {
                     Toast.makeText(Tela_Login.this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    //Autentica usuario
                     autenticar.signInWithEmailAndPassword(txtEmail, txtSenha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if (task.isSuccessful()) {
-                                //Abrir a tela principal
                                 Intent intent = new Intent(Tela_Login.this, Tela_Inicial.class);
                                 startActivity(intent);
                             }
                             else {
-                                //Exibir mensagem de erro
                                 String msg = "Deu RED";
                                 try {
                                     throw task.getException();

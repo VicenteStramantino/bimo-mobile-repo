@@ -103,7 +103,6 @@ public class Tela_EsqueciMinhaSenha extends AppCompatActivity {
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
             return;
         }
-        Log.e("Telefoneoadjsda2", string.trim());
         mainActivity.pegarUsuarioPorTelefone(new UsuarioCallback() {
             @Override
             public void onUsuarioEncontrado(Usuario usuario) {
@@ -115,7 +114,7 @@ public class Tela_EsqueciMinhaSenha extends AppCompatActivity {
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
 
-                                Toast.makeText(Tela_EsqueciMinhaSenha.this, "Senha alterada", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Tela_EsqueciMinhaSenha.this, "Email de alteração de senha enviado!", Toast.LENGTH_SHORT).show();
                             } else {
                                 // Algo deu errado
                                 Toast.makeText(Tela_EsqueciMinhaSenha.this, "Senha não alterada", Toast.LENGTH_SHORT).show();

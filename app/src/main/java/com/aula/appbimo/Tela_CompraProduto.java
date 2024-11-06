@@ -99,6 +99,8 @@ public class Tela_CompraProduto extends Activity {
             @Override
             public void onClick(View v) {
                 notificar();
+                Intent intent = new Intent(Tela_CompraProduto.this, Tela_ConfirmacaoPagamento.class);
+                startActivity(intent);
             }
         });
 
