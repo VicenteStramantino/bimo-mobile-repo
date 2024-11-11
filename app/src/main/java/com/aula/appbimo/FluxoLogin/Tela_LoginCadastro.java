@@ -1,8 +1,12 @@
 package com.aula.appbimo.FluxoLogin;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -28,6 +32,18 @@ public class Tela_LoginCadastro extends AppCompatActivity {
 
         btn_login = findViewById(R.id.btn_login);
         btn_cadastro = findViewById(R.id.btn_cadastro);
+
+        TextView linkTextView = findViewById(R.id.ResponderPesquisa);
+        linkTextView.setText("Responder Pesquisa");
+
+        linkTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://form-dado.vercel.app"));
+                startActivity(browserIntent);
+            }
+        });
+
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
