@@ -241,7 +241,6 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
 
     public void adicionarUsuarioBanco(FirebaseUser user, Bundle bundle) {
         databaseFoto.uploadFoto(this, imgUsuario, docData, uriLink -> {
-            Log.e("URI", uriLink);
             String cpf = bundle.getString("CPF").replaceAll("[^\\d]", "");
             String dtNascimento = bundle.getString("DtNascimento");
             String email = bundle.getString("Email");
@@ -268,11 +267,9 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
                     if (response.isSuccessful()) {
-                        Log.d("Sucesso: ", "Usuário inserido com sucesso: " + response.body());
                         Intent intent = new Intent(Tela_CadastroPerfil.this, Tela_Inicial.class);
                         startActivity(intent);
                     } else {
-                        Log.e("ErroDeInserção", "Erro ao inserir usuário: " + response.code() + " - " + response.message());
                         Toast.makeText(Tela_CadastroPerfil.this, "Erro ao inserir usuário", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -283,7 +280,6 @@ public class Tela_CadastroPerfil extends AppCompatActivity {
                         Intent intent = new Intent(Tela_CadastroPerfil.this, Tela_Inicial.class);
                         startActivity(intent);
                     } else {
-                        Log.e("ErroDeInserção", "Erro ao inserir usuário: " + t.getMessage());
                         Intent intent = new Intent(Tela_CadastroPerfil.this, Tela_ErroInterno.class);
                         startActivity(intent);
                     }

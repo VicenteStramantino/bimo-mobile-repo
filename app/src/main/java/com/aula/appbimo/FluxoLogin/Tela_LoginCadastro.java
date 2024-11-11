@@ -11,9 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.aula.appbimo.MainActivity;
 import com.aula.appbimo.R;
-import com.aula.appbimo.Tela_AdicionarProduto;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
